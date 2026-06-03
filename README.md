@@ -11,4 +11,3 @@ Changes made in this fork:
 - Inline keybind widget added to every toggle
 - Toggle:GetKeybind() and :SetKeybind() methods
 - Default keybind support via Keybind = Enum.KeyCode.X
-- Menu scale defaults to Large 
