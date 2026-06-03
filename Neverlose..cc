@@ -6,8 +6,8 @@
     ║    Discord : https://arceney.win/discord             ║
     ║    Site    : https://4lpaca.win                      ║
     ╠══════════════════════════════════════════════════════╣
-    ║  Modifications by  : Resolver                        ║
-    ║  Changes made      :                                 ║
+    ║  Modified by  : Resolver                             ║
+    ║  Changes made :                                      ║
     ║    [+] Inline keybind widget on every toggle         ║
     ║        Click to bind, Esc to clear, fires toggle     ║
     ║        in-game when bound key is pressed             ║
