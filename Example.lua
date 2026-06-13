@@ -1,6 +1,6 @@
 --[[
     ╔══════════════════════════════════════════════════════╗
-    ║              Ninality UI - Modified Edition          ║
+    ║              Nigginality UI - Modified Edition          ║
     ╠══════════════════════════════════════════════════════╣
     ║  Original UI Library                                 ║
     ║    Author  : 4lpaca                                  ║
@@ -10,13 +10,13 @@
     ╠══════════════════════════════════════════════════════╣
     ║  Modifications by  : Resolver                        ║
     ║  Changes made      :                                 ║
-    ║    [+] Renamed library from NeverLose to Ninality    ║
+    ║    [+] Renamed library from NeverLose to Nigginality    ║
     ║    [+] Inline keybind widget on every toggle         ║
     ║        Click to bind, Esc to clear, fires toggle     ║
     ║        in-game when bound key is pressed             ║
     ║    [+] Toggle:GetKeybind() / :SetKeybind() methods   ║
     ║    [+] Default keybind via Keybind = Enum.KeyCode.X  ║
-    ║    [+] Ninality:Unload() now fires OnUnload()        ║
+    ║    [+] Nigginality:Unload() now fires OnUnload()        ║
     ║        callback before cleaning up connections       ║
     ║    [+] Unload button added to settings tab           ║
     ║    [+] Menu Scale default changed to Large           ║
@@ -24,41 +24,41 @@
 ]]
 
 
-local Ninality = loadstring(game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Example.lua"))()
+local Nigginality = loadstring(game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Example.lua"))()
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- OnUnload: fires BEFORE the library cleans itself up.
 -- Put your own cleanup here: stop loops, remove stuff, reset characters, etc.
 -- ─────────────────────────────────────────────────────────────────────────────
-Ninality.OnUnload = function()
-    print("[Ninality] Unloading - cleaning up...")
+Nigginality.OnUnload = function()
+    print("[Nigginality] Unloading - cleaning up...")
 
     -- Example: stop your own loops, reset values, etc.
     -- myHeartbeat:Disconnect()
     -- game:GetService("RunService").Heartbeat:Disconnect()
     -- LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.zero
     
-    print("[Ninality] Cleanup done. Goodbye!")
+    print("[Nigginality] Cleanup done. Goodbye!")
 end
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Notification & Logger (optional utilities)
 -- ─────────────────────────────────────────────────────────────────────────────
-local Notification = Ninality:CreateNotification()
-local Logging      = Ninality:CreateLogger()
-local Indicator    = Ninality:CreateIndicator()
+local Notification = Nigginality:CreateNotification()
+local Logging      = Nigginality:CreateLogger()
+local Indicator    = Nigginality:CreateIndicator()
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Create the main window
 -- Size options: Default, Large, Mobile, Small
 -- Keybind: the key that opens/closes the menu
 -- ─────────────────────────────────────────────────────────────────────────────
-local window = Ninality:CreateWindow({
-    Logo         = Ninality.GlobalLogo,
-    Name         = "Ninality",
+local window = Nigginality:CreateWindow({
+    Logo         = Nigginality.GlobalLogo,
+    Name         = "Nigginality",
     Content      = "Counter-Strike 2",
-    Size         = Ninality.Scales.Large,   -- Opens Large by default (user can change in settings)
-    ConfigFolder = "NinalityConfigs",
+    Size         = Nigginality.Scales.Large,   -- Opens Large by default (user can change in settings)
+    ConfigFolder = "NigginalityConfigs",
     Enable3DRenderer = false,
     Keybind      = "Insert"                 -- Insert opens/closes the menu
 })
@@ -69,9 +69,9 @@ local window = Ninality:CreateWindow({
 local Watermark = window:Watermark()
 
 local ping  = Watermark:AddBlock("chart-four-vertical-bars", "0MS")
-local UITogg = Watermark:AddBlock("cube-vertexes", "Ninality")
+local UITogg = Watermark:AddBlock("cube-vertexes", "Nigginality")
 
--- Click the watermark "Ninality" block to toggle the menu
+-- Click the watermark "Nigginality" block to toggle the menu
 UITogg:Input(function()
     window:ToggleInterface()
 end)
@@ -366,7 +366,7 @@ window.UserSettings:AddLabel("Menu Scale"):AddDropdown({
     Default  = "Large",
     Values   = { "Default", "Large", "Mobile", "Small" },
     Callback = function(v)
-        window:SetSize(Ninality.Scales[v])
+        window:SetSize(Nigginality.Scales[v])
         Logging.new("crop", "Changed ui size to " .. tostring(v), 5)
     end,
 })
@@ -388,8 +388,8 @@ window.UserSettings:AddButton({
 })
 
 -- Note: The Unload button appears automatically in settings.
--- When clicked it calls Ninality:Unload() which:
---   1. Fires your Ninality.OnUnload() function first
+-- When clicked it calls Nigginality:Unload() which:
+--   1. Fires your Nigginality.OnUnload() function first
 --   2. Disconnects all signals/connections
 --   3. Clears all flags
 --   4. Destroys the UI
@@ -398,14 +398,14 @@ window.UserSettings:AddButton({
 -- Startup notifications
 -- ─────────────────────────────────────────────────────────────────────────────
 Notification.new({
-    Title    = "Ninality",
+    Title    = "Nigginality",
     Content  = "Welcome back, Resolver",
     Duration = 5,
 })
 
 task.wait(1)
 Notification.new({
-    Title    = "Ninality",
+    Title    = "Nigginality",
     Content  = "Initialization complete",
     Duration = 7,
 })
