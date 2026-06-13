@@ -23,8 +23,8 @@
     ╚══════════════════════════════════════════════════════╝
 ]]
 
--- Load the library (point this to YOUR raw github link)
-local Ninality = loadstring(game:HttpGet("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/source.luau"))()
+
+local Ninality = loadstring(game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Example.lua"))()
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- OnUnload: fires BEFORE the library cleans itself up.
