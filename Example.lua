@@ -23,7 +23,7 @@
 ]]
 
 
-local Nigginality = loadstring(game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Example.lua"))()
+local Nigginality = loadstring(game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Neverlose..cc"))()
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- OnUnload: fires BEFORE the library cleans itself up.
