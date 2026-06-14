@@ -14,12 +14,13 @@
     ║        Click to bind, Esc to clear, fires toggle     ║
     ║        in-game when bound key is pressed             ║
     ║    [+] Toggle:GetKeybind() / :SetKeybind() methods   ║
-    ║    [+] Nigginality:Unload() fires OnUnload() callback   ║
+    ║    [+] Nigginality:Unload() fires OnUnload() callback║
     ║        before cleaning up connections and flags      ║
     ║    [+] Unload button added to settings tab           ║
     ╚══════════════════════════════════════════════════════╝
     -- All credits to the rightful owner of the UI library, 4lpaca
 ]]
+
 do
 	local Constant = 'L'..'P'..'H'..'_NO_VIRTUALIZE';
 	getfenv()[Constant] = getfenv()[Constant] or function(f) return f end;
@@ -168,7 +169,7 @@ local Nigginality = {};
 Nigginality.BuiltInRegular = Font.new('rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json',Enum.FontWeight.Regular,Enum.FontStyle.Normal);
 Nigginality.BuiltInBold = Font.new('rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal);
 Nigginality.GlobalSignals = {};
-Nigginality.UnloadEnabled = false;
+Nigginality.UnloadEnabled = true;
 
 local cloneref: cloneref = cloneref or function(f) return f end;
 local TweenService: TweenService = cloneref(game:GetService('TweenService'));
