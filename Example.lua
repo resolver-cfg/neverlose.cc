@@ -53,15 +53,18 @@ local Indicator    = Nigginality:CreateIndicator()
 -- Keybind: the key that opens/closes the menu
 -- ─────────────────────────────────────────────────────────────────────────────
 local window = Nigginality:CreateWindow({
-    Logo         = Nigginality.GlobalLogo,
     Name         = "Nigginality",
     Content      = "Counter-Strike 2",
-    Size         = Nigginality.Scales.Large,   -- Opens Large by default (user can change in settings)
+    Size         = Nigginality.Scales.Large,
     ConfigFolder = "NigginalityConfigs",
-    Enable3DRenderer = false,
-    Keybind      = "Insert"                 -- Insert opens/closes the menu
-})
+    Keybind      = "Insert",
 
+    -- Loading screen config (all optional)
+    Loading = {
+        Credit  = "Modified by Resolver",  -- bottom text
+        Version = "v1.0",                  -- appears next to "Counter-Strike 2"
+    }
+})
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Watermark (top-right corner blocks)
 -- ─────────────────────────────────────────────────────────────────────────────
