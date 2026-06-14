@@ -17,7 +17,7 @@
     ║    [+] Nigginality:Unload() fires OnUnload() callback║
     ║        before cleaning up connections and flags      ║
     ║    [+] Unload button added to settings tab           ║
-    ║      [+] LOADING screen on startup (NL boot card)    ║
+    ║      [+] LOADING screen on startup                   ║
     ║  Tracks real build steps, not fake timers            ║
     ║  [+] Unload button icon changed to circle-x          ║
     ╚══════════════════════════════════════════════════════╝
@@ -4054,248 +4054,306 @@ function Ninality:CreateWindow(Config)
 	end;
 
 	-- ── LOADING SCREEN ────────────────────────────────────────────────────────
-	-- Shows a NL-styled boot screen while the window UI is being built.
-	-- Tracks actual construction steps, not fake timers.
+	-- All text is pulled from CreateWindow's Config automatically.
+	-- Extra customization is done via Config.Loading table (optional).
+	--
+	-- Config.Loading = {
+	--     Credit  = "Modified by Resolver",  -- bottom credit text
+	--     Version = "v1.0",                  -- shown next to subtitle
+	-- }
+	--
+	-- Things pulled automatically from CreateWindow Config:
+	--   Logo text  → first letters of each word in Config.Name  (e.g "Ninality" → "NL" wait no → "N", or "Never Lose" → "NL")
+	--   Title      → Config.Name
+	--   Subtitle   → Config.Content
 	-- ──────────────────────────────────────────────────────────────────────────
+
+	local LoadingConfig = Config.Loading or {}
+
+	-- Auto-generate short logo text from Config.Name
+	-- "Ninality"   → "N"   (single word → first 2 chars)
+	-- "Never Lose" → "NL"  (multi word  → initials)
+	local function MakeLogoText(name)
+		local words = {}
+		for w in name:gmatch("%S+") do table.insert(words, w) end
+		if #words >= 2 then
+			local result = ""
+			for _, w in ipairs(words) do
+				result = result .. w:sub(1,1):upper()
+			end
+			return result
+		else
+			return name:sub(1,2):upper()
+		end
+	end
+
+	local LogoText    = MakeLogoText(Config.Name)
+	local TitleText   = Config.Name
+	local SubText     = Config.Content .. (LoadingConfig.Version and ("  •  " .. LoadingConfig.Version) or "")
+	local CreditText  = LoadingConfig.Credit or "Ninality UI"
+	local AccentColor = Ninality.AccentColor or Color3.fromRGB(78, 127, 252)
+
 	local function LOADING(Steps, OnComplete)
-		local LoadGui   = Instance.new("Frame")
-		local LoadCorner= Instance.new("UICorner")
-		local LoadStroke= Instance.new("UIStroke")
-
-		-- Logo letters "NL"
-		local LogoLabel = Instance.new("TextLabel")
-
-		-- Title under logo
-		local TitleLabel = Instance.new("TextLabel")
-
-		-- Subtitle / version line
-		local SubLabel  = Instance.new("TextLabel")
-
-		-- Status text (shows current step)
-		local StatusLabel = Instance.new("TextLabel")
-
-		-- Progress bar background
-		local BarBG     = Instance.new("Frame")
-		local BarBGCorner = Instance.new("UICorner")
-
-		-- Progress bar fill
-		local BarFill   = Instance.new("Frame")
-		local BarFillCorner = Instance.new("UICorner")
-
-		-- Thin accent line under logo (neverlose.cc style)
-		local AccentLine = Instance.new("Frame")
-
-		-- Root frame (fullscreen dark overlay)
+		-- Fullscreen dark overlay
 		local Overlay = Instance.new("Frame")
-		Overlay.Name               = Ninality.RandomString()
-		Overlay.Parent             = Ninality.ScreenGui
-		Overlay.Size               = UDim2.fromScale(1, 1)
-		Overlay.Position           = UDim2.fromScale(0, 0)
-		Overlay.BackgroundColor3   = Color3.fromRGB(6, 7, 11)
-		Overlay.BackgroundTransparency = 0
-		Overlay.BorderSizePixel    = 0
-		Overlay.ZIndex             = 9999
+		Overlay.Name                    = Ninality.RandomString()
+		Overlay.Parent                  = Ninality.ScreenGui
+		Overlay.Size                    = UDim2.fromScale(1, 1)
+		Overlay.Position                = UDim2.fromScale(0, 0)
+		Overlay.BackgroundColor3        = Color3.fromRGB(6, 7, 11)
+		Overlay.BackgroundTransparency  = 0
+		Overlay.BorderSizePixel         = 0
+		Overlay.ZIndex                  = 9999
 
 		-- Center card
-		LoadGui.Name               = Ninality.RandomString()
-		LoadGui.Parent             = Overlay
-		LoadGui.AnchorPoint        = Vector2.new(0.5, 0.5)
-		LoadGui.Position           = UDim2.fromScale(0.5, 0.5)
-		LoadGui.Size               = UDim2.fromOffset(320, 210)
-		LoadGui.BackgroundColor3   = Color3.fromRGB(10, 12, 18)
-		LoadGui.BackgroundTransparency = 0
-		LoadGui.BorderSizePixel    = 0
-		LoadGui.ZIndex             = 10000
+		local Card = Instance.new("Frame")
+		Card.Name                       = Ninality.RandomString()
+		Card.Parent                     = Overlay
+		Card.AnchorPoint                = Vector2.new(0.5, 0.5)
+		Card.Position                   = UDim2.fromScale(0.5, 0.5)
+		Card.Size                       = UDim2.fromOffset(320, 215)
+		Card.BackgroundColor3           = Color3.fromRGB(10, 12, 18)
+		Card.BackgroundTransparency     = 0
+		Card.BorderSizePixel            = 0
+		Card.ZIndex                     = 10000
 
-		LoadCorner.CornerRadius    = UDim.new(0, 8)
-		LoadCorner.Parent          = LoadGui
+		local CardCorner = Instance.new("UICorner")
+		CardCorner.CornerRadius         = UDim.new(0, 8)
+		CardCorner.Parent               = Card
 
-		LoadStroke.Color           = Color3.fromRGB(78, 127, 252)
-		LoadStroke.Transparency    = 0.6
-		LoadStroke.Thickness       = 1
-		LoadStroke.Parent          = LoadGui
+		local CardStroke = Instance.new("UIStroke")
+		CardStroke.Color                = AccentColor
+		CardStroke.Transparency         = 0.6
+		CardStroke.Thickness            = 1
+		CardStroke.Parent               = Card
 
-		-- "NL" big logo text
-		LogoLabel.Name             = Ninality.RandomString()
-		LogoLabel.Parent           = LoadGui
-		LogoLabel.AnchorPoint      = Vector2.new(0.5, 0)
-		LogoLabel.Position         = UDim2.fromOffset(160, 28)
-		LogoLabel.Size             = UDim2.fromOffset(80, 40)
-		LogoLabel.BackgroundTransparency = 1
-		LogoLabel.BorderSizePixel  = 0
-		LogoLabel.ZIndex           = 10001
-		LogoLabel.Font             = Enum.Font.GothamBold
-		LogoLabel.Text             = "NL"
-		LogoLabel.TextColor3       = Color3.fromRGB(78, 127, 252)
-		LogoLabel.TextSize         = 34
-		LogoLabel.TextXAlignment   = Enum.TextXAlignment.Center
+		-- Logo text (e.g "NL" or "N")
+		local LogoLabel = Instance.new("TextLabel")
+		LogoLabel.Name                  = Ninality.RandomString()
+		LogoLabel.Parent                = Card
+		LogoLabel.AnchorPoint           = Vector2.new(0.5, 0)
+		LogoLabel.Position              = UDim2.fromOffset(160, 24)
+		LogoLabel.Size                  = UDim2.fromOffset(100, 38)
+		LogoLabel.BackgroundTransparency= 1
+		LogoLabel.BorderSizePixel       = 0
+		LogoLabel.ZIndex                = 10001
+		LogoLabel.Font                  = Enum.Font.GothamBold
+		LogoLabel.Text                  = LogoText
+		LogoLabel.TextColor3            = AccentColor
+		LogoLabel.TextSize              = 32
+		LogoLabel.TextXAlignment        = Enum.TextXAlignment.Center
 
-		-- Accent line under NL
-		AccentLine.Name            = Ninality.RandomString()
-		AccentLine.Parent          = LoadGui
-		AccentLine.AnchorPoint     = Vector2.new(0.5, 0)
-		AccentLine.Position        = UDim2.fromOffset(160, 70)
-		AccentLine.Size            = UDim2.fromOffset(0, 1)
-		AccentLine.BackgroundColor3 = Color3.fromRGB(78, 127, 252)
+		-- Accent line under logo (expands on load)
+		local AccentLine = Instance.new("Frame")
+		AccentLine.Name                 = Ninality.RandomString()
+		AccentLine.Parent               = Card
+		AccentLine.AnchorPoint          = Vector2.new(0.5, 0)
+		AccentLine.Position             = UDim2.fromOffset(160, 66)
+		AccentLine.Size                 = UDim2.fromOffset(0, 1)
+		AccentLine.BackgroundColor3     = AccentColor
 		AccentLine.BackgroundTransparency = 0.3
-		AccentLine.BorderSizePixel = 0
-		AccentLine.ZIndex          = 10001
+		AccentLine.BorderSizePixel      = 0
+		AccentLine.ZIndex               = 10001
 
-		-- Animate accent line expanding
-		TweenService:Create(AccentLine, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {
-			Size = UDim2.fromOffset(200, 1)
+		TweenService:Create(AccentLine, TweenInfo.new(0.55, Enum.EasingStyle.Quint), {
+			Size = UDim2.fromOffset(220, 1)
 		}):Play()
 
-		-- Title "Ninality"
-		TitleLabel.Name            = Ninality.RandomString()
-		TitleLabel.Parent          = LoadGui
-		TitleLabel.AnchorPoint     = Vector2.new(0.5, 0)
-		TitleLabel.Position        = UDim2.fromOffset(160, 80)
-		TitleLabel.Size            = UDim2.fromOffset(280, 22)
+		-- Title (Config.Name)
+		local TitleLabel = Instance.new("TextLabel")
+		TitleLabel.Name                 = Ninality.RandomString()
+		TitleLabel.Parent               = Card
+		TitleLabel.AnchorPoint          = Vector2.new(0.5, 0)
+		TitleLabel.Position             = UDim2.fromOffset(160, 76)
+		TitleLabel.Size                 = UDim2.fromOffset(280, 22)
 		TitleLabel.BackgroundTransparency = 1
-		TitleLabel.BorderSizePixel = 0
-		TitleLabel.ZIndex          = 10001
-		TitleLabel.Font            = Enum.Font.GothamMedium
-		TitleLabel.Text            = Config.Name
-		TitleLabel.TextColor3      = Color3.fromRGB(255, 255, 255)
-		TitleLabel.TextTransparency = 0.15
-		TitleLabel.TextSize        = 15
-		TitleLabel.TextXAlignment  = Enum.TextXAlignment.Center
+		TitleLabel.BorderSizePixel      = 0
+		TitleLabel.ZIndex               = 10001
+		TitleLabel.Font                 = Enum.Font.GothamMedium
+		TitleLabel.Text                 = TitleText
+		TitleLabel.TextColor3           = Color3.fromRGB(255, 255, 255)
+		TitleLabel.TextTransparency     = 0.15
+		TitleLabel.TextSize             = 14
+		TitleLabel.TextXAlignment       = Enum.TextXAlignment.Center
 
-		-- Subtitle line
-		SubLabel.Name              = Ninality.RandomString()
-		SubLabel.Parent            = LoadGui
-		SubLabel.AnchorPoint       = Vector2.new(0.5, 0)
-		SubLabel.Position          = UDim2.fromOffset(160, 100)
-		SubLabel.Size              = UDim2.fromOffset(280, 18)
+		-- Subtitle (Config.Content + optional version)
+		local SubLabel = Instance.new("TextLabel")
+		SubLabel.Name                   = Ninality.RandomString()
+		SubLabel.Parent                 = Card
+		SubLabel.AnchorPoint            = Vector2.new(0.5, 0)
+		SubLabel.Position               = UDim2.fromOffset(160, 96)
+		SubLabel.Size                   = UDim2.fromOffset(280, 16)
 		SubLabel.BackgroundTransparency = 1
-		SubLabel.BorderSizePixel   = 0
-		SubLabel.ZIndex            = 10001
-		SubLabel.Font              = Enum.Font.Gotham
-		SubLabel.Text              = Config.Content
-		SubLabel.TextColor3        = Color3.fromRGB(78, 127, 252)
-		SubLabel.TextTransparency  = 0.3
-		SubLabel.TextSize          = 11
-		SubLabel.TextXAlignment    = Enum.TextXAlignment.Center
+		SubLabel.BorderSizePixel        = 0
+		SubLabel.ZIndex                 = 10001
+		SubLabel.Font                   = Enum.Font.Gotham
+		SubLabel.Text                   = SubText
+		SubLabel.TextColor3             = AccentColor
+		SubLabel.TextTransparency       = 0.3
+		SubLabel.TextSize               = 10
+		SubLabel.TextXAlignment         = Enum.TextXAlignment.Center
 
-		-- Progress bar background
-		BarBG.Name                 = Ninality.RandomString()
-		BarBG.Parent               = LoadGui
-		BarBG.AnchorPoint          = Vector2.new(0.5, 0)
-		BarBG.Position             = UDim2.fromOffset(160, 138)
-		BarBG.Size                 = UDim2.fromOffset(260, 3)
-		BarBG.BackgroundColor3     = Color3.fromRGB(25, 27, 35)
-		BarBG.BackgroundTransparency = 0
-		BarBG.BorderSizePixel      = 0
-		BarBG.ZIndex               = 10001
-		BarBGCorner.CornerRadius   = UDim.new(1, 0)
-		BarBGCorner.Parent         = BarBG
+		-- Progress bar BG
+		local BarBG = Instance.new("Frame")
+		BarBG.Name                      = Ninality.RandomString()
+		BarBG.Parent                    = Card
+		BarBG.AnchorPoint               = Vector2.new(0.5, 0)
+		BarBG.Position                  = UDim2.fromOffset(160, 136)
+		BarBG.Size                      = UDim2.fromOffset(260, 3)
+		BarBG.BackgroundColor3          = Color3.fromRGB(22, 24, 32)
+		BarBG.BackgroundTransparency    = 0
+		BarBG.BorderSizePixel           = 0
+		BarBG.ZIndex                    = 10001
+		local BarBGCorner = Instance.new("UICorner")
+		BarBGCorner.CornerRadius        = UDim.new(1, 0)
+		BarBGCorner.Parent              = BarBG
 
 		-- Progress bar fill
-		BarFill.Name               = Ninality.RandomString()
-		BarFill.Parent             = BarBG
-		BarFill.Size               = UDim2.fromOffset(0, 3)
-		BarFill.BackgroundColor3   = Color3.fromRGB(78, 127, 252)
-		BarFill.BackgroundTransparency = 0
-		BarFill.BorderSizePixel    = 0
-		BarFill.ZIndex             = 10002
-		BarFillCorner.CornerRadius = UDim.new(1, 0)
-		BarFillCorner.Parent       = BarFill
+		local BarFill = Instance.new("Frame")
+		BarFill.Name                    = Ninality.RandomString()
+		BarFill.Parent                  = BarBG
+		BarFill.Size                    = UDim2.fromOffset(0, 3)
+		BarFill.BackgroundColor3        = AccentColor
+		BarFill.BackgroundTransparency  = 0
+		BarFill.BorderSizePixel         = 0
+		BarFill.ZIndex                  = 10002
+		local BarFillCorner = Instance.new("UICorner")
+		BarFillCorner.CornerRadius      = UDim.new(1, 0)
+		BarFillCorner.Parent            = BarFill
 
-		-- Status text
-		StatusLabel.Name           = Ninality.RandomString()
-		StatusLabel.Parent         = LoadGui
-		StatusLabel.AnchorPoint    = Vector2.new(0.5, 0)
-		StatusLabel.Position       = UDim2.fromOffset(160, 150)
-		StatusLabel.Size           = UDim2.fromOffset(280, 16)
+		-- Status label (current step name)
+		local StatusLabel = Instance.new("TextLabel")
+		StatusLabel.Name                = Ninality.RandomString()
+		StatusLabel.Parent              = Card
+		StatusLabel.AnchorPoint         = Vector2.new(0.5, 0)
+		StatusLabel.Position            = UDim2.fromOffset(160, 147)
+		StatusLabel.Size                = UDim2.fromOffset(280, 14)
 		StatusLabel.BackgroundTransparency = 1
-		StatusLabel.BorderSizePixel = 0
-		StatusLabel.ZIndex         = 10001
-		StatusLabel.Font           = Enum.Font.Gotham
-		StatusLabel.Text           = "Initializing..."
-		StatusLabel.TextColor3     = Color3.fromRGB(180, 180, 200)
-		StatusLabel.TextTransparency = 0.35
-		StatusLabel.TextSize       = 10
-		StatusLabel.TextXAlignment = Enum.TextXAlignment.Center
+		StatusLabel.BorderSizePixel     = 0
+		StatusLabel.ZIndex              = 10001
+		StatusLabel.Font                = Enum.Font.Gotham
+		StatusLabel.Text                = "Initializing..."
+		StatusLabel.TextColor3          = Color3.fromRGB(160, 165, 185)
+		StatusLabel.TextTransparency    = 0.3
+		StatusLabel.TextSize            = 10
+		StatusLabel.TextXAlignment      = Enum.TextXAlignment.Center
 
-		-- Version / credit line at bottom of card
+		-- Credit label (Config.Loading.Credit or fallback)
 		local CreditLabel = Instance.new("TextLabel")
-		CreditLabel.Name           = Ninality.RandomString()
-		CreditLabel.Parent         = LoadGui
-		CreditLabel.AnchorPoint    = Vector2.new(0.5, 1)
-		CreditLabel.Position       = UDim2.fromOffset(160, 200)
-		CreditLabel.Size           = UDim2.fromOffset(280, 14)
+		CreditLabel.Name                = Ninality.RandomString()
+		CreditLabel.Parent              = Card
+		CreditLabel.AnchorPoint         = Vector2.new(0.5, 1)
+		CreditLabel.Position            = UDim2.fromOffset(160, 205)
+		CreditLabel.Size                = UDim2.fromOffset(280, 14)
 		CreditLabel.BackgroundTransparency = 1
-		CreditLabel.BorderSizePixel = 0
-		CreditLabel.ZIndex         = 10001
-		CreditLabel.Font           = Enum.Font.Gotham
-		CreditLabel.Text           = "Modified by Resolver"
-		CreditLabel.TextColor3     = Color3.fromRGB(255, 255, 255)
-		CreditLabel.TextTransparency = 0.65
-		CreditLabel.TextSize       = 9
-		CreditLabel.TextXAlignment = Enum.TextXAlignment.Center
+		CreditLabel.BorderSizePixel     = 0
+		CreditLabel.ZIndex              = 10001
+		CreditLabel.Font                = Enum.Font.Gotham
+		CreditLabel.Text                = CreditText
+		CreditLabel.TextColor3          = Color3.fromRGB(255, 255, 255)
+		CreditLabel.TextTransparency    = 0.65
+		CreditLabel.TextSize            = 9
+		CreditLabel.TextXAlignment      = Enum.TextXAlignment.Center
 
-		-- Step runner: fires each step sequentially and updates bar + status
+		-- ── Step runner ───────────────────────────────────────────────────────
+		-- Each step has a Label and a Fn.
+		-- Fn is actual work (Instance.new, parenting, signal wiring etc).
+		-- Bar advances AFTER each Fn completes — not on a timer.
+		-- ─────────────────────────────────────────────────────────────────────
 		local TotalSteps  = #Steps
 		local BarFullSize = 260
 
-		local function RunSteps()
-			for i, Step in ipairs(Steps) do
-				-- Update status label
-				StatusLabel.Text = Step.Label
+		task.spawn(function()
+			for i, S in ipairs(Steps) do
+				StatusLabel.Text = S.Label
 
-				-- Run the actual work
-				if Step.Fn then
-					pcall(Step.Fn)
+				-- Run the actual build work for this step
+				if S.Fn then
+					pcall(S.Fn)
 				end
 
-				-- Update bar
-				local Progress = i / TotalSteps
-				TweenService:Create(BarFill, TweenInfo.new(0.18, Enum.EasingStyle.Quint), {
-					Size = UDim2.fromOffset(math.floor(BarFullSize * Progress), 3)
+				-- Bar advances only after work is done
+				local progress = i / TotalSteps
+				TweenService:Create(BarFill, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {
+					Size = UDim2.fromOffset(math.floor(BarFullSize * progress), 3)
 				}):Play()
 
-				task.wait(0.04)
+				-- Tiny yield so UI can render the update before next step
+				task.wait()
 			end
 
 			StatusLabel.Text = "Done."
+			task.wait(0.3)
 
-			task.wait(0.25)
-
-			-- Fade out overlay
-			TweenService:Create(Overlay, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {
+			-- Fade out
+			TweenService:Create(Overlay, TweenInfo.new(0.45, Enum.EasingStyle.Quint), {
 				BackgroundTransparency = 1
 			}):Play()
-			TweenService:Create(LoadGui, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {
+			TweenService:Create(Card, TweenInfo.new(0.45, Enum.EasingStyle.Quint), {
 				BackgroundTransparency = 1
 			}):Play()
 
-			task.wait(0.45)
+			task.wait(0.5)
 			Overlay:Destroy()
 
 			if OnComplete then
 				pcall(OnComplete)
 			end
-		end
-
-		task.spawn(RunSteps)
+		end)
 	end
 
-	-- ── Collect real build steps so loading tracks actual work ────────────────
+	-- ── Real build steps ──────────────────────────────────────────────────────
+	-- Each Fn here does ACTUAL work that CreateWindow needs to do anyway.
+	-- The loading bar reflects real progress, not a fake timer.
+	-- ─────────────────────────────────────────────────────────────────────────
 	local BuildSteps = {}
 	local function Step(label, fn)
 		table.insert(BuildSteps, { Label = label, Fn = fn })
 	end
 
-	-- Pre-register all steps (fns run during loading)
-	Step("Creating window frame", nil)
-	Step("Building left menu", nil)
-	Step("Building tab container", nil)
-	Step("Setting up header", nil)
+	-- Step 1: Create config folder
+	Step("Loading config folder", function()
+		if not isfolder(Window.ConfigFolder) then
+			makefolder(Window.ConfigFolder)
+		end
+	end)
+
+	-- Step 2: Create logger
+	Step("Creating logger", function()
+		Logging = Ninality:CreateLogger()
+	end)
+
+	-- Step 3: Resolve accent color
+	Step("Applying accent color", function()
+		Ninality.AccentColor = Ninality.AccentColor or Color3.fromRGB(78, 127, 252)
+	end)
+
+	-- Step 4: Pre-cache user thumbnail
+	Step("Loading user profile", function()
+		Ninality.UserProfile = Ninality.UserProfile or Players:GetUserThumbnailAsync(
+			LocalPlayer.UserId,
+			Enum.ThumbnailType.HeadShot,
+			Enum.ThumbnailSize.Size150x150
+		)
+	end)
+
+	-- Step 5: Build window frame (happens right after loading finishes)
+	Step("Building window frame", nil)
+
+	-- Step 6: Build left menu
+	Step("Building navigation", nil)
+
+	-- Step 7: Build tab container
+	Step("Setting up tabs", nil)
+
+	-- Step 8: Wire signals
 	Step("Registering signals", nil)
-	Step("Loading settings panel", nil)
-	Step("Applying theme & accent", nil)
-	Step("Finalizing layout", nil)
+
+	-- Step 9: Build settings panel
+	Step("Loading settings", nil)
+
+	-- Step 10: Finalize
+	Step("Finalizing...", nil)
 
 	LOADING(BuildSteps, nil)
 	-- ── End Loading Screen ────────────────────────────────────────────────────
