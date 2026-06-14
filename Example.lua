@@ -61,8 +61,8 @@ local window = Nigginality:CreateWindow({
 
     -- Loading screen config (all optional)
     Loading = {
-        Credit  = "Modified by Resolver",  -- bottom text
-        Version = "v1.0",                  -- appears next to "Counter-Strike 2"
+        Credit  = " some stuff here? ",  -- bottom text
+        Version = "v1.0",                  -- appears next to "Counter-Strike 2" in the loading screen 
     }
 })
 -- ─────────────────────────────────────────────────────────────────────────────
