@@ -17,6 +17,9 @@
     ║    [+] Nigginality:Unload() fires OnUnload() callback║
     ║        before cleaning up connections and flags      ║
     ║    [+] Unload button added to settings tab           ║
+    ║      [+] LOADING screen on startup (NL boot card)    ║
+    ║  Tracks real build steps, not fake timers            ║
+    ║  [+] Unload button icon changed to circle-x          ║
     ╚══════════════════════════════════════════════════════╝
     -- All credits to the rightful owner of the UI library, 4lpaca
 ]]
