@@ -1,6 +1,6 @@
 --[[
     ╔══════════════════════════════════════════════════════╗
-    ║              Nigginality UI - Modified Edition       ║
+    ║              Nigginality UI                          ║
     ╠══════════════════════════════════════════════════════╣
     ║  Original UI Library                                 ║
     ║    Author  : 4lpaca                                  ║
@@ -10,7 +10,6 @@
     ╠══════════════════════════════════════════════════════╣
     ║  Modifications by  : Resolver                        ║
     ║  Changes made      :                                 ║
-    ║    [+] Renamed library from NeverLose to Nigginality ║
     ║    [+] Inline keybind widget on every toggle         ║
     ║        Click to bind, Esc to clear, fires toggle     ║
     ║        in-game when bound key is pressed             ║
@@ -19,7 +18,7 @@
     ║    [+] Nigginality:Unload() now fires OnUnload()     ║
     ║        callback before cleaning up connections       ║
     ║    [+] Unload button added to settings tab           ║
-    ║    [+] Menu Scale default changed to Large           ║
+    ║                                                      ║
     ╚══════════════════════════════════════════════════════╝
 ]]
 
