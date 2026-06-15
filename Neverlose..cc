@@ -233,7 +233,7 @@ Ninality.MainColor = Color3.fromRGB(8, 8, 13);
 Ninality.RegisiteryColor = {};
 Ninality.NameRegisitry = {};
 Ninality.IsMosueOverOtherFrame = false;
-Ninality.GlobalLogo = "rbxassetid://120358385035996";
+Ninality.GlobalLogo = nil;
 Ninality.ImageColorMapping = "rbxassetid://4155801252";
 
 if getcustomasset then
@@ -4696,8 +4696,45 @@ function Ninality:CreateWindow(Config)
 	LogoImage.Position = UDim2.new(0, 10, 0.5, 0)
 	LogoImage.Size = UDim2.new(0, 35, 0, 35)
 	LogoImage.ZIndex = 7
-	LogoImage.Image = Window.Logo
 	LogoImage.ImageColor3 = Ninality.IconColor
+
+	if Window.Logo and Window.Logo ~= "" then
+		LogoImage.Image = Window.Logo
+		LogoImage.Visible = true
+	else
+		-- No logo: hide image, show NL text letters instead
+		LogoImage.Visible = false
+
+		local LogoText = Instance.new("TextLabel")
+		LogoText.Name = Ninality.RandomString()
+		LogoText.Parent = HeadFrame
+		LogoText.AnchorPoint = Vector2.new(0, 0.5)
+		LogoText.BackgroundTransparency = 1
+		LogoText.BorderSizePixel = 0
+		LogoText.Position = UDim2.new(0, 10, 0.5, 0)
+		LogoText.Size = UDim2.new(0, 35, 0, 35)
+		LogoText.ZIndex = 7
+		LogoText.Font = Enum.Font.GothamBold
+		LogoText.TextColor3 = Ninality.AccentColor or Color3.fromRGB(78, 127, 252)
+		LogoText.TextSize = 16
+		LogoText.TextXAlignment = Enum.TextXAlignment.Center
+		LogoText.TextYAlignment = Enum.TextYAlignment.Center
+
+		-- Generate initials from Name
+		local words = {}
+		for w in (Window.Name or "NL"):gmatch("%S+") do
+			table.insert(words, w)
+		end
+		if #words >= 2 then
+			local initials = ""
+			for _, w in ipairs(words) do
+				initials = initials .. w:sub(1,1):upper()
+			end
+			LogoText.Text = initials
+		else
+			LogoText.Text = (Window.Name or "NL"):sub(1,2):upper()
+		end
+	end
 
 	UICorner_2.CornerRadius = UDim.new(0, 7)
 	UICorner_2.Parent = LogoImage
