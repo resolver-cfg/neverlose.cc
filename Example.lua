@@ -14,7 +14,7 @@
     ║        Click to bind, Esc to clear, fires toggle     ║
     ║        in-game when bound key is pressed             ║
     ║    [+] Toggle:GetKeybind() / :SetKeybind() methods   ║
-    ║    [+] Ninality:Unload() fires OnUnload() callback   ║
+    ║   [+] Nigginality:Unload() fires OnUnload() callback ║
     ║        before cleaning up connections and flags      ║
     ║    [+] Unload button added to settings tab           ║
     ║    [+] LOADING screen on startup                     ║
@@ -27,21 +27,20 @@
     -- All credits to the rightful owner of the UI library, 4lpaca
 ]]
 
-local Ninality = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/source.luau"))()
+local Nigginality         = loadstring(game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Neverlose..cc"))()
 
 -- ─────────────────────────────────────────────────────────────
 -- Cleanup on unload
 -- Put your own connection disconnects, loop stops etc here
 -- ─────────────────────────────────────────────────────────────
-Ninality.OnUnload = function()
-    print("[Ninality] Cleaning up...")
+Nigginality.OnUnload = function()
+    print("[Nigginality] Cleaning up...")
     -- example: myHeartbeat:Disconnect()
 end
 
-local Notification = Ninality:CreateNotification()
-local Logging      = Ninality:CreateLogger()
-local Indicator    = Ninality:CreateIndicator()
+local Notification = Nigginality:CreateNotification()
+local Logging      = Nigginality:CreateLogger()
+local Indicator    = Nigginality:CreateIndicator()
 
 -- ─────────────────────────────────────────────────────────────
 -- CreateWindow
@@ -49,7 +48,7 @@ local Indicator    = Ninality:CreateIndicator()
 -- Logo field accepts:
 --   Logo = "NL"           → shows "NL" as text in the logo slot (string)
 --   Logo = false or nil   → auto-generates initials from Name (boolean/nil)
---                           "Never Lose" → NL, "Ninality" → NI
+--                           "Never Lose" → NL, "Nigginality" → NI
 --   Logo = true,          → shows your image (boolean true + LogoId string)
 --   LogoId = "rbxassetid://YOUR_ID"
 --
@@ -58,17 +57,17 @@ local Indicator    = Ninality:CreateIndicator()
 --   Credit  = "text"      → bottom credit text on loading screen
 --
 -- Size accepts:
---   Ninality.Scales.Default
---   Ninality.Scales.Large   ← recommended
---   Ninality.Scales.Mobile
---   Ninality.Scales.Small
+--   Nigginality.Scales.Default
+--   Nigginality.Scales.Large   ← recommended
+--   Nigginality.Scales.Mobile
+--   Nigginality.Scales.Small
 -- ─────────────────────────────────────────────────────────────
-local window = Ninality:CreateWindow({
+local window = Nigginality:CreateWindow({
     Logo         = "NL",              -- string: shows exactly "NL" in logo slot
     Name         = "Never Lose",      -- window title
     Content      = "Counter-Strike 2",-- subtitle shown under title + on loading screen
-    Size         = Ninality.Scales.Large,
-    ConfigFolder = "NinalityConfigs",
+    Size         = Nigginality.Scales.Large,
+    ConfigFolder = "NigginalityConfigs",
     Enable3DRenderer = false,
     Keybind      = "Insert",          -- key to open/close the menu
     Loading      = {
@@ -82,9 +81,9 @@ local window = Ninality:CreateWindow({
 -- ─────────────────────────────────────────────────────────────
 local Watermark = window:Watermark()
 local ping      = Watermark:AddBlock("chart-four-vertical-bars", "0MS")
-local UITogg    = Watermark:AddBlock("cube-vertexes", "Ninality")
+local UITogg    = Watermark:AddBlock("cube-vertexes", "Nigginality")
 
--- Click the "Ninality" block to toggle menu open/close
+-- Click the "Nigginality" block to toggle menu open/close
 UITogg:Input(function()
     window:ToggleInterface()
 end)
@@ -287,7 +286,7 @@ AntiAim:AddLabel("Mouse Override"):AddToggle({ Default = false, Flag = "mouse_ov
 -- ─────────────────────────────────────────────────────────────
 -- Settings Tab
 -- Note: Unload button is added automatically by the library
--- When clicked it calls Ninality:Unload() which fires OnUnload()
+-- When clicked it calls Nigginality:Unload() which fires OnUnload()
 -- then disconnects all signals, clears flags, destroys the UI
 -- ─────────────────────────────────────────────────────────────
 window.UserSettings:AddLabel("Menu Keybind"):AddKeybind({
@@ -302,7 +301,7 @@ window.UserSettings:AddLabel("Menu Scale"):AddDropdown({
     Default  = "Large",
     Values   = { "Default", "Large", "Mobile", "Small" },
     Callback = function(v)
-        window:SetSize(Ninality.Scales[v])
+        window:SetSize(Nigginality.Scales[v])
         Logging.new("crop", "Changed ui size to " .. tostring(v), 5)
     end,
 })
@@ -318,9 +317,9 @@ window.UserSettings:AddButton({
 -- ─────────────────────────────────────────────────────────────
 -- Startup Notifications
 -- ─────────────────────────────────────────────────────────────
-Notification.new({ Title = "Ninality", Content = "Welcome back, Resolver", Duration = 5 })
+Notification.new({ Title = "Nigginality", Content = "Welcome back, Resolver", Duration = 5 })
 task.wait(1)
-Notification.new({ Title = "Ninality", Content = "Initialization complete", Duration = 7 })
+Notification.new({ Title = "Nigginality", Content = "Initialization complete", Duration = 7 })
 
 Logging.new("crosshairs",       "Hit thatguy in the neck for 100 damage", 15)
 task.wait(2)
