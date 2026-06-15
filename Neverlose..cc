@@ -14,11 +14,10 @@
     ║        Click to bind, Esc to clear, fires toggle     ║
     ║        in-game when bound key is pressed             ║
     ║    [+] Toggle:GetKeybind() / :SetKeybind() methods   ║
-    ║    [+] Nigginality:Unload() fires OnUnload() callback   ║
+    ║   [+] Nigginality:Unload() fires OnUnload() callback ║
     ║        before cleaning up connections and flags      ║
     ║    [+] Unload button added to settings tab           ║
     ║    [+] LOADING screen on startup                     ║
-    ║        Tracks real build steps, not fake timers      ║
     ║    [+] Unload button icon changed to circle-x        ║
     ║    [+] Dropdowns and settings auto-close on UI hide  ║
     ║        via global PopupCloseSignal fired on toggle   ║
