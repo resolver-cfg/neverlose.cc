@@ -168,12 +168,12 @@ listfiles = listfiles or getgenv().listfiles;
 isfolder = isfolder or getgenv().isfolder;
 isfile = isfile or getgenv().isfile;
 
-local Ninality = {};
+local Nigginality = {};
 
-Ninality.BuiltInRegular = Font.new('rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json',Enum.FontWeight.Regular,Enum.FontStyle.Normal);
-Ninality.BuiltInBold = Font.new('rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal);
-Ninality.GlobalSignals = {};
-Ninality.PopupCloseSignal = Ninality.PopupCloseSignal or {
+Nigginality.BuiltInRegular = Font.new('rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json',Enum.FontWeight.Regular,Enum.FontStyle.Normal);
+Nigginality.BuiltInBold = Font.new('rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal);
+Nigginality.GlobalSignals = {};
+Nigginality.PopupCloseSignal = Nigginality.PopupCloseSignal or {
 	_listeners = {},
 	Connect = function(self, fn)
 		table.insert(self._listeners, fn)
@@ -184,7 +184,7 @@ Ninality.PopupCloseSignal = Ninality.PopupCloseSignal or {
 		end
 	end,
 };
-Ninality.UnloadEnabled = true;
+Nigginality.UnloadEnabled = true;
 
 local cloneref: cloneref = cloneref or function(f) return f end;
 local TweenService: TweenService = cloneref(game:GetService('TweenService'));
@@ -205,39 +205,39 @@ local FastTween = TweenInfo.new(0.05);
 local VSlowTween = TweenInfo.new(0.5,Enum.EasingStyle.Quint);
 local Encryption = {};
 
-Ninality.UserProfile = Players:GetUserThumbnailAsync(LocalPlayer.UserId , Enum.ThumbnailType.HeadShot , Enum.ThumbnailSize.Size150x150)
-Ninality.RandomString = LPH_NO_VIRTUALIZE(function()
+Nigginality.UserProfile = Players:GetUserThumbnailAsync(LocalPlayer.UserId , Enum.ThumbnailType.HeadShot , Enum.ThumbnailSize.Size150x150)
+Nigginality.RandomString = LPH_NO_VIRTUALIZE(function()
 	return string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4))..string.rep(string.char(math.random(1,7)),math.random(1,4));
 end);
 
 ProtectGui(GlobalWindow);
 
-GlobalWindow.Name = Ninality.RandomString();
+GlobalWindow.Name = Nigginality.RandomString();
 GlobalWindow.IgnoreGuiInset = true;
 GlobalWindow.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 GlobalWindow.ResetOnSpawn = false;
 GlobalWindow.Parent = CoreGui;
 
-Ninality.Scales = {
+Nigginality.Scales = {
 	Small = UDim2.fromOffset(540,380),
 	Mobile = UDim2.fromOffset(640,385),
 	Default = UDim2.fromOffset(640 , 480),
 	Large = UDim2.fromOffset(800 , 600)
 };
 
-Ninality.IconColor = Color3.fromRGB(255, 255, 255);
-Ninality.ScreenGui = GlobalWindow;
-Ninality.Flags = {};
-Ninality.AccentColor = Color3.fromRGB(78, 127, 252);
-Ninality.MainColor = Color3.fromRGB(8, 8, 13);
-Ninality.RegisiteryColor = {};
-Ninality.NameRegisitry = {};
-Ninality.IsMosueOverOtherFrame = false;
-Ninality.GlobalLogo = nil;
-Ninality.ImageColorMapping = "rbxassetid://4155801252";
+Nigginality.IconColor = Color3.fromRGB(255, 255, 255);
+Nigginality.ScreenGui = GlobalWindow;
+Nigginality.Flags = {};
+Nigginality.AccentColor = Color3.fromRGB(78, 127, 252);
+Nigginality.MainColor = Color3.fromRGB(8, 8, 13);
+Nigginality.RegisiteryColor = {};
+Nigginality.NameRegisitry = {};
+Nigginality.IsMosueOverOtherFrame = false;
+Nigginality.GlobalLogo = nil;
+Nigginality.ImageColorMapping = "rbxassetid://4155801252";
 
 if getcustomasset then
-	local link = "https://github.com/4lpaca-pin/Ninality/blob/main/assets/%s?raw=true";
+	local link = "https://github.com/4lpaca-pin/Nigginality/blob/main/assets/%s?raw=true";
 	local dir = 'NLAssets';
 
 	if not isfolder(dir) then
@@ -253,7 +253,7 @@ if getcustomasset then
 		end;
 
 		if isfile(dir..'/'..'logo.png') then
-			Ninality.GlobalLogo = getcustomasset(dir..'/'..'logo.png')
+			Nigginality.GlobalLogo = getcustomasset(dir..'/'..'logo.png')
 		end;
 	end);
 
@@ -266,21 +266,21 @@ if getcustomasset then
 		end;
 
 		if isfile(dir..'/'..'saturation_value_gradient.png') then
-			Ninality.ImageColorMapping = getcustomasset(dir..'/'..'saturation_value_gradient.png')
+			Nigginality.ImageColorMapping = getcustomasset(dir..'/'..'saturation_value_gradient.png')
 		end;
 	end);
 end;
 
-function Ninality:AddSignal(RBXSignal)
-	if Ninality.UnloadEnabled then
-		table.insert(Ninality.GlobalSignals,RBXSignal);
+function Nigginality:AddSignal(RBXSignal)
+	if Nigginality.UnloadEnabled then
+		table.insert(Nigginality.GlobalSignals,RBXSignal);
 	end;
 
 	return RBXSignal;
 end;
 
-function Ninality:AddQuery(ItemRoot: Frame , Name : string)
-	table.insert(Ninality.NameRegisitry , {
+function Nigginality:AddQuery(ItemRoot: Frame , Name : string)
+	table.insert(Nigginality.NameRegisitry , {
 		Root = ItemRoot,
 		Idx = Name,
 	});
@@ -326,7 +326,7 @@ end;
 do
 	local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
-	Ninality.Base64Encode = LPH_NO_VIRTUALIZE(function(data)
+	Nigginality.Base64Encode = LPH_NO_VIRTUALIZE(function(data)
 		return ((data:gsub('.', function(x) 
 			local r,b='',x:byte()
 			for i=8,1,-1 do r=r..(b%2^i-b%2^(i-1)>0 and '1' or '0') end
@@ -339,7 +339,7 @@ do
 		end)..({ '', '==', '=' })[#data%3+1])
 	end);
 
-	Ninality.Base64Decode = LPH_NO_VIRTUALIZE(function(data)
+	Nigginality.Base64Decode = LPH_NO_VIRTUALIZE(function(data)
 		data = string.gsub(data, '[^'..b..'=]', '')
 		return (data:gsub('.', function(x)
 			if (x == '=') then return '' end
@@ -355,8 +355,8 @@ do
 	end);
 end;
 
-Ninality.LoadIcon = LPH_NO_VIRTUALIZE(function()
-	Ninality.RobloxIcon = {
+Nigginality.LoadIcon = LPH_NO_VIRTUALIZE(function()
+	Nigginality.RobloxIcon = {
 		["3d-cube-arrow-left"] = "3d-cube-arrow-left",
 		["amazon"] = "amazon",
 		["arm-left"] = "arm-left",
@@ -851,12 +851,12 @@ Ninality.LoadIcon = LPH_NO_VIRTUALIZE(function()
 	};
 end);
 
-Ninality.IsMouseOverFrame = LPH_NO_VIRTUALIZE(function(self , Frame)
+Nigginality.IsMouseOverFrame = LPH_NO_VIRTUALIZE(function(self , Frame)
 	if not Frame then
 		return;
 	end;
 
-	if Ninality.Global3DRenderMode then
+	if Nigginality.Global3DRenderMode then
 		if Frame.GuiState == Enum.GuiState.Hover or Frame.GuiState == Enum.GuiState.Press then
 			return true;
 		end;
@@ -871,7 +871,7 @@ Ninality.IsMouseOverFrame = LPH_NO_VIRTUALIZE(function(self , Frame)
 	end;
 end);
 
-Ninality.CreateSignal = LPH_NO_VIRTUALIZE(function(self , DefaultValue)
+Nigginality.CreateSignal = LPH_NO_VIRTUALIZE(function(self , DefaultValue)
 	local __cache = Instance.new('BindableEvent');
 	local bind = {
 		Value = DefaultValue,
@@ -891,7 +891,7 @@ Ninality.CreateSignal = LPH_NO_VIRTUALIZE(function(self , DefaultValue)
 	function bind:Connect(f)
 		local signal = __cache.Event:Connect(f);
 
-		Ninality:AddSignal(signal);
+		Nigginality:AddSignal(signal);
 
 		return signal;
 	end;
@@ -899,36 +899,36 @@ Ninality.CreateSignal = LPH_NO_VIRTUALIZE(function(self , DefaultValue)
 	return bind;
 end);
 
-Ninality.SetIconMode = LPH_NO_VIRTUALIZE(function(self , Label: TextLabel , Icon: string)
+Nigginality.SetIconMode = LPH_NO_VIRTUALIZE(function(self , Label: TextLabel , Icon: string)
 	local useBold = string.lower(string.sub(Icon , -5)) == '-bold';
 
 	if useBold then
 		Label.Text = Icon:sub(1,-6);
-		Label.FontFace = Ninality.BuiltInBold;
+		Label.FontFace = Nigginality.BuiltInBold;
 	else
 		Label.Text = Icon;
-		Label.FontFace = Ninality.BuiltInRegular;
+		Label.FontFace = Nigginality.BuiltInRegular;
 	end;
 end);
 
-function Ninality:GetIconFont(icon: string)
+function Nigginality:GetIconFont(icon: string)
 	local useBold = string.lower(string.sub(icon , -5)) == '-bold';
 
 	if useBold then
-		return Ninality.BuiltInBold;
+		return Nigginality.BuiltInBold;
 	end;
 
-	return Ninality.BuiltInRegular;
+	return Nigginality.BuiltInRegular;
 end;
 
-function Ninality:MoreThanHalfY(Value: number)
-	return (Ninality.ScreenGui.AbsoluteSize.Y / 2) < Value
+function Nigginality:MoreThanHalfY(Value: number)
+	return (Nigginality.ScreenGui.AbsoluteSize.Y / 2) < Value
 end;
 
-Ninality.IsStudio = RunService:IsStudio();
-Ninality.IsMobile = UserInputService.TouchEnabled;
+Nigginality.IsStudio = RunService:IsStudio();
+Nigginality.IsMobile = UserInputService.TouchEnabled;
 
-Ninality.CreateInput = LPH_NO_VIRTUALIZE(function(self , Frame , Callback)
+Nigginality.CreateInput = LPH_NO_VIRTUALIZE(function(self , Frame , Callback)
 	local Button = Instance.new('ImageButton',Frame);
 
 	Button.ZIndex = Frame.ZIndex + 10;
@@ -946,7 +946,7 @@ Ninality.CreateInput = LPH_NO_VIRTUALIZE(function(self , Frame , Callback)
 	return Button;
 end);
 
-Ninality.PlayAnimate = LPH_NO_VIRTUALIZE(function(Self , Info , Property)
+Nigginality.PlayAnimate = LPH_NO_VIRTUALIZE(function(Self , Info , Property)
 	local Tween = TweenService:Create(Self , Info or TweenInfo.new(0.25) , Property);
 
 	Tween:Play();
@@ -954,7 +954,7 @@ Ninality.PlayAnimate = LPH_NO_VIRTUALIZE(function(Self , Info , Property)
 	return Tween;
 end);
 
-Ninality.Drag = LPH_NO_VIRTUALIZE(function(InputFrame: Frame, MoveFrame: Frame, Speed : number)
+Nigginality.Drag = LPH_NO_VIRTUALIZE(function(InputFrame: Frame, MoveFrame: Frame, Speed : number)
 	local dragToggle: boolean = false;
 	local dragStart: Vector3 = nil;
 	local startPos: UDim2 = nil;
@@ -965,18 +965,18 @@ Ninality.Drag = LPH_NO_VIRTUALIZE(function(InputFrame: Frame, MoveFrame: Frame, 
 		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
 			startPos.Y.Scale, startPos.Y.Offset + delta.Y);
 
-		if Ninality.Global3DRenderMode then
-			Ninality.PlayAnimate(MoveFrame,Tween,{
+		if Nigginality.Global3DRenderMode then
+			Nigginality.PlayAnimate(MoveFrame,Tween,{
 				Position = UDim2.fromScale(0.5,0.5)
 			});
 		else
-			Ninality.PlayAnimate(MoveFrame,Tween,{
+			Nigginality.PlayAnimate(MoveFrame,Tween,{
 				Position = position
 			});
 		end;
 	end;
 
-	Ninality:AddSignal(InputFrame.InputBegan:Connect(function(input)
+	Nigginality:AddSignal(InputFrame.InputBegan:Connect(function(input)
 		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
 			dragToggle = true;
 			dragStart = input.Position;
@@ -993,7 +993,7 @@ Ninality.Drag = LPH_NO_VIRTUALIZE(function(InputFrame: Frame, MoveFrame: Frame, 
 		end
 	end));
 
-	Ninality:AddSignal(UserInputService.InputChanged:Connect(function(input)
+	Nigginality:AddSignal(UserInputService.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			if dragToggle then
 				updateInput(input)
@@ -1002,12 +1002,12 @@ Ninality.Drag = LPH_NO_VIRTUALIZE(function(InputFrame: Frame, MoveFrame: Frame, 
 	end));
 end);
 
-Ninality.Rounding = LPH_NO_VIRTUALIZE(function(num, numDecimalPlaces)
+Nigginality.Rounding = LPH_NO_VIRTUALIZE(function(num, numDecimalPlaces)
 	local mult = 10 ^ (numDecimalPlaces or 0);
 	return math.floor(num * mult + 0.5) / mult;
 end);
 
-Ninality.ProcessParams = LPH_NO_VIRTUALIZE(function(self , Params , Fixed)
+Nigginality.ProcessParams = LPH_NO_VIRTUALIZE(function(self , Params , Fixed)
 	Params = Params or {};
 
 	local k = Params or {};
@@ -1021,10 +1021,10 @@ Ninality.ProcessParams = LPH_NO_VIRTUALIZE(function(self , Params , Fixed)
 	return k;
 end);
 
-Ninality.EnabledBlur = true;
-Ninality.BlurModuleParent = workspace.CurrentCamera;
+Nigginality.EnabledBlur = true;
+Nigginality.BlurModuleParent = workspace.CurrentCamera;
 
-Ninality.GetCalculatePosition = LPH_NO_VIRTUALIZE(function(planePos, planeNormal, rayOrigin, rayDirection)
+Nigginality.GetCalculatePosition = LPH_NO_VIRTUALIZE(function(planePos, planeNormal, rayOrigin, rayDirection)
 	local n = planeNormal;
 	local d = rayDirection;
 	local v = rayOrigin - planePos;
@@ -1036,12 +1036,12 @@ Ninality.GetCalculatePosition = LPH_NO_VIRTUALIZE(function(planePos, planeNormal
 	return rayOrigin + (a * rayDirection);
 end);
 
-Ninality.CreateBlurModule = LPH_NO_VIRTUALIZE(function(self , Frame , Signal)
-	if not Ninality.EnabledBlur then
-		return Ninality:AddSignal(Instance.new('BindableEvent').Event:Connect(function() return "nl"; end));	
+Nigginality.CreateBlurModule = LPH_NO_VIRTUALIZE(function(self , Frame , Signal)
+	if not Nigginality.EnabledBlur then
+		return Nigginality:AddSignal(Instance.new('BindableEvent').Event:Connect(function() return "nl"; end));	
 	end;
 
-	local Part = Instance.new('Part',Ninality.BlurModuleParent);
+	local Part = Instance.new('Part',Nigginality.BlurModuleParent);
 	local DepthOfField = Instance.new('DepthOfFieldEffect',cloneref(game:GetService('Lighting')));
 	local BlockMesh = Instance.new("BlockMesh");
 
@@ -1054,7 +1054,7 @@ Ninality.CreateBlurModule = LPH_NO_VIRTUALIZE(function(self , Frame , Signal)
 	Part.Anchored = true;
 	Part.CanCollide = false;
 	Part.CanQuery = false;
-	Part.CollisionGroup = Ninality.RandomString();
+	Part.CollisionGroup = Nigginality.RandomString();
 	Part.Size = Vector3.new(1, 1, 1) * 0.01;
 	Part.Color = Color3.fromRGB(0,0,0);
 
@@ -1063,33 +1063,33 @@ Ninality.CreateBlurModule = LPH_NO_VIRTUALIZE(function(self , Frame , Signal)
 	DepthOfField.FocusDistance = 0;
 	DepthOfField.InFocusRadius = 1000;
 	DepthOfField.NearIntensity = 1;
-	DepthOfField.Name = Ninality.RandomString();
+	DepthOfField.Name = Nigginality.RandomString();
 
-	Part.Name = Ninality.RandomString();
+	Part.Name = Nigginality.RandomString();
 
 	local disconnect;
 
 	local UpdateFunction = function()
 		local IsWindowActive = Signal:GetValue();
 
-		if IsWindowActive and not Ninality.Global3DRenderMode then
+		if IsWindowActive and not Nigginality.Global3DRenderMode then
 
-			Ninality.PlayAnimate(DepthOfField,TweenInfo.new(0.1),{
+			Nigginality.PlayAnimate(DepthOfField,TweenInfo.new(0.1),{
 				NearIntensity = 1
 			})
 
-			Ninality.PlayAnimate(Part,TweenInfo.new(0.1),{
+			Nigginality.PlayAnimate(Part,TweenInfo.new(0.1),{
 				Transparency = 0.97,
 				Size = Vector3.new(1, 1, 1) * 0.01;
 			})
 
-			Part.Parent = Ninality.BlurModuleParent;
+			Part.Parent = Nigginality.BlurModuleParent;
 		else
-			Ninality.PlayAnimate(DepthOfField,TweenInfo.new(0.1),{
+			Nigginality.PlayAnimate(DepthOfField,TweenInfo.new(0.1),{
 				NearIntensity = 0
 			})
 
-			Ninality.PlayAnimate(Part,TweenInfo.new(0.1),{
+			Nigginality.PlayAnimate(Part,TweenInfo.new(0.1),{
 				Size = Vector3.zero,
 				Transparency = 1.5,
 			})
@@ -1110,8 +1110,8 @@ Ninality.CreateBlurModule = LPH_NO_VIRTUALIZE(function(self , Frame , Signal)
 
 			local planeNormal = CurrentCamera.CFrame.LookVector;
 
-			local pos0 = Ninality.GetCalculatePosition(planeOrigin, planeNormal, ray0.Origin, ray0.Direction);
-			local pos1 = Ninality.GetCalculatePosition(planeOrigin, planeNormal, ray1.Origin, ray1.Direction);
+			local pos0 = Nigginality.GetCalculatePosition(planeOrigin, planeNormal, ray0.Origin, ray0.Direction);
+			local pos1 = Nigginality.GetCalculatePosition(planeOrigin, planeNormal, ray1.Origin, ray1.Direction);
 
 			pos0 = CurrentCamera.CFrame:PointToObjectSpace(pos0);
 			pos1 = CurrentCamera.CFrame:PointToObjectSpace(pos1);
@@ -1125,8 +1125,8 @@ Ninality.CreateBlurModule = LPH_NO_VIRTUALIZE(function(self , Frame , Signal)
 		end;
 	end;
 
-	local rbxsignal = Ninality:AddSignal(CurrentCamera:GetPropertyChangedSignal('CFrame'):Connect(UpdateFunction))
-	local loopThread = Ninality:AddSignal(UserInputService.InputChanged:Connect(function(Input)
+	local rbxsignal = Nigginality:AddSignal(CurrentCamera:GetPropertyChangedSignal('CFrame'):Connect(UpdateFunction))
+	local loopThread = Nigginality:AddSignal(UserInputService.InputChanged:Connect(function(Input)
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
 			pcall(UpdateFunction);
 		end;
@@ -1153,7 +1153,7 @@ end);
 
 local EmptyFunction = function() end;
 
-function Ninality:RollingEffect(parent)
+function Nigginality:RollingEffect(parent)
 	local UIGradient = Instance.new("UIGradient")
 
 	UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.4), NumberSequenceKeypoint.new(1.00, 0.00)}
@@ -1162,7 +1162,7 @@ function Ninality:RollingEffect(parent)
 	return UIGradient;
 end;
 
-function Ninality:CreateShadow(parent , RollingEffect)
+function Nigginality:CreateShadow(parent , RollingEffect)
 	local Shadow = {};
 
 	local UIShadowSafe85 = Instance.new("UIStroke")
@@ -1190,10 +1190,10 @@ function Ninality:CreateShadow(parent , RollingEffect)
 	local r1,r2,r3,r4;
 
 	if RollingEffect then
-		r1 = Ninality:RollingEffect(UIShadowSafe85);
-		r2 = Ninality:RollingEffect(UIShadowSafe65);
-		r3 = Ninality:RollingEffect(UIShadowSafe50);
-		r4 = Ninality:RollingEffect(UIShadowSafe45);
+		r1 = Nigginality:RollingEffect(UIShadowSafe85);
+		r2 = Nigginality:RollingEffect(UIShadowSafe65);
+		r3 = Nigginality:RollingEffect(UIShadowSafe50);
+		r4 = Nigginality:RollingEffect(UIShadowSafe45);
 	end;
 
 	Shadow.Render = LPH_NO_VIRTUALIZE(function(self , value)
@@ -1203,19 +1203,19 @@ function Ninality:CreateShadow(parent , RollingEffect)
 		end;
 
 		if value then
-			Ninality.PlayAnimate(UIShadowSafe85 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe85 , SlowyTween , {
 				Transparency = 0.900
 			})
 
-			Ninality.PlayAnimate(UIShadowSafe65 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe65 , SlowyTween , {
 				Transparency = 0.900
 			})
 
-			Ninality.PlayAnimate(UIShadowSafe50 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe50 , SlowyTween , {
 				Transparency = 0.900
 			})
 
-			Ninality.PlayAnimate(UIShadowSafe45 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe45 , SlowyTween , {
 				Transparency = 0.900
 			})
 
@@ -1223,38 +1223,38 @@ function Ninality:CreateShadow(parent , RollingEffect)
 				RollingEffectThread = task.spawn(function()
 					local level = 20;
 					while true do task.wait(0.025)
-						Ninality.PlayAnimate(r1 , SlowyTween , {
+						Nigginality.PlayAnimate(r1 , SlowyTween , {
 							Rotation = r1.Rotation + level
 						});
 
-						Ninality.PlayAnimate(r2 , SlowyTween , {
+						Nigginality.PlayAnimate(r2 , SlowyTween , {
 							Rotation = r2.Rotation + level
 						});
 
-						Ninality.PlayAnimate(r3 , SlowyTween , {
+						Nigginality.PlayAnimate(r3 , SlowyTween , {
 							Rotation = r3.Rotation + level
 						});
 
-						Ninality.PlayAnimate(r4 , SlowyTween , {
+						Nigginality.PlayAnimate(r4 , SlowyTween , {
 							Rotation = r4.Rotation + level
 						});
 					end;
 				end);
 			end;
 		else
-			Ninality.PlayAnimate(UIShadowSafe85 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe85 , SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(UIShadowSafe65 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe65 , SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(UIShadowSafe50 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe50 , SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(UIShadowSafe45 , SlowyTween , {
+			Nigginality.PlayAnimate(UIShadowSafe45 , SlowyTween , {
 				Transparency = 1
 			})
 		end;
@@ -1263,21 +1263,21 @@ function Ninality:CreateShadow(parent , RollingEffect)
 	return Shadow;
 end;
 
-function Ninality:CreateOptionWindow(Frame: Frame , Zindex)
+function Nigginality:CreateOptionWindow(Frame: Frame , Zindex)
 	Zindex = Zindex or 9;
 
 	local Window = {
-		Signal = Ninality:CreateSignal(false),
+		Signal = Nigginality:CreateSignal(false),
 	};
 
 	local OptionHandler = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
 	local UIListLayout = Instance.new("UIListLayout")
 	local UIStroke = Instance.new("UIStroke")
-	local shadow = Ninality:CreateShadow(OptionHandler);
+	local shadow = Nigginality:CreateShadow(OptionHandler);
 
-	OptionHandler.Name = Ninality.RandomString();
-	OptionHandler.Parent = Ninality.ScreenGui
+	OptionHandler.Name = Nigginality.RandomString();
+	OptionHandler.Parent = Nigginality.ScreenGui
 	OptionHandler.AnchorPoint = Vector2.new(0, 0)
 	OptionHandler.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
 	OptionHandler.BackgroundTransparency = 0.035
@@ -1299,13 +1299,13 @@ function Ninality:CreateOptionWindow(Frame: Frame , Zindex)
 	UIStroke.Color = Color3.fromRGB(45, 48, 58)
 	UIStroke.Parent = OptionHandler
 
-	Ninality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
-		Ninality.PlayAnimate(OptionHandler , SlowyTween , {
+	Nigginality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality.PlayAnimate(OptionHandler , SlowyTween , {
 			Size = UDim2.new(0, 220, 0, UIListLayout.AbsoluteContentSize.Y - 1)
 		})
 	end)));
 
-	Ninality:AddSignal(OptionHandler:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
+	Nigginality:AddSignal(OptionHandler:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
 		if OptionHandler.BackgroundTransparency > 0.9 then
 			OptionHandler.Visible = false;
 			UIListLayout.Parent = nil;
@@ -1314,17 +1314,17 @@ function Ninality:CreateOptionWindow(Frame: Frame , Zindex)
 			OptionHandler.Visible = true;
 			UIListLayout.Parent = OptionHandler
 
-			if Ninality.Global3DRenderMode then
-				OptionHandler.Parent = Ninality.GlobalSurfaceGui;
+			if Nigginality.Global3DRenderMode then
+				OptionHandler.Parent = Nigginality.GlobalSurfaceGui;
 			else
-				OptionHandler.Parent = Ninality.ScreenGui;
+				OptionHandler.Parent = Nigginality.ScreenGui;
 			end;
 		end
 	end)));
 
 	local FollowingThread;
 	local SetPosition = LPH_NO_VIRTUALIZE(function()
-		if Ninality:MoreThanHalfY(Frame.AbsolutePosition.Y + 65) then
+		if Nigginality:MoreThanHalfY(Frame.AbsolutePosition.Y + 65) then
 			OptionHandler.AnchorPoint = Vector2.new(0,1)
 		else
 			OptionHandler.AnchorPoint = Vector2.new(0,0)
@@ -1342,20 +1342,20 @@ function Ninality:CreateOptionWindow(Frame: Frame , Zindex)
 		if value then
 			SetPosition();
 
-			Ninality.PlayAnimate(OptionHandler , SlowyTween , {
+			Nigginality.PlayAnimate(OptionHandler , SlowyTween , {
 				BackgroundTransparency = 0.035
 			})
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 0.650
 			})
 
 			shadow:Render(true);
 
-			if Ninality.Global3DRenderMode then
-				OptionHandler.Parent = Ninality.GlobalSurfaceGui;
+			if Nigginality.Global3DRenderMode then
+				OptionHandler.Parent = Nigginality.GlobalSurfaceGui;
 			else
-				OptionHandler.Parent = Ninality.ScreenGui;
+				OptionHandler.Parent = Nigginality.ScreenGui;
 			end;
 
 			FollowingThread = task.spawn(function()
@@ -1364,11 +1364,11 @@ function Ninality:CreateOptionWindow(Frame: Frame , Zindex)
 				end
 			end)
 		else
-			Ninality.PlayAnimate(OptionHandler , SlowyTween , {
+			Nigginality.PlayAnimate(OptionHandler , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 1
 			})
 
@@ -1379,7 +1379,7 @@ function Ninality:CreateOptionWindow(Frame: Frame , Zindex)
 	Window.SetRender(false);
 	Window.Signal:Connect(Window.SetRender)
 
-	local Payback = Ninality:RegisiterItem(OptionHandler , Window.Signal);
+	local Payback = Nigginality:RegisiterItem(OptionHandler , Window.Signal);
 
 	Payback.Winbdow = Window;
 	Payback.Root = OptionHandler;
@@ -1388,7 +1388,7 @@ function Ninality:CreateOptionWindow(Frame: Frame , Zindex)
 	return Payback;
 end;
 
-function Ninality:CreateColorPicker(HandleFrame: Frame)
+function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	local ZIndex = HandleFrame.ZIndex;
 
 	local ColorPickerLib = {};
@@ -1409,10 +1409,10 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	local UICorner_5 = Instance.new("UICorner")
 	local RGBLabel = Instance.new("TextLabel")
 	local UICorner_6 = Instance.new("UICorner")
-	local Shadow = Ninality:CreateShadow(ColorPickerHandler);
+	local Shadow = Nigginality:CreateShadow(ColorPickerHandler);
 
-	ColorPickerHandler.Name = Ninality.RandomString();
-	ColorPickerHandler.Parent = Ninality.ScreenGui
+	ColorPickerHandler.Name = Nigginality.RandomString();
+	ColorPickerHandler.Parent = Nigginality.ScreenGui
 	ColorPickerHandler.AnchorPoint = Vector2.new(0, 0)
 	ColorPickerHandler.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
 	ColorPickerHandler.BackgroundTransparency = 0.035
@@ -1423,17 +1423,17 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	ColorPickerHandler.Size = UDim2.new(0, 200, 0, 240)
 	ColorPickerHandler.ZIndex = ZIndex + 125
 
-	Ninality:AddSignal(ColorPickerHandler:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
+	Nigginality:AddSignal(ColorPickerHandler:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
 		if ColorPickerHandler.BackgroundTransparency > 0.9 then
 			ColorPickerHandler.Visible = false;
 			ColorPickerHandler.Parent = nil
 		else
 			ColorPickerHandler.Visible = true;
 
-			if Ninality.Global3DRenderMode then
-				ColorPickerHandler.Parent = Ninality.GlobalSurfaceGui;
+			if Nigginality.Global3DRenderMode then
+				ColorPickerHandler.Parent = Nigginality.GlobalSurfaceGui;
 			else
-				ColorPickerHandler.Parent = Ninality.ScreenGui;
+				ColorPickerHandler.Parent = Nigginality.ScreenGui;
 			end;
 		end;
 	end)));
@@ -1445,7 +1445,7 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	UIStroke.Color = Color3.fromRGB(45, 48, 58)
 	UIStroke.Parent = ColorPickerHandler
 
-	SaViMap.Name = Ninality.RandomString();
+	SaViMap.Name = Nigginality.RandomString();
 	SaViMap.Parent = ColorPickerHandler
 	SaViMap.AnchorPoint = Vector2.new(0.5, 0)
 	SaViMap.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
@@ -1454,12 +1454,12 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	SaViMap.Position = UDim2.new(0.5, 0, 0, 5)
 	SaViMap.Size = UDim2.new(0, 185, 0, 185)
 	SaViMap.ZIndex = ZIndex + 126
-	SaViMap.Image = Ninality.ImageColorMapping -- UNSAFE IMAGE
+	SaViMap.Image = Nigginality.ImageColorMapping -- UNSAFE IMAGE
 
 	UICorner_2.CornerRadius = UDim.new(0, 5)
 	UICorner_2.Parent = SaViMap
 
-	ColorZoneSelection.Name = Ninality.RandomString();
+	ColorZoneSelection.Name = Nigginality.RandomString();
 	ColorZoneSelection.Parent = SaViMap
 	ColorZoneSelection.AnchorPoint = Vector2.new(0.5, 0.5)
 	ColorZoneSelection.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1476,7 +1476,7 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	UIStroke_2.Color = Color3.fromRGB(255, 255, 255)
 	UIStroke_2.Parent = ColorZoneSelection
 
-	ColorMap.Name = Ninality.RandomString();
+	ColorMap.Name = Nigginality.RandomString();
 	ColorMap.Parent = ColorPickerHandler
 	ColorMap.AnchorPoint = Vector2.new(0.5, 0)
 	ColorMap.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1492,7 +1492,7 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	UICorner_4.CornerRadius = UDim.new(0, 3)
 	UICorner_4.Parent = ColorMap
 
-	ColorMapSelection.Name = Ninality.RandomString();
+	ColorMapSelection.Name = Nigginality.RandomString();
 	ColorMapSelection.Parent = ColorMap
 	ColorMapSelection.AnchorPoint = Vector2.new(0.5, 0.5)
 	ColorMapSelection.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1510,7 +1510,7 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	UICorner_5.CornerRadius = UDim.new(0, 3)
 	UICorner_5.Parent = ColorMapSelection
 
-	RGBLabel.Name = Ninality.RandomString();
+	RGBLabel.Name = Nigginality.RandomString();
 	RGBLabel.Parent = ColorPickerHandler
 	RGBLabel.BackgroundColor3 = Color3.fromRGB(26, 28, 36)
 	RGBLabel.BackgroundTransparency = 0.750
@@ -1533,64 +1533,64 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 		if value then
 			ColorPickerHandler.Position = UDim2.new(0,HandleFrame.AbsolutePosition.X + 20 , 0 ,HandleFrame.AbsolutePosition.Y + 75);
 
-			Ninality.PlayAnimate(ColorPickerHandler,SlowyTween , {
+			Nigginality.PlayAnimate(ColorPickerHandler,SlowyTween , {
 				BackgroundTransparency = 0.035
 			})
 
-			Ninality.PlayAnimate(UIStroke,SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke,SlowyTween , {
 				Transparency = 0.650
 			})
 
-			Ninality.PlayAnimate(SaViMap,SlowyTween , {
+			Nigginality.PlayAnimate(SaViMap,SlowyTween , {
 				BackgroundTransparency = 0,
 				ImageTransparency = 0
 			})
 
-			Ninality.PlayAnimate(UIStroke_2,SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke_2,SlowyTween , {
 				Transparency = 0
 			})
 
-			Ninality.PlayAnimate(ColorMap,SlowyTween , {
+			Nigginality.PlayAnimate(ColorMap,SlowyTween , {
 				BackgroundTransparency = 0
 			})
 
-			Ninality.PlayAnimate(UIStroke_3,SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke_3,SlowyTween , {
 				Transparency = 0
 			})
 
-			Ninality.PlayAnimate(RGBLabel,SlowyTween , {
+			Nigginality.PlayAnimate(RGBLabel,SlowyTween , {
 				BackgroundTransparency = 0.750,
 				TextTransparency = 0.400
 			})
 
 			Shadow:Render(true)
 		else
-			Ninality.PlayAnimate(ColorPickerHandler,SlowyTween , {
+			Nigginality.PlayAnimate(ColorPickerHandler,SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke,SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke,SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(SaViMap,SlowyTween , {
+			Nigginality.PlayAnimate(SaViMap,SlowyTween , {
 				BackgroundTransparency = 1,
 				ImageTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke_2,SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke_2,SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(ColorMap,SlowyTween , {
+			Nigginality.PlayAnimate(ColorMap,SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke_3,SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke_3,SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(RGBLabel,SlowyTween , {
+			Nigginality.PlayAnimate(RGBLabel,SlowyTween , {
 				BackgroundTransparency = 1,
 				TextTransparency = 1
 			})
@@ -1609,15 +1609,15 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	function ColorPickerLib:Update()
 		local RealColor = Color3.fromHSV(ColorPickerLib.H , ColorPickerLib.S , ColorPickerLib.V);
 
-		Ninality.PlayAnimate(ColorZoneSelection,ManualTween,{
+		Nigginality.PlayAnimate(ColorZoneSelection,ManualTween,{
 			Position = UDim2.fromScale(ColorPickerLib.S , 1 - ColorPickerLib.V)
 		});
 
-		Ninality.PlayAnimate(SaViMap,ManualTween,{
+		Nigginality.PlayAnimate(SaViMap,ManualTween,{
 			BackgroundColor3 = Color3.fromHSV(ColorPickerLib.H , 1 , 1)
 		});
 
-		Ninality.PlayAnimate(ColorMapSelection,ManualTween,{
+		Nigginality.PlayAnimate(ColorMapSelection,ManualTween,{
 			Position = UDim2.fromScale(ColorPickerLib.H,0.5)
 		});
 
@@ -1642,19 +1642,19 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 
 	ColorPickerLib.IsHold = false;
 
-	Ninality:AddSignal(ColorPickerHandler.InputBegan:Connect(function(Input)
+	Nigginality:AddSignal(ColorPickerHandler.InputBegan:Connect(function(Input)
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 			ColorPickerLib.IsHold = true;
 		end;
 	end));
 
-	Ninality:AddSignal(ColorPickerHandler.InputEnded:Connect(function(Input)
+	Nigginality:AddSignal(ColorPickerHandler.InputEnded:Connect(function(Input)
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 			ColorPickerLib.IsHold = false;
 		end;
 	end));
 
-	Ninality:AddSignal(ColorMap.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input)
+	Nigginality:AddSignal(ColorMap.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input)
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 			ColorPickerLib.IsHold = true;
 
@@ -1670,7 +1670,7 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 		end;
 	end)));
 
-	Ninality:AddSignal(SaViMap.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input)
+	Nigginality:AddSignal(SaViMap.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input)
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 			ColorPickerLib.IsHold = true;
 
@@ -1691,7 +1691,7 @@ function Ninality:CreateColorPicker(HandleFrame: Frame)
 	return ColorPickerLib;
 end;
 
-Ninality.KeyEnum = {
+Nigginality.KeyEnum = {
 	One = '1',
 	Two = '2',
 	Three = '3',
@@ -1726,38 +1726,38 @@ Ninality.KeyEnum = {
 	Escape = "Esc",
 };
 
-Ninality.EnumReverse = {};
+Nigginality.EnumReverse = {};
 
-for i,v in next , Ninality.KeyEnum do
-	Ninality.EnumReverse[v] = i;
+for i,v in next , Nigginality.KeyEnum do
+	Nigginality.EnumReverse[v] = i;
 end;
 
-function Ninality:KeyCodeToStr(K: Enum.KeyCode)
+function Nigginality:KeyCodeToStr(K: Enum.KeyCode)
 	if typeof(K) == 'string' then
-		if Ninality.KeyEnum[K] then
-			return Ninality.KeyEnum[K];
+		if Nigginality.KeyEnum[K] then
+			return Nigginality.KeyEnum[K];
 		end;
 
 		return K;
 	end;
 
-	return (Ninality.KeyEnum[K.Name] or K.Name);
+	return (Nigginality.KeyEnum[K.Name] or K.Name);
 end;
 
-function Ninality:StrToKeyCode(str: string)
-	if Ninality.EnumReverse[str] then
-		return Enum.KeyCode[Ninality.EnumReverse[str]];
+function Nigginality:StrToKeyCode(str: string)
+	if Nigginality.EnumReverse[str] then
+		return Enum.KeyCode[Nigginality.EnumReverse[str]];
 	end;
 
 	return Enum.KeyCode[str];
 end;
 
-function Ninality:RegisiterHandler(Handler: Frame , Signal)
+function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 	local handle = {};
 	local ZINdex = Handler.ZIndex;
 
 	function handle:AddToggle(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Default = false,
 			Flag = nil,
 			Callback = EmptyFunction,
@@ -1769,7 +1769,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local Circle = Instance.new("Frame")
 		local UICorner_2 = Instance.new("UICorner")
 
-		Toggle.Name = Ninality.RandomString();
+		Toggle.Name = Nigginality.RandomString();
 		Toggle.Parent = Handler
 		Toggle.BackgroundColor3 = Color3.fromRGB(10, 13, 21)
 		Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1782,7 +1782,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UICorner.CornerRadius = UDim.new(1, 0)
 		UICorner.Parent = Toggle
 
-		Circle.Name = Ninality.RandomString();
+		Circle.Name = Nigginality.RandomString();
 		Circle.Parent = Toggle
 		Circle.AnchorPoint = Vector2.new(0.5, 0.5)
 		Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1802,23 +1802,23 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 		ToggleLib.SetUI = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(Toggle,SlowyTween,{
+				Nigginality.PlayAnimate(Toggle,SlowyTween,{
 					BackgroundTransparency = 0,
-					BackgroundColor3 = Ninality.AccentColor
+					BackgroundColor3 = Nigginality.AccentColor
 				})
 
-				Ninality.PlayAnimate(Circle,SlowyTween,{
+				Nigginality.PlayAnimate(Circle,SlowyTween,{
 					BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 					BackgroundTransparency = 0,
 					Position = UDim2.new(0.7, 0, 0.5, 0)
 				})
 			else
-				Ninality.PlayAnimate(Toggle,SlowyTween,{
+				Nigginality.PlayAnimate(Toggle,SlowyTween,{
 					BackgroundTransparency = 0,
 					BackgroundColor3 = Color3.fromRGB(10, 13, 21)
 				})
 
-				Ninality.PlayAnimate(Circle,SlowyTween,{
+				Nigginality.PlayAnimate(Circle,SlowyTween,{
 					BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 					BackgroundTransparency = 0.500,
 					Position = UDim2.new(0.300000012, 0, 0.5, 0)
@@ -1830,12 +1830,12 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			if value then
 				ToggleLib.SetUI(Config.Default);
 			else
-				Ninality.PlayAnimate(Toggle,SlowyTween,{
+				Nigginality.PlayAnimate(Toggle,SlowyTween,{
 					BackgroundTransparency = 1,
 					BackgroundColor3 = Color3.fromRGB(10, 13, 21)
 				})
 
-				Ninality.PlayAnimate(Circle,SlowyTween,{
+				Nigginality.PlayAnimate(Circle,SlowyTween,{
 					BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 					BackgroundTransparency = 1,
 					Position = UDim2.new(0.300000012, 0, 0.5, 0)
@@ -1846,7 +1846,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		ToggleLib.SetUI(Config.Default);
 		ToggleLib.SetVisible(Signal:GetValue());
 
-		Ninality:CreateInput(Toggle , LPH_NO_VIRTUALIZE(function()
+		Nigginality:CreateInput(Toggle , LPH_NO_VIRTUALIZE(function()
 			Config.Default = not Config.Default;
 
 			ToggleLib.SetUI(Config.Default);
@@ -1871,7 +1871,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		end;
 
 		if Config.Flag then
-			Ninality.Flags[Config.Flag] = ToggleLib;
+			Nigginality.Flags[Config.Flag] = ToggleLib;
 		end;
 
 		-- ── Inline Keybind Widget ──────────────────────────────────────────────
@@ -1887,9 +1887,9 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				if k == nil then
 					return "None";
 				elseif typeof(k) == "EnumItem" then
-					return Ninality:KeyCodeToStr(k.Name);
+					return Nigginality:KeyCodeToStr(k.Name);
 				elseif typeof(k) == "string" then
-					return Ninality:KeyCodeToStr(k);
+					return Nigginality:KeyCodeToStr(k);
 				end;
 				return "None";
 			end;
@@ -1903,7 +1903,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			local KBStroke    = Instance.new("UIStroke");
 			local KBLabel     = Instance.new("TextLabel");
 
-			KBFrame.Name               = Ninality.RandomString();
+			KBFrame.Name               = Nigginality.RandomString();
 			KBFrame.Parent             = Handler;
 			KBFrame.BackgroundColor3   = Color3.fromRGB(26, 28, 36);
 			KBFrame.BackgroundTransparency = 0;
@@ -1920,7 +1920,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			KBStroke.Color        = Color3.fromRGB(45, 48, 58);
 			KBStroke.Parent       = KBFrame;
 
-			KBLabel.Name               = Ninality.RandomString();
+			KBLabel.Name               = Nigginality.RandomString();
 			KBLabel.Parent             = KBFrame;
 			KBLabel.AnchorPoint        = Vector2.new(0.5, 0.5);
 			KBLabel.BackgroundTransparency = 1;
@@ -1942,7 +1942,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 					KBLabel.Font,
 					Vector2.new(math.huge, math.huge)
 				);
-				Ninality.PlayAnimate(KBFrame, SlowyTween, {
+				Nigginality.PlayAnimate(KBFrame, SlowyTween, {
 					Size = UDim2.new(0, sz.X + 10, 0, 18)
 				});
 			end;
@@ -1952,13 +1952,13 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			-- Show / hide together with the rest of the row
 			local function KBSetRender(value)
 				if value then
-					Ninality.PlayAnimate(KBFrame,  SlowyTween, { BackgroundTransparency = 0 });
-					Ninality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 0.650 });
-					Ninality.PlayAnimate(KBLabel,  SlowyTween, { TextTransparency = 0.500 });
+					Nigginality.PlayAnimate(KBFrame,  SlowyTween, { BackgroundTransparency = 0 });
+					Nigginality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 0.650 });
+					Nigginality.PlayAnimate(KBLabel,  SlowyTween, { TextTransparency = 0.500 });
 				else
-					Ninality.PlayAnimate(KBFrame,  SlowyTween, { BackgroundTransparency = 1 });
-					Ninality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 1 });
-					Ninality.PlayAnimate(KBLabel,  SlowyTween, { TextTransparency = 1 });
+					Nigginality.PlayAnimate(KBFrame,  SlowyTween, { BackgroundTransparency = 1 });
+					Nigginality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 1 });
+					Nigginality.PlayAnimate(KBLabel,  SlowyTween, { TextTransparency = 1 });
 				end;
 			end;
 
@@ -1968,7 +1968,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			-- ── Binding mode (click the widget → enter "..." → pick a key) ────
 			local IsBinding = false;
 
-			Ninality:CreateInput(KBFrame, LPH_NO_VIRTUALIZE(function()
+			Nigginality:CreateInput(KBFrame, LPH_NO_VIRTUALIZE(function()
 				if IsBinding then return end;
 				IsBinding = true;
 
@@ -1976,7 +1976,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				KBUpdateSize();
 
 				-- Highlight stroke while waiting
-				Ninality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 0.2 });
+				Nigginality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 0.2 });
 
 				-- Animated dots while waiting for a key
 				local DotThread = task.spawn(LPH_NO_VIRTUALIZE(function()
@@ -2008,21 +2008,21 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 					task.cancel(DotThread);
 					IsBinding = false;
 
-					BoundKeyName = Ninality:KeyCodeToStr(Selected);
+					BoundKeyName = Nigginality:KeyCodeToStr(Selected);
 					KBLabel.Text  = BoundKeyName;
 					KBUpdateSize();
 
-					Ninality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 0.650 });
+					Nigginality.PlayAnimate(KBStroke, SlowyTween, { Transparency = 0.650 });
 				end));
 			end));
 
 			-- ── Global listener: fire the toggle when the bound key is pressed ─
-			Ninality:AddSignal(UserInputService.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input, GameProcessed)
+			Nigginality:AddSignal(UserInputService.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input, GameProcessed)
 				if GameProcessed then return end;
 				if IsBinding      then return end;
 				if BoundKeyName == "None" then return end;
 
-				local pressedName = Ninality:KeyCodeToStr(Input.KeyCode.Name);
+				local pressedName = Nigginality:KeyCodeToStr(Input.KeyCode.Name);
 
 				if pressedName == BoundKeyName then
 					Config.Default = not Config.Default;
@@ -2048,7 +2048,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 	end;
 
 	function handle:AddSlider(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Default = 50,
 			Min = 0,
 			Max = 10,
@@ -2101,7 +2101,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local UICorner_5 = Instance.new("UICorner")
 		local boxSize = 2;
 
-		Slider.Name = Ninality.RandomString();
+		Slider.Name = Nigginality.RandomString();
 		Slider.Parent = Handler
 		Slider.BackgroundColor3 = Color3.fromRGB(26, 28, 36)
 		Slider.BackgroundTransparency = 1.000
@@ -2115,7 +2115,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UICorner.CornerRadius = UDim.new(0, 4)
 		UICorner.Parent = Slider
 
-		ValueFrame.Name = Ninality.RandomString();
+		ValueFrame.Name = Nigginality.RandomString();
 		ValueFrame.Parent = Slider
 		ValueFrame.AnchorPoint = Vector2.new(1, 0)
 		ValueFrame.BackgroundColor3 = Color3.fromRGB(26, 28, 36)
@@ -2133,7 +2133,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UIStroke.Color = Color3.fromRGB(45, 48, 58)
 		UIStroke.Parent = ValueFrame
 
-		ValueLabel.Name = Ninality.RandomString();
+		ValueLabel.Name = Nigginality.RandomString();
 		ValueLabel.Parent = ValueFrame
 		ValueLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 		ValueLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2150,7 +2150,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		ValueLabel.ClearTextOnFocus = false;
 		ValueLabel.TextTransparency = 0.350
 
-		SlideMain.Name = Ninality.RandomString();
+		SlideMain.Name = Nigginality.RandomString();
 		SlideMain.Parent = Slider
 		SlideMain.AnchorPoint = Vector2.new(0, 0.5)
 		SlideMain.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2161,7 +2161,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		SlideMain.Size = UDim2.new(1, -((SliderLib.MaximumSize + 11)), 0, 18)
 		SlideMain.ZIndex = ZINdex + 13
 
-		SlideFrame.Name = Ninality.RandomString();
+		SlideFrame.Name = Nigginality.RandomString();
 		SlideFrame.Parent = SlideMain
 		SlideFrame.AnchorPoint = Vector2.new(0, 0.5)
 		SlideFrame.BackgroundColor3 = Color3.fromRGB(30, 29, 36)
@@ -2174,9 +2174,9 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UICorner_3.CornerRadius = UDim.new(1, 0)
 		UICorner_3.Parent = SlideFrame
 
-		SlideMoving.Name = Ninality.RandomString();
+		SlideMoving.Name = Nigginality.RandomString();
 		SlideMoving.Parent = SlideFrame
-		SlideMoving.BackgroundColor3 = Ninality.AccentColor
+		SlideMoving.BackgroundColor3 = Nigginality.AccentColor
 		SlideMoving.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		SlideMoving.BorderSizePixel = 0
 		SlideMoving.Size = UDim2.new(SliderLib.GetSize(), 0, 1, 0)
@@ -2208,10 +2208,10 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		end);
 
 		ValueLabel.FocusLost:Connect(LPH_NO_VIRTUALIZE(function()
-			local OutVal = Ninality:ParseInput(ValueLabel.Text , true);
+			local OutVal = Nigginality:ParseInput(ValueLabel.Text , true);
 			if OutVal then
 				local rx = math.clamp(OutVal , Config.Min , Config.Max);
-				local Value = Ninality.Rounding(rx,Config.Rounding);
+				local Value = Nigginality.Rounding(rx,Config.Rounding);
 
 				if Value then
 					Config.Default = Value;
@@ -2234,54 +2234,54 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 		SliderLib.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(ValueFrame,SlowyTween,{
+				Nigginality.PlayAnimate(ValueFrame,SlowyTween,{
 					BackgroundTransparency = 0,
 					Size = UDim2.new(0, SliderLib.MaximumSize + boxSize, 0, 18)
 				});
 
-				Ninality.PlayAnimate(UIStroke,SlowyTween,{
+				Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 					Transparency = 0.650
 				});
 
-				Ninality.PlayAnimate(ValueLabel,SlowyTween,{
+				Nigginality.PlayAnimate(ValueLabel,SlowyTween,{
 					TextTransparency = 0.350
 				});
 
-				Ninality.PlayAnimate(SlideFrame,SlowyTween,{
+				Nigginality.PlayAnimate(SlideFrame,SlowyTween,{
 					BackgroundTransparency = 0
 				});
 
-				Ninality.PlayAnimate(SlideMoving,SlowyTween,{
+				Nigginality.PlayAnimate(SlideMoving,SlowyTween,{
 					BackgroundTransparency = 0,
 					Size = UDim2.new(SliderLib.GetSize(), 0, 1, 0)
 				});
 
-				Ninality.PlayAnimate(Frame,SlowyTween,{
+				Nigginality.PlayAnimate(Frame,SlowyTween,{
 					BackgroundTransparency = 0
 				});
 			else
-				Ninality.PlayAnimate(ValueFrame,SlowyTween,{
+				Nigginality.PlayAnimate(ValueFrame,SlowyTween,{
 					BackgroundTransparency = 1,
 				});
 
-				Ninality.PlayAnimate(UIStroke,SlowyTween,{
+				Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 					Transparency = 1
 				});
 
-				Ninality.PlayAnimate(ValueLabel,SlowyTween,{
+				Nigginality.PlayAnimate(ValueLabel,SlowyTween,{
 					TextTransparency = 1
 				});
 
-				Ninality.PlayAnimate(SlideFrame,SlowyTween,{
+				Nigginality.PlayAnimate(SlideFrame,SlowyTween,{
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(SlideMoving,SlowyTween,{
+				Nigginality.PlayAnimate(SlideMoving,SlowyTween,{
 					BackgroundTransparency = 1,
 					Size = UDim2.new(0, 0, 1, 0)
 				});
 
-				Ninality.PlayAnimate(Frame,SlowyTween,{
+				Nigginality.PlayAnimate(Frame,SlowyTween,{
 					BackgroundTransparency = 1
 				});
 			end;
@@ -2293,7 +2293,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local Update = function(Input)
 			local SizeScale = math.clamp((((Input.Position.X) - SlideMain.AbsolutePosition.X) / SlideMain.AbsoluteSize.X), 0, 1);
 			local Main = ((Config.Max - Config.Min) * SizeScale) + Config.Min;
-			local Value = Ninality.Rounding(Main,Config.Rounding);
+			local Value = Nigginality.Rounding(Main,Config.Rounding);
 			local PositionX = UDim2.fromScale(SizeScale, 1);
 			local Size = ((Value - Config.Min) / (Config.Max - Config.Min)) + 0.02;
 
@@ -2322,7 +2322,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			SlideMain.InputEnded:Connect(LPH_NO_VIRTUALIZE(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 					if UserInputService.TouchEnabled then
-						if not Ninality:IsMouseOverFrame(SlideMain) then
+						if not Nigginality:IsMouseOverFrame(SlideMain) then
 							IsHold = false
 						end;
 					else
@@ -2335,7 +2335,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				if IsHold then
 					if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch)  then
 						if UserInputService.TouchEnabled then
-							if not Ninality:IsMouseOverFrame(SlideMain) then
+							if not Nigginality:IsMouseOverFrame(SlideMain) then
 								IsHold = false
 							else
 								Update(Input)
@@ -2356,7 +2356,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			Config.Default = v;
 
 			if Signal:GetValue() then
-				Ninality.PlayAnimate(SlideMoving,SlowyTween,{
+				Nigginality.PlayAnimate(SlideMoving,SlowyTween,{
 					BackgroundTransparency = 0,
 					Size = UDim2.new(SliderLib.GetSize(), 0, 1, 0)
 				});
@@ -2368,7 +2368,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		end;
 
 		if Config.Flag then
-			Ninality.Flags[Config.Flag] = SliderLib;
+			Nigginality.Flags[Config.Flag] = SliderLib;
 		end;
 
 		return SliderLib;
@@ -2379,7 +2379,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local Icon = Instance.new("TextLabel")
 		local UICorner = Instance.new("UICorner")
 
-		Option.Name = Ninality.RandomString();
+		Option.Name = Nigginality.RandomString();
 		Option.Parent = Handler
 		Option.BackgroundColor3 = Color3.fromRGB(39, 40, 49)
 		Option.BackgroundTransparency = 1.000
@@ -2390,7 +2390,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		Option.ZIndex = ZINdex + 13
 		Option.LayoutOrder = -(#Handler:GetChildren() + 5);
 
-		Icon.Name = Ninality.RandomString();
+		Icon.Name = Nigginality.RandomString();
 		Icon.Parent = Option
 		Icon.AnchorPoint = Vector2.new(0.5, 0.5)
 		Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2400,7 +2400,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		Icon.Position = UDim2.new(0.5, 0, 0.5, 0)
 		Icon.Size = UDim2.new(1, 0, 1, 0)
 		Icon.ZIndex = ZINdex + 14
-		Icon.FontFace = Ninality.BuiltInBold
+		Icon.FontFace = Nigginality.BuiltInBold
 		Icon.Text = (GearIcon == 1 and 'gear') or (GearIcon == 2 and 'chevron-large-right') or "three-dots-horizontal";
 		Icon.TextColor3 = Color3.fromRGB(223, 223, 223)
 		Icon.TextSize = 16.000
@@ -2410,16 +2410,16 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UICorner.CornerRadius = UDim.new(0, 4)
 		UICorner.Parent = Option
 
-		local Window = Ninality:CreateOptionWindow(Option , ZINdex + 13);
+		local Window = Nigginality:CreateOptionWindow(Option , ZINdex + 13);
 		local reciveSignal;
 
 		Window.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(Icon , SlowyTween , {
+				Nigginality.PlayAnimate(Icon , SlowyTween , {
 					TextTransparency = 0.400
 				})
 			else
-				Ninality.PlayAnimate(Icon , SlowyTween , {
+				Nigginality.PlayAnimate(Icon , SlowyTween , {
 					TextTransparency = 1
 				})
 			end;
@@ -2428,7 +2428,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		Window.SetRender(Signal:GetValue());
 		Signal:Connect(Window.SetRender);
 
-		local bthg = Ninality:CreateInput(Option , LPH_NO_VIRTUALIZE(function()
+		local bthg = Nigginality:CreateInput(Option , LPH_NO_VIRTUALIZE(function()
 			if reciveSignal then
 				reciveSignal:Disconnect();
 				reciveSignal = nil;	
@@ -2438,7 +2438,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 			reciveSignal = UserInputService.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-					if not Ninality:IsMouseOverFrame(Window.Root) and not Ninality:IsMouseOverFrame(Option) then
+					if not Nigginality:IsMouseOverFrame(Window.Root) and not Nigginality:IsMouseOverFrame(Option) then
 						if reciveSignal then
 							reciveSignal:Disconnect();
 							reciveSignal = nil;	
@@ -2450,22 +2450,22 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			end)
 		end));
 
-		Ninality:AddSignal(bthg.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(Option , SlowyTween , {
+		Nigginality:AddSignal(bthg.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(Option , SlowyTween , {
 				BackgroundTransparency = 0.5
 			})
 
-			Ninality.PlayAnimate(Icon , SlowyTween , {
+			Nigginality.PlayAnimate(Icon , SlowyTween , {
 				TextTransparency = 0.25
 			})
 		end)));
 
-		Ninality:AddSignal(bthg.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(Option , SlowyTween , {
+		Nigginality:AddSignal(bthg.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(Option , SlowyTween , {
 				BackgroundTransparency = 1.000
 			})
 
-			Ninality.PlayAnimate(Icon , SlowyTween , {
+			Nigginality.PlayAnimate(Icon , SlowyTween , {
 				TextTransparency = 0.400
 			})
 		end)));
@@ -2474,7 +2474,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 	end;
 
 	function handle:AddColorPicker(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Default = Color3.fromRGB(255, 255, 255),
 			Callback  = EmptyFunction,
 		});
@@ -2490,7 +2490,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local ImageLabel = Instance.new("ImageLabel")
 		local UICorner_2 = Instance.new("UICorner")
 
-		ColorPicker.Name = Ninality.RandomString();
+		ColorPicker.Name = Nigginality.RandomString();
 		ColorPicker.Parent = Handler
 		ColorPicker.BackgroundColor3 = Config.Default;
 		ColorPicker.BackgroundTransparency = 0
@@ -2521,7 +2521,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UICorner_2.CornerRadius = UDim.new(0, 4)
 		UICorner_2.Parent = ImageLabel
 
-		local BackendM = Ninality:CreateColorPicker(ColorPicker);
+		local BackendM = Nigginality:CreateColorPicker(ColorPicker);
 
 		BackendM:SetValue(Config.Default)
 		BackendM.Callback = function(color)
@@ -2531,7 +2531,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		end;
 
 		local signal;
-		Ninality:CreateInput(ColorPicker , LPH_NO_VIRTUALIZE(function()
+		Nigginality:CreateInput(ColorPicker , LPH_NO_VIRTUALIZE(function()
 			if signal then
 				signal:Disconnect();
 				signal = nil;
@@ -2541,7 +2541,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 			signal = UserInputService.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-					if not Ninality:IsMouseOverFrame(ColorPicker) and not Ninality:IsMouseOverFrame(BackendM.Root) then
+					if not Nigginality:IsMouseOverFrame(ColorPicker) and not Nigginality:IsMouseOverFrame(BackendM.Root) then
 						if signal then
 							signal:Disconnect();
 							signal = nil;
@@ -2555,27 +2555,27 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 		ColorPickerLib.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(ColorPicker , SlowyTween , {
+				Nigginality.PlayAnimate(ColorPicker , SlowyTween , {
 					BackgroundTransparency = 0
 				})
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 					Transparency = 0.650
 				})
 
-				Ninality.PlayAnimate(ImageLabel , SlowyTween , {
+				Nigginality.PlayAnimate(ImageLabel , SlowyTween , {
 					ImageTransparency = 0.9
 				})
 			else
-				Ninality.PlayAnimate(ColorPicker , SlowyTween , {
+				Nigginality.PlayAnimate(ColorPicker , SlowyTween , {
 					BackgroundTransparency = 1
 				})
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 					Transparency = 1
 				})
 
-				Ninality.PlayAnimate(ImageLabel , SlowyTween , {
+				Nigginality.PlayAnimate(ImageLabel , SlowyTween , {
 					ImageTransparency = 1
 				})
 			end;
@@ -2594,14 +2594,14 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		end;
 
 		if Config.Flag then
-			Ninality.Flags[Config.Flag] = ColorPickerLib;
+			Nigginality.Flags[Config.Flag] = ColorPickerLib;
 		end;
 
 		return ColorPickerLib;
 	end;
 
 	function handle:AddKeybind(Config)
-		Config = Ninality:ProcessParams(Config,{
+		Config = Nigginality:ProcessParams(Config,{
 			Default = nil,
 			Blacklist = {},
 			Callback = EmptyFunction,
@@ -2615,7 +2615,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local UIStroke = Instance.new("UIStroke")
 		local ValueLabel = Instance.new("TextLabel")
 
-		Keybind.Name = Ninality.RandomString();
+		Keybind.Name = Nigginality.RandomString();
 		Keybind.Parent = Handler
 		Keybind.BackgroundColor3 = Color3.fromRGB(26, 28, 36)
 		Keybind.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2631,7 +2631,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UIStroke.Color = Color3.fromRGB(45, 48, 58)
 		UIStroke.Parent = Keybind
 
-		ValueLabel.Name = Ninality.RandomString();
+		ValueLabel.Name = Nigginality.RandomString();
 		ValueLabel.Parent = Keybind
 		ValueLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 		ValueLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2643,34 +2643,34 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		ValueLabel.Size = UDim2.new(1, 0, 1, 0)
 		ValueLabel.ZIndex = ZINdex + 14
 		ValueLabel.Font = Enum.Font.GothamMedium
-		ValueLabel.Text = Ninality:KeyCodeToStr(Config.Default or "None")
+		ValueLabel.Text = Nigginality:KeyCodeToStr(Config.Default or "None")
 		ValueLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		ValueLabel.TextSize = 10.000
 		ValueLabel.TextTransparency = 0.500
 
 		KeybindLib.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(Keybind,SlowyTween, {
+				Nigginality.PlayAnimate(Keybind,SlowyTween, {
 					BackgroundTransparency = 0
 				})
 
-				Ninality.PlayAnimate(UIStroke,SlowyTween, {
+				Nigginality.PlayAnimate(UIStroke,SlowyTween, {
 					Transparency = 0.650
 				})
 
-				Ninality.PlayAnimate(ValueLabel,SlowyTween, {
+				Nigginality.PlayAnimate(ValueLabel,SlowyTween, {
 					TextTransparency = 0.500
 				})
 			else
-				Ninality.PlayAnimate(Keybind,SlowyTween, {
+				Nigginality.PlayAnimate(Keybind,SlowyTween, {
 					BackgroundTransparency = 1
 				})
 
-				Ninality.PlayAnimate(UIStroke,SlowyTween, {
+				Nigginality.PlayAnimate(UIStroke,SlowyTween, {
 					Transparency = 1
 				})
 
-				Ninality.PlayAnimate(ValueLabel,SlowyTween, {
+				Nigginality.PlayAnimate(ValueLabel,SlowyTween, {
 					TextTransparency = 1
 				})
 			end;
@@ -2679,7 +2679,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		function KeybindLib:Update()
 			local size = TextService:GetTextSize(ValueLabel.Text,ValueLabel.TextSize,ValueLabel.Font,Vector2.new(math.huge,math.huge));
 
-			Ninality.PlayAnimate(Keybind , SlowyTween , {
+			Nigginality.PlayAnimate(Keybind , SlowyTween , {
 				Size = UDim2.new(0, size.X + 7, 0, 18)
 			})
 		end;
@@ -2694,7 +2694,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		Signal:Connect(KeybindLib.SetRender);
 
 		local IsBinding = false;
-		Ninality:CreateInput(Keybind , function()
+		Nigginality:CreateInput(Keybind , function()
 			if IsBinding then
 				return;
 			end;
@@ -2727,7 +2727,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 			Config.Default = KeyName;
 
-			ValueLabel.Text = Ninality:KeyCodeToStr(KeyName);
+			ValueLabel.Text = Nigginality:KeyCodeToStr(KeyName);
 
 			KeybindLib:Update();
 
@@ -2740,20 +2740,20 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 		function KeybindLib:SetValue(v)
 			Config.Default = v;
-			ValueLabel.Text = Ninality:KeyCodeToStr(v);
+			ValueLabel.Text = Nigginality:KeyCodeToStr(v);
 			KeybindLib:Update();
 			Config.Callback(Config.Default);
 		end;
 
 		if Config.Flag then
-			Ninality.Flags[Config.Flag] = KeybindLib;
+			Nigginality.Flags[Config.Flag] = KeybindLib;
 		end;
 
 		return KeybindLib;
 	end;
 
 	function handle:AddTextInput(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Default = "",
 			Placeholder = "Placeholder",
 			Callback = print,
@@ -2769,7 +2769,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local UIStroke = Instance.new("UIStroke")
 		local TextBox = Instance.new("TextBox")
 
-		TextInput.Name = Ninality.RandomString();
+		TextInput.Name = Nigginality.RandomString();
 		TextInput.Parent = Handler
 		TextInput.BackgroundColor3 = Color3.fromRGB(26, 28, 36)
 		TextInput.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2805,34 +2805,34 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 		TextBoxLib.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(TextInput , SlowyTween ,{
+				Nigginality.PlayAnimate(TextInput , SlowyTween ,{
 					BackgroundTransparency = 0
 				})	
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween ,{
+				Nigginality.PlayAnimate(UIStroke , SlowyTween ,{
 					Transparency = 0.650
 				})	
 
-				Ninality.PlayAnimate(TextBox , SlowyTween ,{
+				Nigginality.PlayAnimate(TextBox , SlowyTween ,{
 					TextTransparency = 0.350
 				})	
 			else
-				Ninality.PlayAnimate(TextInput , SlowyTween ,{
+				Nigginality.PlayAnimate(TextInput , SlowyTween ,{
 					BackgroundTransparency = 1
 				})	
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween ,{
+				Nigginality.PlayAnimate(UIStroke , SlowyTween ,{
 					Transparency = 1
 				})	
 
-				Ninality.PlayAnimate(TextBox , SlowyTween ,{
+				Nigginality.PlayAnimate(TextBox , SlowyTween ,{
 					TextTransparency = 1
 				})
 			end;
 		end);
 
-		Ninality:AddSignal(TextBox:GetPropertyChangedSignal('Text'):Connect(LPH_NO_VIRTUALIZE(function()
-			local valout = Ninality:ParseInput(TextBox.Text , Config.Numeric);
+		Nigginality:AddSignal(TextBox:GetPropertyChangedSignal('Text'):Connect(LPH_NO_VIRTUALIZE(function()
+			local valout = Nigginality:ParseInput(TextBox.Text , Config.Numeric);
 
 			if Config.Numeric then
 				TextBox.Text = string.gsub(TextBox.Text , '[^0-9.]','')
@@ -2858,14 +2858,14 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		end;
 
 		if Config.Flag then
-			Ninality.Flags[Config.Flag] = TextBoxLib;
+			Nigginality.Flags[Config.Flag] = TextBoxLib;
 		end;
 
 		return TextBoxLib;
 	end;
 
 	function handle:AddDropdown(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Default = nil,
 			Values = {},
 			Multi = false,
@@ -2875,7 +2875,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			Size = 100
 		})
 
-		Config.Default = Ninality.ProcessDropdown(Config.Default);
+		Config.Default = Nigginality.ProcessDropdown(Config.Default);
 
 		local Dropdown = Instance.new("Frame")
 		local DropdownIcon = Instance.new("TextLabel")
@@ -2883,7 +2883,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		local UIStroke = Instance.new("UIStroke")
 		local BasedLabel = Instance.new("TextLabel")
 
-		Dropdown.Name = Ninality.RandomString();
+		Dropdown.Name = Nigginality.RandomString();
 		Dropdown.Parent = Handler
 		Dropdown.BackgroundColor3 = Color3.fromRGB(26, 28, 36)
 		Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2892,7 +2892,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		Dropdown.Size = UDim2.new(0, Config.Size, 0, 18)
 		Dropdown.ZIndex = ZINdex + 13
 
-		DropdownIcon.Name = Ninality.RandomString();
+		DropdownIcon.Name = Nigginality.RandomString();
 		DropdownIcon.Parent = Dropdown
 		DropdownIcon.AnchorPoint = Vector2.new(1, 0.5)
 		DropdownIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2902,7 +2902,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		DropdownIcon.Position = UDim2.new(1, -2, 0.5, 0)
 		DropdownIcon.Size = UDim2.new(0, 18, 0, 18)
 		DropdownIcon.ZIndex = ZINdex + 14
-		DropdownIcon.FontFace = Ninality.BuiltInBold
+		DropdownIcon.FontFace = Nigginality.BuiltInBold
 		DropdownIcon.Text = "chevron-small-down"
 		DropdownIcon.TextColor3 = Color3.fromRGB(223, 223, 223)
 		DropdownIcon.TextSize = 16.000
@@ -2916,7 +2916,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		UIStroke.Color = Color3.fromRGB(45, 48, 58)
 		UIStroke.Parent = Dropdown
 
-		BasedLabel.Name = Ninality.RandomString();
+		BasedLabel.Name = Nigginality.RandomString();
 		BasedLabel.Parent = Dropdown
 		BasedLabel.AnchorPoint = Vector2.new(0, 0.5)
 		BasedLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2928,7 +2928,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		BasedLabel.Size = UDim2.new(1, -25, 0, 15)
 		BasedLabel.ZIndex = ZINdex + 14
 		BasedLabel.Font = Enum.Font.GothamMedium
-		BasedLabel.Text = Ninality.ParseDropdown(Config.Default);
+		BasedLabel.Text = Nigginality.ParseDropdown(Config.Default);
 		BasedLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		BasedLabel.TextSize = 12.000
 		BasedLabel.TextTransparency = 0.5
@@ -2941,55 +2941,55 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			UIGradient.Parent = BasedLabel;
 		end;
 
-		Ninality:AddSignal(Dropdown.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+		Nigginality:AddSignal(Dropdown.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 				TextTransparency = 0.200
 			})
 		end)));
 
-		Ninality:AddSignal(Dropdown.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+		Nigginality:AddSignal(Dropdown.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 				TextTransparency = 0.5
 			})
 		end)));
 
 		local DropdownLib = {
-			OpenSignal = Ninality:CreateSignal(false),
+			OpenSignal = Nigginality:CreateSignal(false),
 			Signals = {},
 			Refuse = {},
 		};
 
 		DropdownLib.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(Dropdown , SlowyTween , {
+				Nigginality.PlayAnimate(Dropdown , SlowyTween , {
 					BackgroundTransparency = 0
 				});
 
-				Ninality.PlayAnimate(DropdownIcon , SlowyTween , {
+				Nigginality.PlayAnimate(DropdownIcon , SlowyTween , {
 					TextTransparency = 0.250
 				});
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 					Transparency = 0.650
 				});
 
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 0.5
 				});
 			else
-				Ninality.PlayAnimate(Dropdown , SlowyTween , {
+				Nigginality.PlayAnimate(Dropdown , SlowyTween , {
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(DropdownIcon , SlowyTween , {
+				Nigginality.PlayAnimate(DropdownIcon , SlowyTween , {
 					TextTransparency = 1
 				});
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 					Transparency = 1
 				});
 
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 1
 				});
 			end
@@ -3005,10 +3005,10 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			local UIStroke = Instance.new("UIStroke")
 			local DropdownScrollFrame = Instance.new("ScrollingFrame")
 			local UIListLayout = Instance.new("UIListLayout")
-			local Shadow = Ninality:CreateShadow(DropdownHandler);
+			local Shadow = Nigginality:CreateShadow(DropdownHandler);
 
-			DropdownHandler.Name = Ninality.RandomString();
-			DropdownHandler.Parent = Ninality.ScreenGui;
+			DropdownHandler.Name = Nigginality.RandomString();
+			DropdownHandler.Parent = Nigginality.ScreenGui;
 			DropdownHandler.AnchorPoint = Vector2.new(0.5, 0)
 			DropdownHandler.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
 			DropdownHandler.BackgroundTransparency = 0.5
@@ -3020,17 +3020,17 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			DropdownHandler.ZIndex = ZINdex + 125
 			DropdownLib.BlockRoot = DropdownHandler;
 
-			Ninality:AddSignal(DropdownHandler:GetPropertyChangedSignal('BackgroundTransparency'):Connect(function()
+			Nigginality:AddSignal(DropdownHandler:GetPropertyChangedSignal('BackgroundTransparency'):Connect(function()
 				if DropdownHandler.BackgroundTransparency > 0.9 then
 					DropdownHandler.Visible = false;
 					DropdownHandler.Parent = nil;
 				else
 					DropdownHandler.Visible = true;
 
-					if Ninality.Global3DRenderMode then
-						DropdownHandler.Parent = Ninality.GlobalSurfaceGui;
+					if Nigginality.Global3DRenderMode then
+						DropdownHandler.Parent = Nigginality.GlobalSurfaceGui;
 					else
-						DropdownHandler.Parent = Ninality.ScreenGui;
+						DropdownHandler.Parent = Nigginality.ScreenGui;
 					end;
 				end;
 			end));
@@ -3042,7 +3042,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			UIStroke.Color = Color3.fromRGB(45, 48, 58)
 			UIStroke.Parent = DropdownHandler
 
-			DropdownScrollFrame.Name = Ninality.RandomString();
+			DropdownScrollFrame.Name = Nigginality.RandomString();
 			DropdownScrollFrame.Parent = DropdownHandler
 			DropdownScrollFrame.Active = true
 			DropdownScrollFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -3061,15 +3061,15 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-			Ninality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
 				DropdownScrollFrame.CanvasSize = UDim2.fromOffset(0,UIListLayout.AbsoluteContentSize.Y)
-				Ninality.PlayAnimate(DropdownHandler , SlowyTween , {
+				Nigginality.PlayAnimate(DropdownHandler , SlowyTween , {
 					Size = UDim2.new(0, (Dropdown.AbsoluteSize.X + 5) + DropdownLib.ExtentSize, 0, math.min(UIListLayout.AbsoluteContentSize.Y + 5, 250));
 				})
 			end)));
 
 			local SetPosition = LPH_NO_VIRTUALIZE(function()
-				if Ninality:MoreThanHalfY(Dropdown.AbsolutePosition.Y + 85) then
+				if Nigginality:MoreThanHalfY(Dropdown.AbsolutePosition.Y + 85) then
 					DropdownHandler.AnchorPoint = Vector2.new(0.5,1)
 				else
 					DropdownHandler.AnchorPoint = Vector2.new(0.5,0)
@@ -3089,7 +3089,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 					SetPosition();
 
-					Ninality.PlayAnimate(DropdownHandler , SlowyTween , {
+					Nigginality.PlayAnimate(DropdownHandler , SlowyTween , {
 						BackgroundTransparency = 0.035
 					})
 
@@ -3098,7 +3098,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 					end;
 				else
 
-					Ninality.PlayAnimate(DropdownHandler , SlowyTween , {
+					Nigginality.PlayAnimate(DropdownHandler , SlowyTween , {
 						BackgroundTransparency = 1
 					})
 
@@ -3109,33 +3109,33 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 			DropdownLib.SetFrameRender(false);
 
 			-- Close this dropdown when UI is toggled off
-			Ninality.PopupCloseSignal:Connect(function()
+			Nigginality.PopupCloseSignal:Connect(function()
 				if DropdownLib.OpenSignal:GetValue() then
 					DropdownLib.SetFrameRender(false);
-					Ninality.IsMosueOverOtherFrame = false;
+					Nigginality.IsMosueOverOtherFrame = false;
 				end;
 			end);
 		end;
 
 		local SecureSignal;
-		Ninality:CreateInput(Dropdown , LPH_NO_VIRTUALIZE(function()
+		Nigginality:CreateInput(Dropdown , LPH_NO_VIRTUALIZE(function()
 			if SecureSignal then
 				SecureSignal:Disconnect();
 				SecureSignal = nil;
 			end;
 
 			DropdownLib.SetFrameRender(true);
-			Ninality.IsMosueOverOtherFrame = true;
+			Nigginality.IsMosueOverOtherFrame = true;
 
 			SecureSignal = UserInputService.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-					if not Ninality:IsMouseOverFrame(DropdownLib.BlockRoot) and not Ninality:IsMouseOverFrame(Dropdown) then
+					if not Nigginality:IsMouseOverFrame(DropdownLib.BlockRoot) and not Nigginality:IsMouseOverFrame(Dropdown) then
 						if SecureSignal then
 							SecureSignal:Disconnect();
 							SecureSignal = nil;
 						end;
 
-						Ninality.IsMosueOverOtherFrame = false;
+						Nigginality.IsMosueOverOtherFrame = false;
 						DropdownLib.SetFrameRender(false);
 					end;
 				end
@@ -3174,7 +3174,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				local ItemLabel = Instance.new("TextLabel")
 				local UICorner = Instance.new("UICorner")
 
-				ItemFrame.Name = Ninality.RandomString();
+				ItemFrame.Name = Nigginality.RandomString();
 				ItemFrame.Parent = DropdownLib.RootItem
 				ItemFrame.BackgroundColor3 = Color3.fromRGB(29, 31, 38)
 				ItemFrame.BackgroundTransparency = 1.000
@@ -3183,7 +3183,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				ItemFrame.Size = UDim2.new(1, 0, 0, 25)
 				ItemFrame.ZIndex = ZINdex + 1258
 
-				ItemLabel.Name = Ninality.RandomString();
+				ItemLabel.Name = Nigginality.RandomString();
 				ItemLabel.Parent = ItemFrame
 				ItemLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				ItemLabel.BackgroundTransparency = 1.000
@@ -3219,7 +3219,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 					Icon.Position = UDim2.new(0, 5, 0.5, 0)
 					Icon.Size = UDim2.new(0, 20, 0, 20)
 					Icon.ZIndex = ZINdex + 1259
-					Icon.FontFace = Ninality.BuiltInBold;
+					Icon.FontFace = Nigginality.BuiltInBold;
 					Icon.Text = "check"
 					Icon.TextColor3 = Color3.fromRGB(223, 223, 223)
 					Icon.TextSize = 18.000
@@ -3228,23 +3228,23 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 
 					local VisiblewOfMult = LPH_NO_VIRTUALIZE(function()
 						if DropdownLib.IsMatch(Value) then
-							Ninality.PlayAnimate(ItemLabel , VSlowTween , {
+							Nigginality.PlayAnimate(ItemLabel , VSlowTween , {
 								TextTransparency = 0.200,
 								Position = UDim2.new(0, 30, 0, 4)
 							})
 
-							Ninality.PlayAnimate(Icon , vs , {
+							Nigginality.PlayAnimate(Icon , vs , {
 								TextTransparency = 0.250
 							})
 
 							Lastone = ItemLabel;
 						else
 
-							Ninality.PlayAnimate(Icon , SlowyTween , {
+							Nigginality.PlayAnimate(Icon , SlowyTween , {
 								TextTransparency = 1
 							})
 
-							Ninality.PlayAnimate(ItemLabel , VSlowTween , {
+							Nigginality.PlayAnimate(ItemLabel , VSlowTween , {
 								TextTransparency = 0.5,
 								Position = UDim2.new(0, 15, 0, 4)
 							})
@@ -3256,13 +3256,13 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				else
 					local DefaultVisible = LPH_NO_VIRTUALIZE(function()
 						if DropdownLib.IsMatch(Value) then
-							Ninality.PlayAnimate(ItemLabel , SlowyTween , {
+							Nigginality.PlayAnimate(ItemLabel , SlowyTween , {
 								TextTransparency = 0.200
 							})
 
 							Lastone = ItemLabel;
 						else
-							Ninality.PlayAnimate(ItemLabel , SlowyTween , {
+							Nigginality.PlayAnimate(ItemLabel , SlowyTween , {
 								TextTransparency = 0.5
 							})
 						end;
@@ -3276,13 +3276,13 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				table.insert(DropdownLib.Refuse , MarkItem)
 
 				table.insert(DropdownLib.Signals,ItemFrame.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(ItemFrame , SlowyTween , {
+					Nigginality.PlayAnimate(ItemFrame , SlowyTween , {
 						BackgroundTransparency = 0.1
 					})
 				end)));
 
 				table.insert(DropdownLib.Signals,ItemFrame.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(ItemFrame , SlowyTween , {
+					Nigginality.PlayAnimate(ItemFrame , SlowyTween , {
 						BackgroundTransparency = 1
 					})
 				end)));
@@ -3291,12 +3291,12 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 					if val then
 						MarkItem();
 					else
-						Ninality.PlayAnimate(ItemLabel , SlowyTween , {
+						Nigginality.PlayAnimate(ItemLabel , SlowyTween , {
 							TextTransparency = 1
 						})
 
 						if MIcon then
-							Ninality.PlayAnimate(MIcon , SlowyTween , {
+							Nigginality.PlayAnimate(MIcon , SlowyTween , {
 								TextTransparency = 1
 							})
 						end;
@@ -3304,26 +3304,26 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 				end)));
 
 				if Config.Multi then
-					local _,bth_signal = Ninality:CreateInput(ItemFrame , LPH_NO_VIRTUALIZE(function()
+					local _,bth_signal = Nigginality:CreateInput(ItemFrame , LPH_NO_VIRTUALIZE(function()
 						Config.Default[Value] = not Config.Default[Value];
 
 						MarkItem();
 
-						BasedLabel.Text = Ninality.ParseDropdown(Config.Default);
+						BasedLabel.Text = Nigginality.ParseDropdown(Config.Default);
 
 						Config.Callback(Config.Default);
 					end));
 
 					table.insert(DropdownLib.Signals , bth_signal);
 				else
-					local _,bth_signal = Ninality:CreateInput(ItemFrame , LPH_NO_VIRTUALIZE(function()
+					local _,bth_signal = Nigginality:CreateInput(ItemFrame , LPH_NO_VIRTUALIZE(function()
 						Config.Default = Value;
 
 						for i,v in next , DropdownLib.Refuse do
 							task.spawn(v);
 						end;
 
-						BasedLabel.Text = Ninality.ParseDropdown(Config.Default);
+						BasedLabel.Text = Nigginality.ParseDropdown(Config.Default);
 
 						Config.Callback(Config.Default);
 					end));
@@ -3342,7 +3342,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		function DropdownLib:SetValue(v)
 			Config.Default = v;
 
-			BasedLabel.Text = Ninality.ParseDropdown(Config.Default);
+			BasedLabel.Text = Nigginality.ParseDropdown(Config.Default);
 
 			for i,v in next , DropdownLib.Refuse do
 				task.spawn(v);
@@ -3360,7 +3360,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 		end;
 
 		if Config.Flag then
-			Ninality.Flags[Config.Flag] = DropdownLib;
+			Nigginality.Flags[Config.Flag] = DropdownLib;
 		end;
 
 		return DropdownLib;
@@ -3369,7 +3369,7 @@ function Ninality:RegisiterHandler(Handler: Frame , Signal)
 	return handle;
 end;
 
-Ninality.ProcessDropdown = LPH_NO_VIRTUALIZE(function(value)
+Nigginality.ProcessDropdown = LPH_NO_VIRTUALIZE(function(value)
 	if typeof(value) == 'table' then
 		local data = {};
 
@@ -3387,7 +3387,7 @@ Ninality.ProcessDropdown = LPH_NO_VIRTUALIZE(function(value)
 	end;
 end);
 
-Ninality.ParseDropdown = LPH_NO_VIRTUALIZE(function(value)
+Nigginality.ParseDropdown = LPH_NO_VIRTUALIZE(function(value)
 	if not value then return 'Select'; end;
 
 	local Out;
@@ -3427,7 +3427,7 @@ Ninality.ParseDropdown = LPH_NO_VIRTUALIZE(function(value)
 	return Out;
 end);
 
-function Ninality:ParseInput(Value , Numeric)
+function Nigginality:ParseInput(Value , Numeric)
 	if not Value then
 		return (Numeric and nil) or "";	
 	end;
@@ -3445,15 +3445,15 @@ function Ninality:ParseInput(Value , Numeric)
 	return Value;
 end;
 
-function Ninality:CreateToolTips(Container: Frame , Name: string , Content: string)
+function Nigginality:CreateToolTips(Container: Frame , Name: string , Content: string)
 	local Tooltips = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
 	local UIStroke = Instance.new("UIStroke")
 	local TooltipName = Instance.new("TextLabel")
 	local TooltipContent = Instance.new("TextLabel")
-	local Shadow = Ninality:CreateShadow(Tooltips);
+	local Shadow = Nigginality:CreateShadow(Tooltips);
 
-	Tooltips.Name = Ninality.RandomString();
+	Tooltips.Name = Nigginality.RandomString();
 	Tooltips.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
 	Tooltips.BackgroundTransparency = 0.075
 	Tooltips.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -3470,7 +3470,7 @@ function Ninality:CreateToolTips(Container: Frame , Name: string , Content: stri
 	UIStroke.Color = Color3.fromRGB(45, 48, 58)
 	UIStroke.Parent = Tooltips
 
-	TooltipName.Name = Ninality.RandomString();
+	TooltipName.Name = Nigginality.RandomString();
 	TooltipName.Parent = Tooltips
 	TooltipName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TooltipName.BackgroundTransparency = 1.000
@@ -3485,7 +3485,7 @@ function Ninality:CreateToolTips(Container: Frame , Name: string , Content: stri
 	TooltipName.TextSize = 15.000
 	TooltipName.TextXAlignment = Enum.TextXAlignment.Left
 
-	TooltipContent.Name = Ninality.RandomString();
+	TooltipContent.Name = Nigginality.RandomString();
 	TooltipContent.Parent = Tooltips
 	TooltipContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TooltipContent.BackgroundTransparency = 1.000
@@ -3511,22 +3511,22 @@ function Ninality:CreateToolTips(Container: Frame , Name: string , Content: stri
 		local MaxX = math.max(SizeName.X , SizeContent.X) + 65;
 		local MaxY = SizeName.Y + SizeContent.Y + 30;
 
-		Ninality.PlayAnimate(Tooltips,SlowyTween , {
+		Nigginality.PlayAnimate(Tooltips,SlowyTween , {
 			Size = UDim2.new(0,MaxX,0,MaxY)
 		})
 	end)
 
-	Ninality:AddSignal(Tooltips:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
+	Nigginality:AddSignal(Tooltips:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
 		if Tooltips.BackgroundTransparency > 0.9 then
 			Tooltips.Visible = false;
 			Tooltips.Parent = nil;
 		else
 			Tooltips.Visible = true;
 
-			if Ninality.Global3DRenderMode then
-				Tooltips.Parent = Ninality.GlobalSurfaceGui;
+			if Nigginality.Global3DRenderMode then
+				Tooltips.Parent = Nigginality.GlobalSurfaceGui;
 			else
-				Tooltips.Parent = Ninality.ScreenGui;
+				Tooltips.Parent = Nigginality.ScreenGui;
 			end;
 		end
 	end)));
@@ -3535,38 +3535,38 @@ function Ninality:CreateToolTips(Container: Frame , Name: string , Content: stri
 		if value then
 			Tooltips.Position = UDim2.fromOffset(Container.AbsolutePosition.X + Container.AbsoluteSize.X , Container.AbsolutePosition.Y + (Container.AbsoluteSize.Y + 25));
 
-			Ninality.PlayAnimate(Tooltips , SlowyTween , {
+			Nigginality.PlayAnimate(Tooltips , SlowyTween , {
 				BackgroundTransparency = 0.075
 			})
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 0.650
 			})
 
-			Ninality.PlayAnimate(TooltipName , SlowyTween , {
+			Nigginality.PlayAnimate(TooltipName , SlowyTween , {
 				TextTransparency = 0
 			})
 
-			Ninality.PlayAnimate(TooltipContent , SlowyTween , {
+			Nigginality.PlayAnimate(TooltipContent , SlowyTween , {
 				TextTransparency = 0.650
 			})
 
 			ToolTip.Update();
 			Shadow:Render(true);
 		else
-			Ninality.PlayAnimate(Tooltips , SlowyTween , {
+			Nigginality.PlayAnimate(Tooltips , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(TooltipName , SlowyTween , {
+			Nigginality.PlayAnimate(TooltipName , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(TooltipContent , SlowyTween , {
+			Nigginality.PlayAnimate(TooltipContent , SlowyTween , {
 				TextTransparency = 1
 			})
 
@@ -3578,7 +3578,7 @@ function Ninality:CreateToolTips(Container: Frame , Name: string , Content: stri
 	ToolTip.Update();
 
 	local DelayThread;
-	Ninality:AddSignal(Container.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+	Nigginality:AddSignal(Container.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
 		if DelayThread then
 			task.cancel(DelayThread);
 			DelayThread = nil;
@@ -3587,7 +3587,7 @@ function Ninality:CreateToolTips(Container: Frame , Name: string , Content: stri
 		DelayThread = task.delay(1,ToolTip.SetRender,true);
 	end)));
 
-	Ninality:AddSignal(Container.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+	Nigginality:AddSignal(Container.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
 		if DelayThread then
 			task.cancel(DelayThread);
 			DelayThread = nil;
@@ -3600,7 +3600,7 @@ function Ninality:CreateToolTips(Container: Frame , Name: string , Content: stri
 	return ToolTip;
 end;
 
-function Ninality:RegisiterItem(Frame: Frame , Signel)
+function Nigginality:RegisiterItem(Frame: Frame , Signel)
 	local idx = {};
 	local LayerIndex = Frame.ZIndex;
 
@@ -3612,7 +3612,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		local UIListLayout = Instance.new("UIListLayout")
 		local UICorner = Instance.new("UICorner")
 
-		BasedFrame.Name = Ninality.RandomString();
+		BasedFrame.Name = Nigginality.RandomString();
 		BasedFrame.Parent = Frame
 		BasedFrame.BackgroundColor3 = Color3.fromRGB(25, 27, 33)
 		BasedFrame.BackgroundTransparency = 1.000
@@ -3621,9 +3621,9 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		BasedFrame.Size = UDim2.new(1, 0, 0, 30)
 		BasedFrame.ZIndex = LayerIndex + 8
 
-		Ninality:AddQuery(BasedFrame , Name);
+		Nigginality:AddQuery(BasedFrame , Name);
 
-		BasedLabel.Name = Ninality.RandomString();
+		BasedLabel.Name = Nigginality.RandomString();
 		BasedLabel.Parent = BasedFrame
 		BasedLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		BasedLabel.BackgroundTransparency = 1.000
@@ -3639,7 +3639,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		BasedLabel.TextTransparency = 0.35
 		BasedLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-		LineFrame.Name = Ninality.RandomString();
+		LineFrame.Name = Nigginality.RandomString();
 		LineFrame.Parent = BasedFrame
 		LineFrame.AnchorPoint = Vector2.new(0.5, 1)
 		LineFrame.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
@@ -3650,7 +3650,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		LineFrame.Size = UDim2.new(1, -20, 0, 1)
 		LineFrame.ZIndex = LayerIndex + 11
 
-		BasedHandler.Name = Ninality.RandomString();
+		BasedHandler.Name = Nigginality.RandomString();
 		BasedHandler.Parent = BasedFrame
 		BasedHandler.AnchorPoint = Vector2.new(1, 0)
 		BasedHandler.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3673,7 +3673,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 
 		local UpdateWarp = LPH_NO_VIRTUALIZE(function()
 			local size = TextService:GetTextSize(BasedLabel.Text , BasedLabel.TextSize , BasedLabel.Font , Vector2.new(math.huge,math.huge));
-			Ninality.PlayAnimate(BasedFrame , SlowyTween , {
+			Nigginality.PlayAnimate(BasedFrame , SlowyTween , {
 				Size = UDim2.new(1, 0, 0, size.Y + 13);
 			})
 
@@ -3685,33 +3685,33 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 			UpdateWarp();
 		end;
 
-		local handle = Ninality:RegisiterHandler(BasedHandler , Signel);
+		local handle = Nigginality:RegisiterHandler(BasedHandler , Signel);
 
 		handle.Root = BasedFrame;
 
 		handle.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(BasedFrame , SlowyTween , {
+				Nigginality.PlayAnimate(BasedFrame , SlowyTween , {
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 0.35
 				})
 
-				Ninality.PlayAnimate(LineFrame , SlowyTween , {
+				Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 					BackgroundTransparency = 0.650
 				})
 			else
-				Ninality.PlayAnimate(BasedFrame , SlowyTween , {
+				Nigginality.PlayAnimate(BasedFrame , SlowyTween , {
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 1
 				})
 
-				Ninality.PlayAnimate(LineFrame , SlowyTween , {
+				Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 					BackgroundTransparency = 1
 				})
 			end;
@@ -3721,23 +3721,23 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 			BasedFrame.Visible = val;
 		end;
 
-		Ninality:AddSignal(BasedFrame.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(BasedFrame , SlowyTween , {
+		Nigginality:AddSignal(BasedFrame.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(BasedFrame , SlowyTween , {
 				BackgroundTransparency = 0.35
 			});
 
-			Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+			Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 				TextTransparency = 0.25
 			})
 
 		end)))
 
-		Ninality:AddSignal(BasedFrame.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(BasedFrame , SlowyTween , {
+		Nigginality:AddSignal(BasedFrame.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(BasedFrame , SlowyTween , {
 				BackgroundTransparency = 1
 			});
 
-			Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+			Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 				TextTransparency = 0.35
 			})
 		end)))
@@ -3753,7 +3753,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		end;
 
 		function handle:ToolTip(Content: string)
-			handle.ToolTip = Ninality:CreateToolTips(BasedFrame , Name , Content);
+			handle.ToolTip = Nigginality:CreateToolTips(BasedFrame , Name , Content);
 
 			return handle;
 		end;
@@ -3765,7 +3765,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 	end;
 
 	function idx:AddButton(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Icon = 'chevron-large-left',
 			Name = "Button",
 			Callback = EmptyFunction,
@@ -3779,9 +3779,9 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		local UICorner = Instance.new("UICorner")
 		local Icon = Instance.new("TextLabel")
 
-		Ninality:AddQuery(ButtonFrame , Config.Name);
+		Nigginality:AddQuery(ButtonFrame , Config.Name);
 
-		ButtonFrame.Name = Ninality.RandomString();
+		ButtonFrame.Name = Nigginality.RandomString();
 		ButtonFrame.Parent = Frame
 		ButtonFrame.BackgroundColor3 = Color3.fromRGB(25, 27, 33)
 		ButtonFrame.BackgroundTransparency = 1.000
@@ -3790,7 +3790,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		ButtonFrame.Size = UDim2.new(1, 0, 0, 30)
 		ButtonFrame.ZIndex = LayerIndex + 8
 
-		BasedLabel.Name = Ninality.RandomString();
+		BasedLabel.Name = Nigginality.RandomString();
 		BasedLabel.Parent = ButtonFrame
 		BasedLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		BasedLabel.BackgroundTransparency = 1.000
@@ -3806,7 +3806,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		BasedLabel.TextTransparency = 0.200
 		BasedLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-		LineFrame.Name = Ninality.RandomString();
+		LineFrame.Name = Nigginality.RandomString();
 		LineFrame.Parent = ButtonFrame
 		LineFrame.AnchorPoint = Vector2.new(0.5, 1)
 		LineFrame.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
@@ -3820,7 +3820,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		UICorner.CornerRadius = UDim.new(0, 10)
 		UICorner.Parent = ButtonFrame
 
-		Icon.Name = Ninality.RandomString();
+		Icon.Name = Nigginality.RandomString();
 		Icon.Parent = ButtonFrame
 		Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Icon.BackgroundTransparency = 1.000
@@ -3829,7 +3829,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		Icon.Position = UDim2.new(0, 11, 0, 5)
 		Icon.Size = UDim2.new(0, 18, 0, 18)
 		Icon.ZIndex = LayerIndex + 9
-		Icon.FontFace = Ninality.BuiltInBold
+		Icon.FontFace = Nigginality.BuiltInBold
 		Icon.Text = Config.Icon
 		Icon.TextColor3 = Color3.fromRGB(223, 223, 223)
 		Icon.TextSize = 16.000
@@ -3844,60 +3844,60 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 			Icon.Text = t
 		end;
 
-		local bth = Ninality:CreateInput(ButtonFrame , LPH_NO_VIRTUALIZE(function()
+		local bth = Nigginality:CreateInput(ButtonFrame , LPH_NO_VIRTUALIZE(function()
 			Config.Callback();
 		end));
 
-		Ninality:AddSignal(bth.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(ButtonFrame , SlowyTween , {
+		Nigginality:AddSignal(bth.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(ButtonFrame , SlowyTween , {
 				BackgroundTransparency = 0.35
 			});
 		end)))
 
-		Ninality:AddSignal(bth.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(ButtonFrame , SlowyTween , {
+		Nigginality:AddSignal(bth.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(ButtonFrame , SlowyTween , {
 				BackgroundTransparency = 1
 			});
 		end)))
 
 		Button.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(ButtonFrame , SlowyTween , {
+				Nigginality.PlayAnimate(ButtonFrame , SlowyTween , {
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 0.200
 				});
 
-				Ninality.PlayAnimate(LineFrame , SlowyTween , {
+				Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 					BackgroundTransparency = 0.650
 				});
 
-				Ninality.PlayAnimate(Icon , SlowyTween , {
+				Nigginality.PlayAnimate(Icon , SlowyTween , {
 					TextTransparency = 0.250
 				});
 			else
-				Ninality.PlayAnimate(ButtonFrame , SlowyTween , {
+				Nigginality.PlayAnimate(ButtonFrame , SlowyTween , {
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 1
 				});
 
-				Ninality.PlayAnimate(LineFrame , SlowyTween , {
+				Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(Icon , SlowyTween , {
+				Nigginality.PlayAnimate(Icon , SlowyTween , {
 					TextTransparency = 1
 				});
 			end;
 		end);
 
 		if Config.ToolTip then
-			Button.ToolTip = Ninality:CreateToolTips(ButtonFrame , Config.Name , Config.ToolTip);
+			Button.ToolTip = Nigginality:CreateToolTips(ButtonFrame , Config.Name , Config.ToolTip);
 		end;
 
 		Button.SetRender(Signel:GetValue())
@@ -3915,7 +3915,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		local UICorner_2 = Instance.new("UICorner")
 		local UserStatusLabel = Instance.new("TextLabel")
 
-		UserFrame.Name = Ninality.RandomString();
+		UserFrame.Name = Nigginality.RandomString();
 		UserFrame.Parent = Frame
 		UserFrame.BackgroundColor3 = Color3.fromRGB(25, 27, 33)
 		UserFrame.BackgroundTransparency = 1.000
@@ -3924,7 +3924,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		UserFrame.Size = UDim2.new(1, 0, 0, 60)
 		UserFrame.ZIndex = LayerIndex + 8
 
-		UserLabel.Name = Ninality.RandomString();
+		UserLabel.Name = Nigginality.RandomString();
 		UserLabel.Parent = UserFrame
 		UserLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		UserLabel.BackgroundTransparency = 1.000
@@ -3940,7 +3940,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		UserLabel.TextTransparency = 0.200
 		UserLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-		LineFrame.Name = Ninality.RandomString();
+		LineFrame.Name = Nigginality.RandomString();
 		LineFrame.Parent = UserFrame
 		LineFrame.AnchorPoint = Vector2.new(0.5, 1)
 		LineFrame.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
@@ -3954,7 +3954,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		UICorner.CornerRadius = UDim.new(0, 10)
 		UICorner.Parent = UserFrame
 
-		LogoImage.Name = Ninality.RandomString();
+		LogoImage.Name = Nigginality.RandomString();
 		LogoImage.Parent = UserFrame
 		LogoImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		LogoImage.BackgroundTransparency = 1.000
@@ -3968,7 +3968,7 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 		UICorner_2.CornerRadius = UDim.new(1, 0)
 		UICorner_2.Parent = LogoImage
 
-		UserStatusLabel.Name = Ninality.RandomString();
+		UserStatusLabel.Name = Nigginality.RandomString();
 		UserStatusLabel.Parent = UserFrame
 		UserStatusLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		UserStatusLabel.BackgroundTransparency = 1.000
@@ -3988,35 +3988,35 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 
 		UserFrameItem.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
-				Ninality.PlayAnimate(UserLabel,SlowyTween,{
+				Nigginality.PlayAnimate(UserLabel,SlowyTween,{
 					TextTransparency = 0.200
 				})
 
-				Ninality.PlayAnimate(LineFrame,SlowyTween,{
+				Nigginality.PlayAnimate(LineFrame,SlowyTween,{
 					BackgroundTransparency = 0.650
 				})
 
-				Ninality.PlayAnimate(LogoImage,SlowyTween,{
+				Nigginality.PlayAnimate(LogoImage,SlowyTween,{
 					ImageTransparency = 0
 				})
 
-				Ninality.PlayAnimate(UserStatusLabel,SlowyTween,{
+				Nigginality.PlayAnimate(UserStatusLabel,SlowyTween,{
 					TextTransparency = 0.200
 				})
 			else
-				Ninality.PlayAnimate(UserLabel,SlowyTween,{
+				Nigginality.PlayAnimate(UserLabel,SlowyTween,{
 					TextTransparency = 1
 				})
 
-				Ninality.PlayAnimate(LineFrame,SlowyTween,{
+				Nigginality.PlayAnimate(LineFrame,SlowyTween,{
 					BackgroundTransparency = 1
 				})
 
-				Ninality.PlayAnimate(LogoImage,SlowyTween,{
+				Nigginality.PlayAnimate(LogoImage,SlowyTween,{
 					ImageTransparency = 1
 				})
 
-				Ninality.PlayAnimate(UserStatusLabel,SlowyTween,{
+				Nigginality.PlayAnimate(UserStatusLabel,SlowyTween,{
 					TextTransparency = 1
 				})
 			end;
@@ -4043,13 +4043,13 @@ function Ninality:RegisiterItem(Frame: Frame , Signel)
 	return idx;
 end;
 
-function Ninality:CreateWindow(Config)
-	Config = Ninality:ProcessParams(Config , {
-		Logo = Ninality.GlobalLogo,
-		Name = "Ninality",
+function Nigginality:CreateWindow(Config)
+	Config = Nigginality:ProcessParams(Config , {
+		Logo = Nigginality.GlobalLogo,
+		Name = "Nigginality",
 		Content = "Counter-Strike 2",
 		Size = UDim2.new(0, 640, 0, 480),
-		ConfigFolder = "NinalityConfigs",
+		ConfigFolder = "NigginalityConfigs",
 		Enable3DRenderer = false,
 		Keybind = "Insert"
 	});
@@ -4060,16 +4060,16 @@ function Ninality:CreateWindow(Config)
 		Content = Config.Content,
 		Size = Config.Size,
 		ConfigFolder = Config.ConfigFolder,
-		Signal = Ninality:CreateSignal(true),
+		Signal = Nigginality:CreateSignal(true),
 		Tabs = {},
 		CurrentTab = 1,
 		Keybind = Config.Keybind,
 		Enable3DRenderer = Config.Enable3DRenderer
 	};
 
-	Ninality.GlobalLogo = Window.Logo;
+	Nigginality.GlobalLogo = Window.Logo;
 
-	local Logging = Ninality:CreateLogger();
+	local Logging = Nigginality:CreateLogger();
 	if not isfolder(Window.ConfigFolder) then
 		makefolder(Window.ConfigFolder);
 	end;
@@ -4084,7 +4084,7 @@ function Ninality:CreateWindow(Config)
 	-- }
 	--
 	-- Things pulled automatically from CreateWindow Config:
-	--   Logo text  → first letters of each word in Config.Name  (e.g "Ninality" → "NL" wait no → "N", or "Never Lose" → "NL")
+	--   Logo text  → first letters of each word in Config.Name  (e.g "Nigginality" → "NL" wait no → "N", or "Never Lose" → "NL")
 	--   Title      → Config.Name
 	--   Subtitle   → Config.Content
 	-- ──────────────────────────────────────────────────────────────────────────
@@ -4092,7 +4092,7 @@ function Ninality:CreateWindow(Config)
 	local LoadingConfig = Config.Loading or {}
 
 	-- Auto-generate short logo text from Config.Name
-	-- "Ninality"   → "N"   (single word → first 2 chars)
+	-- "Nigginality"   → "N"   (single word → first 2 chars)
 	-- "Never Lose" → "NL"  (multi word  → initials)
 	local function MakeLogoText(name)
 		local words = {}
@@ -4111,14 +4111,14 @@ function Ninality:CreateWindow(Config)
 	local LogoText    = MakeLogoText(Config.Name)
 	local TitleText   = Config.Name
 	local SubText     = Config.Content .. (LoadingConfig.Version and ("  •  " .. LoadingConfig.Version) or "")
-	local CreditText  = LoadingConfig.Credit or "Ninality UI"
-	local AccentColor = Ninality.AccentColor or Color3.fromRGB(78, 127, 252)
+	local CreditText  = LoadingConfig.Credit or "Nigginality UI"
+	local AccentColor = Nigginality.AccentColor or Color3.fromRGB(78, 127, 252)
 
 	local function LOADING(Steps, OnComplete)
 		-- Fullscreen dark overlay
 		local Overlay = Instance.new("Frame")
-		Overlay.Name                    = Ninality.RandomString()
-		Overlay.Parent                  = Ninality.ScreenGui
+		Overlay.Name                    = Nigginality.RandomString()
+		Overlay.Parent                  = Nigginality.ScreenGui
 		Overlay.Size                    = UDim2.fromScale(1, 1)
 		Overlay.Position                = UDim2.fromScale(0, 0)
 		Overlay.BackgroundColor3        = Color3.fromRGB(6, 7, 11)
@@ -4128,7 +4128,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Center card
 		local Card = Instance.new("Frame")
-		Card.Name                       = Ninality.RandomString()
+		Card.Name                       = Nigginality.RandomString()
 		Card.Parent                     = Overlay
 		Card.AnchorPoint                = Vector2.new(0.5, 0.5)
 		Card.Position                   = UDim2.fromScale(0.5, 0.5)
@@ -4150,7 +4150,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Logo text (e.g "NL" or "N")
 		local LogoLabel = Instance.new("TextLabel")
-		LogoLabel.Name                  = Ninality.RandomString()
+		LogoLabel.Name                  = Nigginality.RandomString()
 		LogoLabel.Parent                = Card
 		LogoLabel.AnchorPoint           = Vector2.new(0.5, 0)
 		LogoLabel.Position              = UDim2.fromOffset(160, 24)
@@ -4166,7 +4166,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Accent line under logo (expands on load)
 		local AccentLine = Instance.new("Frame")
-		AccentLine.Name                 = Ninality.RandomString()
+		AccentLine.Name                 = Nigginality.RandomString()
 		AccentLine.Parent               = Card
 		AccentLine.AnchorPoint          = Vector2.new(0.5, 0)
 		AccentLine.Position             = UDim2.fromOffset(160, 66)
@@ -4182,7 +4182,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Title (Config.Name)
 		local TitleLabel = Instance.new("TextLabel")
-		TitleLabel.Name                 = Ninality.RandomString()
+		TitleLabel.Name                 = Nigginality.RandomString()
 		TitleLabel.Parent               = Card
 		TitleLabel.AnchorPoint          = Vector2.new(0.5, 0)
 		TitleLabel.Position             = UDim2.fromOffset(160, 76)
@@ -4199,7 +4199,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Subtitle (Config.Content + optional version)
 		local SubLabel = Instance.new("TextLabel")
-		SubLabel.Name                   = Ninality.RandomString()
+		SubLabel.Name                   = Nigginality.RandomString()
 		SubLabel.Parent                 = Card
 		SubLabel.AnchorPoint            = Vector2.new(0.5, 0)
 		SubLabel.Position               = UDim2.fromOffset(160, 96)
@@ -4216,7 +4216,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Progress bar BG
 		local BarBG = Instance.new("Frame")
-		BarBG.Name                      = Ninality.RandomString()
+		BarBG.Name                      = Nigginality.RandomString()
 		BarBG.Parent                    = Card
 		BarBG.AnchorPoint               = Vector2.new(0.5, 0)
 		BarBG.Position                  = UDim2.fromOffset(160, 136)
@@ -4231,7 +4231,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Progress bar fill
 		local BarFill = Instance.new("Frame")
-		BarFill.Name                    = Ninality.RandomString()
+		BarFill.Name                    = Nigginality.RandomString()
 		BarFill.Parent                  = BarBG
 		BarFill.Size                    = UDim2.fromOffset(0, 3)
 		BarFill.BackgroundColor3        = AccentColor
@@ -4244,7 +4244,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Status label (current step name)
 		local StatusLabel = Instance.new("TextLabel")
-		StatusLabel.Name                = Ninality.RandomString()
+		StatusLabel.Name                = Nigginality.RandomString()
 		StatusLabel.Parent              = Card
 		StatusLabel.AnchorPoint         = Vector2.new(0.5, 0)
 		StatusLabel.Position            = UDim2.fromOffset(160, 147)
@@ -4261,7 +4261,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Credit label (Config.Loading.Credit or fallback)
 		local CreditLabel = Instance.new("TextLabel")
-		CreditLabel.Name                = Ninality.RandomString()
+		CreditLabel.Name                = Nigginality.RandomString()
 		CreditLabel.Parent              = Card
 		CreditLabel.AnchorPoint         = Vector2.new(0.5, 1)
 		CreditLabel.Position            = UDim2.fromOffset(160, 205)
@@ -4341,17 +4341,17 @@ function Ninality:CreateWindow(Config)
 
 	-- Step 2: Create logger
 	Step("Creating logger", function()
-		Logging = Ninality:CreateLogger()
+		Logging = Nigginality:CreateLogger()
 	end)
 
 	-- Step 3: Resolve accent color
 	Step("Applying accent color", function()
-		Ninality.AccentColor = Ninality.AccentColor or Color3.fromRGB(78, 127, 252)
+		Nigginality.AccentColor = Nigginality.AccentColor or Color3.fromRGB(78, 127, 252)
 	end)
 
 	-- Step 4: Pre-cache user thumbnail
 	Step("Loading user profile", function()
-		Ninality.UserProfile = Ninality.UserProfile or Players:GetUserThumbnailAsync(
+		Nigginality.UserProfile = Nigginality.UserProfile or Players:GetUserThumbnailAsync(
 			LocalPlayer.UserId,
 			Enum.ThumbnailType.HeadShot,
 			Enum.ThumbnailSize.Size150x150
@@ -4414,8 +4414,8 @@ function Ninality:CreateWindow(Config)
 	local SearchBox = Instance.new("TextBox")
 	local TabContainer = Instance.new("Frame")
 
-	WindowFrame.Name = Ninality.RandomString();
-	WindowFrame.Parent = Ninality.ScreenGui;
+	WindowFrame.Name = Nigginality.RandomString();
+	WindowFrame.Parent = Nigginality.ScreenGui;
 	WindowFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 	WindowFrame.BackgroundColor3 = Color3.fromRGB(8, 8, 13)
 	WindowFrame.BackgroundTransparency = 0.055
@@ -4426,7 +4426,7 @@ function Ninality:CreateWindow(Config)
 	WindowFrame.Size = Window.Size
 	WindowFrame.Active = true;
 
-	if not Ninality.EnabledBlur then
+	if not Nigginality.EnabledBlur then
 		WindowFrame.BackgroundTransparency = 0.0255
 	end;
 
@@ -4438,7 +4438,7 @@ function Ninality:CreateWindow(Config)
 			else
 				WindowFrame.Visible = true;
 
-				Ninality.PlayAnimate(WindowFrame,VSlowTween , {
+				Nigginality.PlayAnimate(WindowFrame,VSlowTween , {
 					Position = UDim2.fromScale(0.5,0.5);
 				});
 
@@ -4450,187 +4450,187 @@ function Ninality:CreateWindow(Config)
 				WindowFrame.Parent = nil
 			else
 				WindowFrame.Visible = true;
-				WindowFrame.Parent = Ninality.ScreenGui
+				WindowFrame.Parent = Nigginality.ScreenGui
 
 
 			end;
 		end;
 	end);
 
-	Ninality:AddSignal(WindowFrame:GetPropertyChangedSignal('BackgroundTransparency'):Connect(renderParentWindow))
+	Nigginality:AddSignal(WindowFrame:GetPropertyChangedSignal('BackgroundTransparency'):Connect(renderParentWindow))
 
 	Window.SetRender = LPH_NO_VIRTUALIZE(function(self , value)
 		if value then
-			Ninality.PlayAnimate(WindowFrame , SlowyTween , {
-				BackgroundTransparency = (Ninality.EnabledBlur and 0.055) or 0.0255,
+			Nigginality.PlayAnimate(WindowFrame , SlowyTween , {
+				BackgroundTransparency = (Nigginality.EnabledBlur and 0.055) or 0.0255,
 				Size = Window.Size
 			})
 
-			Ninality.PlayAnimate(LogoImage , SlowyTween , {
+			Nigginality.PlayAnimate(LogoImage , SlowyTween , {
 				ImageTransparency = 0
 			})
 
-			Ninality.PlayAnimate(WindowName , SlowyTween , {
+			Nigginality.PlayAnimate(WindowName , SlowyTween , {
 				TextTransparency = 0
 			})
 
-			Ninality.PlayAnimate(WindowContent , SlowyTween , {
+			Nigginality.PlayAnimate(WindowContent , SlowyTween , {
 				TextTransparency = 0.650
 			})
 
-			Ninality.PlayAnimate(LineFrame , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 				BackgroundTransparency = 0.650
 			})
 
-			Ninality.PlayAnimate(AccountProfile , SlowyTween , {
+			Nigginality.PlayAnimate(AccountProfile , SlowyTween , {
 				ImageTransparency = 0
 			})
 
-			Ninality.PlayAnimate(AccountName , SlowyTween , {
+			Nigginality.PlayAnimate(AccountName , SlowyTween , {
 				TextTransparency = 0
 			})
 
-			Ninality.PlayAnimate(ExpireLabel , SlowyTween , {
+			Nigginality.PlayAnimate(ExpireLabel , SlowyTween , {
 				TextTransparency = 0.650
 			})
 
-			Ninality.PlayAnimate(LineFrame_2 , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame_2 , SlowyTween , {
 				BackgroundTransparency = 0.650
 			})
 
-			Ninality.PlayAnimate(UserSettingButton , SlowyTween , {
+			Nigginality.PlayAnimate(UserSettingButton , SlowyTween , {
 				TextTransparency = 0.5
 			})
 
-			Ninality.PlayAnimate(RightMenuFrame , SlowyTween , {
+			Nigginality.PlayAnimate(RightMenuFrame , SlowyTween , {
 				BackgroundTransparency = 0.600
 			})
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 0.650
 			})
 
-			Ninality.PlayAnimate(LineFrame_3 , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame_3 , SlowyTween , {
 				BackgroundTransparency = 0.650
 			})
 
-			Ninality.PlayAnimate(ConfigFrame , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigFrame , SlowyTween , {
 				BackgroundTransparency = 0.750
 			})
 
-			Ninality.PlayAnimate(UIStroke_2 , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke_2 , SlowyTween , {
 				Transparency = 0.650
 			})
 
-			Ninality.PlayAnimate(ConfigIcon , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigIcon , SlowyTween , {
 				TextTransparency = 0.250
 			})
 
-			Ninality.PlayAnimate(LineFrame_4 , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame_4 , SlowyTween , {
 				BackgroundTransparency = 0.650
 			})
 
-			Ninality.PlayAnimate(ConfigName , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigName , SlowyTween , {
 				TextTransparency = 0.350
 			})
 
-			Ninality.PlayAnimate(ConfigBthIcon , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigBthIcon , SlowyTween , {
 				TextTransparency = 0.250
 			})
 
-			Ninality.PlayAnimate(SearchIcon , SlowyTween , {
+			Nigginality.PlayAnimate(SearchIcon , SlowyTween , {
 				TextTransparency = 0.250
 			})
 
-			Ninality.PlayAnimate(SearchBox , SlowyTween , {
+			Nigginality.PlayAnimate(SearchBox , SlowyTween , {
 				TextTransparency = 0.350
 			})
 
 			Window.Shadow:Render(true);
 		else
 
-			Ninality.PlayAnimate(WindowFrame , SlowyTween , {
+			Nigginality.PlayAnimate(WindowFrame , SlowyTween , {
 				BackgroundTransparency = 1,
 				Size = Window.Size + UDim2.fromOffset(-15,-15)
 			})
 
-			Ninality.PlayAnimate(LogoImage , SlowyTween , {
+			Nigginality.PlayAnimate(LogoImage , SlowyTween , {
 				ImageTransparency = 1
 			})
 
-			Ninality.PlayAnimate(WindowName , SlowyTween , {
+			Nigginality.PlayAnimate(WindowName , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(WindowContent , SlowyTween , {
+			Nigginality.PlayAnimate(WindowContent , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(LineFrame , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(AccountProfile , SlowyTween , {
+			Nigginality.PlayAnimate(AccountProfile , SlowyTween , {
 				ImageTransparency = 1
 			})
 
-			Ninality.PlayAnimate(AccountName , SlowyTween , {
+			Nigginality.PlayAnimate(AccountName , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(ExpireLabel , SlowyTween , {
+			Nigginality.PlayAnimate(ExpireLabel , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(LineFrame_2 , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame_2 , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UserSettingButton , SlowyTween , {
+			Nigginality.PlayAnimate(UserSettingButton , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(RightMenuFrame , SlowyTween , {
+			Nigginality.PlayAnimate(RightMenuFrame , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(LineFrame_3 , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame_3 , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(ConfigFrame , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigFrame , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke_2 , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke_2 , SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(ConfigIcon , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigIcon , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(LineFrame_4 , SlowyTween , {
+			Nigginality.PlayAnimate(LineFrame_4 , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(ConfigName , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigName , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(ConfigBthIcon , SlowyTween , {
+			Nigginality.PlayAnimate(ConfigBthIcon , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(SearchIcon , SlowyTween , {
+			Nigginality.PlayAnimate(SearchIcon , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(SearchBox , SlowyTween , {
+			Nigginality.PlayAnimate(SearchBox , SlowyTween , {
 				TextTransparency = 1
 			})
 
@@ -4638,19 +4638,19 @@ function Ninality:CreateWindow(Config)
 		end;
 	end);
 
-	Window.Shadow = Ninality:CreateShadow(WindowFrame);
+	Window.Shadow = Nigginality:CreateShadow(WindowFrame);
 	Window.Shadow:Render(false);
 
 	task.delay(0.25,function()
 		WindowFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 		Window:SetRender(true);
-		Ninality:AddSignal(Window.Signal:Connect(LPH_NO_VIRTUALIZE(function(...)
+		Nigginality:AddSignal(Window.Signal:Connect(LPH_NO_VIRTUALIZE(function(...)
 			Window:SetRender(...);
 		end)))
 	end)
 
-	if Ninality.EnabledBlur then
-		Ninality:CreateBlurModule(WindowFrame,Window.Signal);
+	if Nigginality.EnabledBlur then
+		Nigginality:CreateBlurModule(WindowFrame,Window.Signal);
 	end;
 
 	do
@@ -4664,12 +4664,12 @@ function Ninality:CreateWindow(Config)
 		Frame.ZIndex = 7
 		Frame.BackgroundTransparency = 1;
 
-		Ninality.Drag(Frame , WindowFrame , 0.15)
+		Nigginality.Drag(Frame , WindowFrame , 0.15)
 	end
 
 	UICorner.Parent = WindowFrame
 
-	LeftMenuFrame.Name = Ninality.RandomString();
+	LeftMenuFrame.Name = Nigginality.RandomString();
 	LeftMenuFrame.Parent = WindowFrame
 	LeftMenuFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	LeftMenuFrame.BackgroundTransparency = 1.000
@@ -4677,7 +4677,7 @@ function Ninality:CreateWindow(Config)
 	LeftMenuFrame.BorderSizePixel = 0
 	LeftMenuFrame.Size = UDim2.new(0, 175, 1, 0)
 
-	HeadFrame.Name = Ninality.RandomString();
+	HeadFrame.Name = Nigginality.RandomString();
 	HeadFrame.Parent = LeftMenuFrame
 	HeadFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	HeadFrame.BackgroundTransparency = 1.000
@@ -4686,7 +4686,7 @@ function Ninality:CreateWindow(Config)
 	HeadFrame.Size = UDim2.new(1, 0, 0, 50)
 	HeadFrame.ZIndex = 7
 
-	LogoImage.Name = Ninality.RandomString();
+	LogoImage.Name = Nigginality.RandomString();
 	LogoImage.Parent = HeadFrame
 	LogoImage.AnchorPoint = Vector2.new(0, 0.5)
 	LogoImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4696,7 +4696,7 @@ function Ninality:CreateWindow(Config)
 	LogoImage.Position = UDim2.new(0, 10, 0.5, 0)
 	LogoImage.Size = UDim2.new(0, 35, 0, 35)
 	LogoImage.ZIndex = 7
-	LogoImage.ImageColor3 = Ninality.IconColor
+	LogoImage.ImageColor3 = Nigginality.IconColor
 
 	if Window.Logo and Window.Logo ~= "" then
 		LogoImage.Image = Window.Logo
@@ -4706,7 +4706,7 @@ function Ninality:CreateWindow(Config)
 		LogoImage.Visible = false
 
 		local LogoText = Instance.new("TextLabel")
-		LogoText.Name = Ninality.RandomString()
+		LogoText.Name = Nigginality.RandomString()
 		LogoText.Parent = HeadFrame
 		LogoText.AnchorPoint = Vector2.new(0, 0.5)
 		LogoText.BackgroundTransparency = 1
@@ -4715,7 +4715,7 @@ function Ninality:CreateWindow(Config)
 		LogoText.Size = UDim2.new(0, 35, 0, 35)
 		LogoText.ZIndex = 7
 		LogoText.Font = Enum.Font.GothamBold
-		LogoText.TextColor3 = Ninality.AccentColor or Color3.fromRGB(78, 127, 252)
+		LogoText.TextColor3 = Nigginality.AccentColor or Color3.fromRGB(78, 127, 252)
 		LogoText.TextSize = 16
 		LogoText.TextXAlignment = Enum.TextXAlignment.Center
 		LogoText.TextYAlignment = Enum.TextYAlignment.Center
@@ -4739,7 +4739,7 @@ function Ninality:CreateWindow(Config)
 	UICorner_2.CornerRadius = UDim.new(0, 7)
 	UICorner_2.Parent = LogoImage
 
-	WindowName.Name = Ninality.RandomString();
+	WindowName.Name = Nigginality.RandomString();
 	WindowName.Parent = HeadFrame
 	WindowName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	WindowName.BackgroundTransparency = 1.000
@@ -4754,7 +4754,7 @@ function Ninality:CreateWindow(Config)
 	WindowName.TextSize = 18.000
 	WindowName.TextXAlignment = Enum.TextXAlignment.Left
 
-	WindowContent.Name = Ninality.RandomString();
+	WindowContent.Name = Nigginality.RandomString();
 	WindowContent.Parent = HeadFrame
 	WindowContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	WindowContent.BackgroundTransparency = 1.000
@@ -4770,7 +4770,7 @@ function Ninality:CreateWindow(Config)
 	WindowContent.TextTransparency = 0.650
 	WindowContent.TextXAlignment = Enum.TextXAlignment.Left
 
-	LineFrame.Name = Ninality.RandomString();
+	LineFrame.Name = Nigginality.RandomString();
 	LineFrame.Parent = HeadFrame
 	LineFrame.AnchorPoint = Vector2.new(0.5, 1)
 	LineFrame.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
@@ -4781,7 +4781,7 @@ function Ninality:CreateWindow(Config)
 	LineFrame.Size = UDim2.new(1, -10, 0, 1)
 	LineFrame.ZIndex = 5
 
-	LeftScrollingFrame.Name = Ninality.RandomString();
+	LeftScrollingFrame.Name = Nigginality.RandomString();
 	LeftScrollingFrame.Parent = LeftMenuFrame
 	LeftScrollingFrame.Active = true
 	LeftScrollingFrame.AnchorPoint = Vector2.new(0.5, 0)
@@ -4799,11 +4799,11 @@ function Ninality:CreateWindow(Config)
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 5)
 
-	Ninality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
+	Nigginality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
 		LeftScrollingFrame.CanvasSize = UDim2.fromOffset(0,UIListLayout.AbsoluteContentSize.Y + 1)
 	end)))
 
-	BottomFrame.Name = Ninality.RandomString();
+	BottomFrame.Name = Nigginality.RandomString();
 	BottomFrame.Parent = LeftMenuFrame
 	BottomFrame.AnchorPoint = Vector2.new(0, 1)
 	BottomFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4814,7 +4814,7 @@ function Ninality:CreateWindow(Config)
 	BottomFrame.Size = UDim2.new(1, 0, 0, 50)
 	BottomFrame.ZIndex = 7
 
-	AccountProfile.Name = Ninality.RandomString();
+	AccountProfile.Name = Nigginality.RandomString();
 	AccountProfile.Parent = BottomFrame
 	AccountProfile.AnchorPoint = Vector2.new(0, 0.5)
 	AccountProfile.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4824,12 +4824,12 @@ function Ninality:CreateWindow(Config)
 	AccountProfile.Position = UDim2.new(0, 10, 0.5, 0)
 	AccountProfile.Size = UDim2.new(0, 35, 0, 35)
 	AccountProfile.ZIndex = 7
-	AccountProfile.Image = Ninality.UserProfile or ""
+	AccountProfile.Image = Nigginality.UserProfile or ""
 
 	UICorner_3.CornerRadius = UDim.new(1, 0)
 	UICorner_3.Parent = AccountProfile
 
-	AccountName.Name = Ninality.RandomString();
+	AccountName.Name = Nigginality.RandomString();
 	AccountName.Parent = BottomFrame
 	AccountName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	AccountName.BackgroundTransparency = 1.000
@@ -4845,7 +4845,7 @@ function Ninality:CreateWindow(Config)
 	AccountName.TextXAlignment = Enum.TextXAlignment.Left
 	AccountName.TextTruncate = Enum.TextTruncate.SplitWord;
 
-	ExpireLabel.Name = Ninality.RandomString();
+	ExpireLabel.Name = Nigginality.RandomString();
 	ExpireLabel.Parent = BottomFrame
 	ExpireLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ExpireLabel.BackgroundTransparency = 1.000
@@ -4861,7 +4861,7 @@ function Ninality:CreateWindow(Config)
 	ExpireLabel.TextTransparency = 0.650
 	ExpireLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-	LineFrame_2.Name = Ninality.RandomString();
+	LineFrame_2.Name = Nigginality.RandomString();
 	LineFrame_2.Parent = BottomFrame
 	LineFrame_2.AnchorPoint = Vector2.new(0.5, 0)
 	LineFrame_2.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
@@ -4872,7 +4872,7 @@ function Ninality:CreateWindow(Config)
 	LineFrame_2.Size = UDim2.new(1, -10, 0, 1)
 	LineFrame_2.ZIndex = 5
 
-	UserSettingButton.Name = Ninality.RandomString();
+	UserSettingButton.Name = Nigginality.RandomString();
 	UserSettingButton.Parent = BottomFrame
 	UserSettingButton.AnchorPoint = Vector2.new(1, 0.5)
 	UserSettingButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4882,25 +4882,25 @@ function Ninality:CreateWindow(Config)
 	UserSettingButton.Position = UDim2.new(1, -7, 0.5, 0)
 	UserSettingButton.Size = UDim2.new(0, 25, 0, 25)
 	UserSettingButton.ZIndex = 7
-	UserSettingButton.FontFace = Ninality.BuiltInBold
+	UserSettingButton.FontFace = Nigginality.BuiltInBold
 	UserSettingButton.Text = "chevron-large-right"
 	UserSettingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	UserSettingButton.TextSize = 13.000
 	UserSettingButton.TextTransparency = 0.5
 
-	Ninality:AddSignal(BottomFrame.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-		Ninality.PlayAnimate(UserSettingButton,SlowyTween , {
+	Nigginality:AddSignal(BottomFrame.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality.PlayAnimate(UserSettingButton,SlowyTween , {
 			TextTransparency = 0.25
 		})		
 	end)))
 
-	Ninality:AddSignal(BottomFrame.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-		Ninality.PlayAnimate(UserSettingButton,SlowyTween , {
+	Nigginality:AddSignal(BottomFrame.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality.PlayAnimate(UserSettingButton,SlowyTween , {
 			TextTransparency = 0.5
 		})		
 	end)))
 
-	RightMenuFrame.Name = Ninality.RandomString();
+	RightMenuFrame.Name = Nigginality.RandomString();
 	RightMenuFrame.Parent = WindowFrame
 	RightMenuFrame.BackgroundColor3 = Color3.fromRGB(8, 8, 13)
 	RightMenuFrame.BackgroundTransparency = 0.600
@@ -4918,7 +4918,7 @@ function Ninality:CreateWindow(Config)
 	UICorner_4.CornerRadius = UDim.new(0, 13)
 	UICorner_4.Parent = RightMenuFrame
 
-	RightHeader.Name = Ninality.RandomString();
+	RightHeader.Name = Nigginality.RandomString();
 	RightHeader.Parent = RightMenuFrame
 	RightHeader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	RightHeader.BackgroundTransparency = 1.000
@@ -4927,7 +4927,7 @@ function Ninality:CreateWindow(Config)
 	RightHeader.Size = UDim2.new(1, 0, 0, 50)
 	RightHeader.ZIndex = 9
 
-	LineFrame_3.Name = Ninality.RandomString();
+	LineFrame_3.Name = Nigginality.RandomString();
 	LineFrame_3.Parent = RightHeader
 	LineFrame_3.AnchorPoint = Vector2.new(0.5, 1)
 	LineFrame_3.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
@@ -4938,7 +4938,7 @@ function Ninality:CreateWindow(Config)
 	LineFrame_3.Size = UDim2.new(1, -10, 0, 1)
 	LineFrame_3.ZIndex = 9
 
-	ConfigFrame.Name = Ninality.RandomString();
+	ConfigFrame.Name = Nigginality.RandomString();
 	ConfigFrame.Parent = RightHeader
 	ConfigFrame.AnchorPoint = Vector2.new(0, 0.5)
 	ConfigFrame.BackgroundColor3 = Color3.fromRGB(13, 17, 22)
@@ -4956,7 +4956,7 @@ function Ninality:CreateWindow(Config)
 	UICorner_5.CornerRadius = UDim.new(0, 4)
 	UICorner_5.Parent = ConfigFrame
 
-	ConfigIcon.Name = Ninality.RandomString();
+	ConfigIcon.Name = Nigginality.RandomString();
 	ConfigIcon.Parent = ConfigFrame
 	ConfigIcon.AnchorPoint = Vector2.new(0, 0.5)
 	ConfigIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4966,14 +4966,14 @@ function Ninality:CreateWindow(Config)
 	ConfigIcon.Position = UDim2.new(0, 2, 0.5, 0)
 	ConfigIcon.Size = UDim2.new(0, 25, 0, 25)
 	ConfigIcon.ZIndex = 9
-	ConfigIcon.FontFace = Ninality.BuiltInBold
+	ConfigIcon.FontFace = Nigginality.BuiltInBold
 	ConfigIcon.Text = "pencil-square"
 	ConfigIcon.TextColor3 = Color3.fromRGB(223, 223, 223)
 	ConfigIcon.TextSize = 16.000
 	ConfigIcon.TextTransparency = 0.250
 	ConfigIcon.TextWrapped = true
 
-	LineFrame_4.Name = Ninality.RandomString();
+	LineFrame_4.Name = Nigginality.RandomString();
 	LineFrame_4.Parent = ConfigFrame
 	LineFrame_4.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
 	LineFrame_4.BackgroundTransparency = 0.650
@@ -4982,7 +4982,7 @@ function Ninality:CreateWindow(Config)
 	LineFrame_4.Position = UDim2.new(0, 30, 0, 0)
 	LineFrame_4.Size = UDim2.new(0, 1, 1, 0)
 
-	ConfigName.Name = Ninality.RandomString();
+	ConfigName.Name = Nigginality.RandomString();
 	ConfigName.Parent = ConfigFrame
 	ConfigName.AnchorPoint = Vector2.new(0, 0.5)
 	ConfigName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4999,7 +4999,7 @@ function Ninality:CreateWindow(Config)
 	ConfigName.TextTransparency = 0.350
 	ConfigName.TextXAlignment = Enum.TextXAlignment.Left
 
-	ConfigBthIcon.Name = Ninality.RandomString();
+	ConfigBthIcon.Name = Nigginality.RandomString();
 	ConfigBthIcon.Parent = ConfigFrame
 	ConfigBthIcon.AnchorPoint = Vector2.new(1, 0.5)
 	ConfigBthIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5009,14 +5009,14 @@ function Ninality:CreateWindow(Config)
 	ConfigBthIcon.Position = UDim2.new(1, -2, 0.5, 0)
 	ConfigBthIcon.Size = UDim2.new(0, 25, 0, 25)
 	ConfigBthIcon.ZIndex = 9
-	ConfigBthIcon.FontFace = Ninality.BuiltInBold
+	ConfigBthIcon.FontFace = Nigginality.BuiltInBold
 	ConfigBthIcon.Text = "chevron-small-down"
 	ConfigBthIcon.TextColor3 = Color3.fromRGB(223, 223, 223)
 	ConfigBthIcon.TextSize = 16.000
 	ConfigBthIcon.TextTransparency = 0.250
 	ConfigBthIcon.TextWrapped = true
 
-	SearchFrame.Name = Ninality.RandomString();
+	SearchFrame.Name = Nigginality.RandomString();
 	SearchFrame.Parent = RightHeader
 	SearchFrame.AnchorPoint = Vector2.new(1, 0.5)
 	SearchFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5028,7 +5028,7 @@ function Ninality:CreateWindow(Config)
 	SearchFrame.Size = UDim2.new(0, 30, 0, 30)
 	SearchFrame.ZIndex = 12
 
-	SearchIcon.Name = Ninality.RandomString();
+	SearchIcon.Name = Nigginality.RandomString();
 	SearchIcon.Parent = SearchFrame
 	SearchIcon.AnchorPoint = Vector2.new(0, 0.5)
 	SearchIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5038,14 +5038,14 @@ function Ninality:CreateWindow(Config)
 	SearchIcon.Position = UDim2.new(0, 2, 0.5, 0)
 	SearchIcon.Size = UDim2.new(0, 25, 0, 25)
 	SearchIcon.ZIndex = 12
-	SearchIcon.FontFace = Ninality.BuiltInBold
+	SearchIcon.FontFace = Nigginality.BuiltInBold
 	SearchIcon.Text = "magnifying-glass"
 	SearchIcon.TextColor3 = Color3.fromRGB(223, 223, 223)
 	SearchIcon.TextSize = 14.000
 	SearchIcon.TextTransparency = 0.45
 	SearchIcon.TextWrapped = true
 
-	SearchBox.Name = Ninality.RandomString();
+	SearchBox.Name = Nigginality.RandomString();
 	SearchBox.Parent = SearchFrame
 	SearchBox.AnchorPoint = Vector2.new(0, 0.5)
 	SearchBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5064,7 +5064,7 @@ function Ninality:CreateWindow(Config)
 	SearchBox.TextTransparency = 1
 	SearchBox.TextXAlignment = Enum.TextXAlignment.Left
 
-	TabContainer.Name = Ninality.RandomString();
+	TabContainer.Name = Nigginality.RandomString();
 	TabContainer.Parent = RightMenuFrame
 	TabContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TabContainer.BackgroundTransparency = 1.000
@@ -5077,31 +5077,31 @@ function Ninality:CreateWindow(Config)
 
 	do
 		Window.Searching = false;
-		local Input = Ninality:CreateInput(SearchIcon , LPH_NO_VIRTUALIZE(function()
+		local Input = Nigginality:CreateInput(SearchIcon , LPH_NO_VIRTUALIZE(function()
 			Window.Searching = not Window.Searching;
 
 			if Window.Searching then
-				Ninality.PlayAnimate(SearchFrame , VSlowTween , {
+				Nigginality.PlayAnimate(SearchFrame , VSlowTween , {
 					Size = UDim2.new(0, 220, 0, 30)
 				})
 
-				Ninality.PlayAnimate(SearchIcon , SlowyTween , {
+				Nigginality.PlayAnimate(SearchIcon , SlowyTween , {
 					TextTransparency = 0.25
 				})
 
-				Ninality.PlayAnimate(SearchBox , VSlowTween , {
+				Nigginality.PlayAnimate(SearchBox , VSlowTween , {
 					TextTransparency = 0.350
 				})
 			else
-				Ninality.PlayAnimate(SearchFrame , VSlowTween , {
+				Nigginality.PlayAnimate(SearchFrame , VSlowTween , {
 					Size = UDim2.new(0, 30, 0, 30)
 				})
 
-				Ninality.PlayAnimate(SearchIcon , SlowyTween , {
+				Nigginality.PlayAnimate(SearchIcon , SlowyTween , {
 					TextTransparency = 0.45
 				})
 
-				Ninality.PlayAnimate(SearchBox , SlowyTween , {
+				Nigginality.PlayAnimate(SearchBox , SlowyTween , {
 					TextTransparency = 1
 				})
 
@@ -5113,9 +5113,9 @@ function Ninality:CreateWindow(Config)
 		local last_thread;
 		local max_time = 0.2;
 
-		Ninality:AddSignal(SearchBox:GetPropertyChangedSignal('Text'):Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(SearchBox:GetPropertyChangedSignal('Text'):Connect(LPH_NO_VIRTUALIZE(function()
 			if not SearchBox.Text:byte() then
-				for i,v in next , Ninality.NameRegisitry do
+				for i,v in next , Nigginality.NameRegisitry do
 					v.Root.Visible = true;
 				end;
 
@@ -5131,7 +5131,7 @@ function Ninality:CreateWindow(Config)
 
 			last_thread = task.delay(max_time,function()
 				if SearchBox.Text:byte() and (tick() - wati_for_finish) > max_time then
-					for i,v in next , Ninality.NameRegisitry do
+					for i,v in next , Nigginality.NameRegisitry do
 						if string.find(string.lower(v.Idx) , string.lower(SearchBox.Text), 1, true) then
 							v.Root.Visible = true;
 						else
@@ -5142,19 +5142,19 @@ function Ninality:CreateWindow(Config)
 			end);
 		end)));
 
-		Ninality:AddSignal(Input.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(SearchIcon , SlowyTween , {
+		Nigginality:AddSignal(Input.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(SearchIcon , SlowyTween , {
 				TextTransparency = 0.25
 			})
 		end)))
 
-		Ninality:AddSignal(Input.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(Input.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
 			if Window.Searching then
-				Ninality.PlayAnimate(SearchIcon , SlowyTween , {
+				Nigginality.PlayAnimate(SearchIcon , SlowyTween , {
 					TextTransparency = 0.25
 				})
 			else
-				Ninality.PlayAnimate(SearchIcon , SlowyTween , {
+				Nigginality.PlayAnimate(SearchIcon , SlowyTween , {
 					TextTransparency = 0.45
 				})
 			end;
@@ -5164,19 +5164,19 @@ function Ninality:CreateWindow(Config)
 	if Window.Enable3DRenderer then
 		local Part = Instance.new('Part');
 
-		Part.Name = Ninality.RandomString();
+		Part.Name = Nigginality.RandomString();
 		Part.Anchored = true;
 		Part.Transparency = 1;
 		Part.CanCollide = false;
 		Part.CanTouch = false;
 		Part.AudioCanCollide = false;
-		Part.CollisionGroup = Ninality.RandomString();
+		Part.CollisionGroup = Nigginality.RandomString();
 		Part.CFrame = CFrame.new(0,0,0);
 		Part.Size = Vector3.zero;
 
 		local SurfaceGui = Instance.new("SurfaceGui")
 
-		SurfaceGui.Parent = Ninality.ScreenGui;
+		SurfaceGui.Parent = Nigginality.ScreenGui;
 		SurfaceGui.Adornee = Part;
 		SurfaceGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		SurfaceGui.AlwaysOnTop = true
@@ -5186,7 +5186,7 @@ function Ninality:CreateWindow(Config)
 		SurfaceGui.PixelsPerStud = 40;
 
 		Window.SurfaceGui = SurfaceGui;
-		Ninality.GlobalSurfaceGui = SurfaceGui;
+		Nigginality.GlobalSurfaceGui = SurfaceGui;
 
 		local PerfectScale = Vector2.new(1920 , 1080 + 300)
 
@@ -5195,7 +5195,7 @@ function Ninality:CreateWindow(Config)
 				local _,OnScreen = CurrentCamera:WorldToViewportPoint(Part.Position);
 
 				if OnScreen then
-					Ninality.PlayAnimate(Part,VSlowTween , {
+					Nigginality.PlayAnimate(Part,VSlowTween , {
 						CFrame = CurrentCamera.CFrame * CFrame.new(0,0,-15) * CFrame.Angles(0,math.rad(180),0);
 					});
 				end;
@@ -5209,9 +5209,9 @@ function Ninality:CreateWindow(Config)
 			local PerfectDistance = XY_Incom.Magnitude;
 			local SizeIndicator = PerfectDistance / 1.35;
 
-			Part.Parent = Ninality.BlurModuleParent or workspace;
+			Part.Parent = Nigginality.BlurModuleParent or workspace;
 
-			Ninality.PlayAnimate(Part,VSlowTween , {
+			Nigginality.PlayAnimate(Part,VSlowTween , {
 				CFrame = (CurrentCamera.CFrame * CFrame.new(0,0,-25)) * CFrame.Angles(0,math.rad(180),0);
 			});
 
@@ -5220,7 +5220,7 @@ function Ninality:CreateWindow(Config)
 
 		function Window:Set3DRender(val)
 			Window.__3DRender = val;
-			Ninality.Global3DRenderMode = val;
+			Nigginality.Global3DRenderMode = val;
 
 			if val then
 				Window.Load3DBlock();
@@ -5237,7 +5237,7 @@ function Ninality:CreateWindow(Config)
 	function Window:AddTabLabel(Name: string)
 		local TabLabel = Instance.new("TextLabel")
 
-		TabLabel.Name = Ninality.RandomString()
+		TabLabel.Name = Nigginality.RandomString()
 		TabLabel.Parent = LeftScrollingFrame
 		TabLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabLabel.BackgroundTransparency = 1.000
@@ -5254,11 +5254,11 @@ function Ninality:CreateWindow(Config)
 
 		local SetRender = LPH_NO_VIRTUALIZE(function(val)
 			if val then
-				Ninality.PlayAnimate(TabLabel , SlowyTween,{
+				Nigginality.PlayAnimate(TabLabel , SlowyTween,{
 					TextTransparency = 0.500
 				})
 			else
-				Ninality.PlayAnimate(TabLabel , SlowyTween,{
+				Nigginality.PlayAnimate(TabLabel , SlowyTween,{
 					TextTransparency = 1
 				})
 			end
@@ -5270,14 +5270,14 @@ function Ninality:CreateWindow(Config)
 	end;
 
 	function Window:AddTab(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Icon = "crosshairs",
 			Name = "Tab",
 			Type = "Double"
 		});
 
 		local Tab = {
-			Signal = Ninality:CreateSignal(false);
+			Signal = Nigginality:CreateSignal(false);
 		};
 
 		local TabButton = Instance.new("Frame")
@@ -5287,7 +5287,7 @@ function Ninality:CreateWindow(Config)
 
 		Tab.Idx = TabButton;
 
-		TabButton.Name = Ninality.RandomString();
+		TabButton.Name = Nigginality.RandomString();
 		TabButton.Parent = LeftScrollingFrame
 		TabButton.BackgroundColor3 = Color3.fromRGB(41, 45, 49)
 		TabButton.BackgroundTransparency = 0.500
@@ -5299,7 +5299,7 @@ function Ninality:CreateWindow(Config)
 		UICorner.CornerRadius = UDim.new(0, 6)
 		UICorner.Parent = TabButton
 
-		TabIcon.Name = Ninality.RandomString();
+		TabIcon.Name = Nigginality.RandomString();
 		TabIcon.Parent = TabButton
 		TabIcon.AnchorPoint = Vector2.new(0, 0.5)
 		TabIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5309,13 +5309,13 @@ function Ninality:CreateWindow(Config)
 		TabIcon.Position = UDim2.new(0, 2, 0.5, 0)
 		TabIcon.Size = UDim2.new(0, 25, 0, 25)
 		TabIcon.ZIndex = 9
-		TabIcon.FontFace = Ninality.BuiltInBold
+		TabIcon.FontFace = Nigginality.BuiltInBold
 		TabIcon.Text = Config.Icon;
-		TabIcon.TextColor3 = Ninality.AccentColor
+		TabIcon.TextColor3 = Nigginality.AccentColor
 		TabIcon.TextSize = 16.000
 		TabIcon.TextWrapped = true
 
-		TabContentLabel.Name = Ninality.RandomString();
+		TabContentLabel.Name = Nigginality.RandomString();
 		TabContentLabel.Parent = TabButton
 		TabContentLabel.AnchorPoint = Vector2.new(0, 0.5)
 		TabContentLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5337,7 +5337,7 @@ function Ninality:CreateWindow(Config)
 		local RightScroll = Instance.new("ScrollingFrame")
 		local UIListLayout_2 = Instance.new("UIListLayout")
 
-		TabFrame.Name = Ninality.RandomString();
+		TabFrame.Name = Nigginality.RandomString();
 		TabFrame.Parent = TabContainer
 		TabFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 		TabFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5349,7 +5349,7 @@ function Ninality:CreateWindow(Config)
 		TabFrame.Size = UDim2.new(1, 0, 1, 0)
 		TabFrame.Visible = true;
 
-		LeftScroll.Name = Ninality.RandomString();
+		LeftScroll.Name = Nigginality.RandomString();
 		LeftScroll.Parent = TabFrame
 		LeftScroll.Active = true
 		LeftScroll.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -5367,11 +5367,11 @@ function Ninality:CreateWindow(Config)
 		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout.Padding = UDim.new(0, 5)
 
-		Ninality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
 			LeftScroll.CanvasSize = UDim2.fromOffset(0,UIListLayout.AbsoluteContentSize.Y + 1)
 		end)))
 
-		RightScroll.Name = Ninality.RandomString();
+		RightScroll.Name = Nigginality.RandomString();
 		RightScroll.Parent = TabFrame
 		RightScroll.Active = true
 		RightScroll.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -5396,12 +5396,12 @@ function Ninality:CreateWindow(Config)
 			LeftScroll.Size = UDim2.new(1, 0, 1, -5);
 			LeftScroll.Position = UDim2.new(0.5, 0, 0.5, 0)
 		else
-			Ninality:AddSignal(UIListLayout_2:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality:AddSignal(UIListLayout_2:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
 				RightScroll.CanvasSize = UDim2.fromOffset(0,UIListLayout_2.AbsoluteContentSize.Y + 1)
 			end)))
 		end;
 
-		Ninality:AddSignal(TabIcon:GetPropertyChangedSignal('TextTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(TabIcon:GetPropertyChangedSignal('TextTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
 			if TabIcon.TextTransparency > 0.4 then
 				UIListLayout.Parent = nil;
 				UIListLayout_2.Parent = nil;
@@ -5419,29 +5419,29 @@ function Ninality:CreateWindow(Config)
 			Tab.Signal:SetValue(value);
 
 			if value then
-				Ninality.PlayAnimate(TabButton , SlowyTween , {
+				Nigginality.PlayAnimate(TabButton , SlowyTween , {
 					BackgroundTransparency = 0.500
 				})
 
-				Ninality.PlayAnimate(TabIcon , SlowyTween , {
+				Nigginality.PlayAnimate(TabIcon , SlowyTween , {
 					TextTransparency = 0,
-					TextColor3 = Ninality.AccentColor
+					TextColor3 = Nigginality.AccentColor
 				})
 
-				Ninality.PlayAnimate(TabContentLabel , SlowyTween , {
+				Nigginality.PlayAnimate(TabContentLabel , SlowyTween , {
 					TextTransparency = 0
 				})
 			else
-				Ninality.PlayAnimate(TabButton , SlowyTween , {
+				Nigginality.PlayAnimate(TabButton , SlowyTween , {
 					BackgroundTransparency = 1
 				})
 
-				Ninality.PlayAnimate(TabIcon , SlowyTween , {
+				Nigginality.PlayAnimate(TabIcon , SlowyTween , {
 					TextTransparency = 0.5,
 					TextColor3 = Color3.fromRGB(252, 252, 252)
 				})
 
-				Ninality.PlayAnimate(TabContentLabel , SlowyTween , {
+				Nigginality.PlayAnimate(TabContentLabel , SlowyTween , {
 					TextTransparency = 0.5
 				})
 			end;
@@ -5455,7 +5455,7 @@ function Ninality:CreateWindow(Config)
 			Tab.SetValue(false);
 		end;
 
-		local over = Ninality:CreateInput(TabButton,LPH_NO_VIRTUALIZE(function()
+		local over = Nigginality:CreateInput(TabButton,LPH_NO_VIRTUALIZE(function()
 			for i,v in next , Window.Tabs do
 				if v.Idx == TabButton then
 					v.SetValue(true);
@@ -5466,25 +5466,25 @@ function Ninality:CreateWindow(Config)
 			end;
 		end));
 
-		Ninality:AddSignal(over.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(over.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
 			if Window.Tabs[Window.CurrentTab] == Tab then
-				Ninality.PlayAnimate(TabButton , SlowyTween , {
+				Nigginality.PlayAnimate(TabButton , SlowyTween , {
 					BackgroundTransparency = 0.500
 				})
 			else
-				Ninality.PlayAnimate(TabButton , SlowyTween , {
+				Nigginality.PlayAnimate(TabButton , SlowyTween , {
 					BackgroundTransparency = 0.8
 				})
 			end;
 		end)))
 
-		Ninality:AddSignal(over.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(over.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
 			if Window.Tabs[Window.CurrentTab] == Tab then
-				Ninality.PlayAnimate(TabButton , SlowyTween , {
+				Nigginality.PlayAnimate(TabButton , SlowyTween , {
 					BackgroundTransparency = 0.500
 				})
 			else
-				Ninality.PlayAnimate(TabButton , SlowyTween , {
+				Nigginality.PlayAnimate(TabButton , SlowyTween , {
 					BackgroundTransparency = 1
 				})
 			end;
@@ -5500,22 +5500,22 @@ function Ninality:CreateWindow(Config)
 			else
 				Tab.SetValue(false);
 
-				Ninality.PlayAnimate(TabButton , SlowyTween , {
+				Nigginality.PlayAnimate(TabButton , SlowyTween , {
 					BackgroundTransparency = 1
 				})
 
-				Ninality.PlayAnimate(TabIcon , SlowyTween , {
+				Nigginality.PlayAnimate(TabIcon , SlowyTween , {
 					TextTransparency = 1,
 				})
 
-				Ninality.PlayAnimate(TabContentLabel , SlowyTween , {
+				Nigginality.PlayAnimate(TabContentLabel , SlowyTween , {
 					TextTransparency = 1
 				})
 			end;
 		end));
 
 		function Tab:AddSection(Config)
-			Config = Ninality:ProcessParams(Config , {
+			Config = Nigginality:ProcessParams(Config , {
 				Name = "SECTION",
 				Position = 'left'
 			});
@@ -5527,7 +5527,7 @@ function Ninality:CreateWindow(Config)
 			local UICorner = Instance.new("UICorner")
 			local UIListLayout = Instance.new("UIListLayout")
 
-			SectionFrame.Name = Ninality.RandomString();
+			SectionFrame.Name = Nigginality.RandomString();
 			SectionFrame.Parent = (string.lower(Config.Position) == 'left' and LeftScroll) or RightScroll
 			SectionFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			SectionFrame.BackgroundTransparency = 1.000
@@ -5537,7 +5537,7 @@ function Ninality:CreateWindow(Config)
 			SectionFrame.Size = UDim2.new(1, -5, 0, 0)
 			SectionFrame.ZIndex = 9
 
-			SectionLabel.Name = Ninality.RandomString();
+			SectionLabel.Name = Nigginality.RandomString();
 			SectionLabel.Parent = SectionFrame
 			SectionLabel.AnchorPoint = Vector2.new(0.5, 0)
 			SectionLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5554,7 +5554,7 @@ function Ninality:CreateWindow(Config)
 			SectionLabel.TextTransparency = 0.500
 			SectionLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-			SectionHandler.Name = Ninality.RandomString();
+			SectionHandler.Name = Nigginality.RandomString();
 			SectionHandler.Parent = SectionFrame
 			SectionHandler.AnchorPoint = Vector2.new(0.5, 0)
 			SectionHandler.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
@@ -5581,41 +5581,41 @@ function Ninality:CreateWindow(Config)
 
 
 				if UIListLayout.AbsoluteContentSize.Y <= 1 then
-					Ninality.PlayAnimate(SectionFrame , VSlowTween , {
+					Nigginality.PlayAnimate(SectionFrame , VSlowTween , {
 						Size = UDim2.new(1, -5, 0, 0)
 					})
 				else
-					Ninality.PlayAnimate(SectionFrame , VSlowTween , {
+					Nigginality.PlayAnimate(SectionFrame , VSlowTween , {
 						Size = UDim2.new(1, -5, 0, UIListLayout.AbsoluteContentSize.Y + 19.5)
 					})
 				end;
 			end));
 
-			local Section = Ninality:RegisiterItem(SectionHandler , Tab.Signal);
+			local Section = Nigginality:RegisiterItem(SectionHandler , Tab.Signal);
 
 			Section.SetRender = LPH_NO_VIRTUALIZE(function(value)
 				if value then
-					Ninality.PlayAnimate(SectionLabel,SlowyTween,{
+					Nigginality.PlayAnimate(SectionLabel,SlowyTween,{
 						TextTransparency = 0.500
 					})
 
-					Ninality.PlayAnimate(SectionHandler,SlowyTween,{
+					Nigginality.PlayAnimate(SectionHandler,SlowyTween,{
 						BackgroundTransparency = 0.500
 					})
 
-					Ninality.PlayAnimate(UIStroke,SlowyTween,{
+					Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 						Transparency = 0.650
 					})
 				else
-					Ninality.PlayAnimate(SectionLabel,SlowyTween,{
+					Nigginality.PlayAnimate(SectionLabel,SlowyTween,{
 						TextTransparency = 1
 					})
 
-					Ninality.PlayAnimate(SectionHandler,SlowyTween,{
+					Nigginality.PlayAnimate(SectionHandler,SlowyTween,{
 						BackgroundTransparency = 1
 					})
 
-					Ninality.PlayAnimate(UIStroke,SlowyTween,{
+					Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 						Transparency = 1
 					})
 				end;
@@ -5631,7 +5631,7 @@ function Ninality:CreateWindow(Config)
 	end;
 
 	function Window:_InitConfig()
-		local ConfigSignal = Ninality:CreateSignal(false);
+		local ConfigSignal = Nigginality:CreateSignal(false);
 		local ConfigLib = {
 			Signals = {},
 		};
@@ -5654,76 +5654,76 @@ function Ninality:CreateWindow(Config)
 		local UICorner_3 = Instance.new("UICorner")
 		local UICorner_4 = Instance.new("UICorner")
 
-		local shadow = Ninality:CreateShadow(ConfigMenu);
+		local shadow = Nigginality:CreateShadow(ConfigMenu);
 
 		ConfigLib.SetRender = LPH_NO_VIRTUALIZE(function(value)
 			if value then
 				ConfigMenu.Position = UDim2.fromOffset(ConfigFrame.AbsolutePosition.X + 110 , ConfigFrame.AbsolutePosition.Y + 96)
 
-				Ninality.PlayAnimate(ConfigMenu , SlowyTween , {
+				Nigginality.PlayAnimate(ConfigMenu , SlowyTween , {
 					BackgroundTransparency = 0.035,
 					Position = UDim2.fromOffset(ConfigFrame.AbsolutePosition.X + 110 , ConfigFrame.AbsolutePosition.Y + 95)
 				})	
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 					Transparency = 0.650
 				})
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 0.200
 				})	
 
-				Ninality.PlayAnimate(UIStroke_2 , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke_2 , SlowyTween , {
 					Transparency = 0.65
 				})	
 
-				Ninality.PlayAnimate(LineFrame , SlowyTween , {
+				Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 					BackgroundTransparency = 0.650
 				})	
-				Ninality.PlayAnimate(TextInput , SlowyTween , {
+				Nigginality.PlayAnimate(TextInput , SlowyTween , {
 					BackgroundTransparency = 0
 				})	
-				Ninality.PlayAnimate(TextBox , SlowyTween , {
+				Nigginality.PlayAnimate(TextBox , SlowyTween , {
 					TextTransparency = 0.350
 				})	
-				Ninality.PlayAnimate(Icon , SlowyTween , {
+				Nigginality.PlayAnimate(Icon , SlowyTween , {
 					TextTransparency = 0.350
 				})	
 
-				Ninality.PlayAnimate(ConfigBthIcon , SlowyTween , {
+				Nigginality.PlayAnimate(ConfigBthIcon , SlowyTween , {
 					Rotation = 180
 				})	
 
 				shadow:Render(true)
 			else
-				Ninality.PlayAnimate(ConfigBthIcon , SlowyTween , {
+				Nigginality.PlayAnimate(ConfigBthIcon , SlowyTween , {
 					Rotation = 0
 				})
 
-				Ninality.PlayAnimate(ConfigMenu , SlowyTween , {
+				Nigginality.PlayAnimate(ConfigMenu , SlowyTween , {
 					BackgroundTransparency = 1,
 					Position = UDim2.fromOffset(ConfigFrame.AbsolutePosition.X + 110 , ConfigFrame.AbsolutePosition.Y + 96)
 				})	
 
-				Ninality.PlayAnimate(UIStroke_2 , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke_2 , SlowyTween , {
 					Transparency = 1
 				})	
 
-				Ninality.PlayAnimate(UIStroke , SlowyTween , {
+				Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 					Transparency = 1
 				})
-				Ninality.PlayAnimate(BasedLabel , SlowyTween , {
+				Nigginality.PlayAnimate(BasedLabel , SlowyTween , {
 					TextTransparency = 1
 				})	
-				Ninality.PlayAnimate(LineFrame , SlowyTween , {
+				Nigginality.PlayAnimate(LineFrame , SlowyTween , {
 					BackgroundTransparency = 1
 				})	
-				Ninality.PlayAnimate(TextInput , SlowyTween , {
+				Nigginality.PlayAnimate(TextInput , SlowyTween , {
 					BackgroundTransparency = 1
 				})	
-				Ninality.PlayAnimate(TextBox , SlowyTween , {
+				Nigginality.PlayAnimate(TextBox , SlowyTween , {
 					TextTransparency = 1
 				})	
-				Ninality.PlayAnimate(Icon , SlowyTween , {
+				Nigginality.PlayAnimate(Icon , SlowyTween , {
 					TextTransparency = 1
 				})	
 
@@ -5731,7 +5731,7 @@ function Ninality:CreateWindow(Config)
 			end;
 		end);
 
-		Ninality:AddSignal(ConfigMenu:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(ConfigMenu:GetPropertyChangedSignal('BackgroundTransparency'):Connect(LPH_NO_VIRTUALIZE(function()
 			if ConfigMenu.BackgroundTransparency > 0.9 then
 				ConfigMenu.Visible = false;
 				UIListLayout.Parent = nil;
@@ -5741,16 +5741,16 @@ function Ninality:CreateWindow(Config)
 				ConfigMenu.Visible = true;
 				UIListLayout.Parent = ConfigMenu
 
-				if Ninality.Global3DRenderMode then
-					ConfigMenu.Parent = Ninality.GlobalSurfaceGui;
+				if Nigginality.Global3DRenderMode then
+					ConfigMenu.Parent = Nigginality.GlobalSurfaceGui;
 				else
-					ConfigMenu.Parent = Ninality.ScreenGui;
+					ConfigMenu.Parent = Nigginality.ScreenGui;
 				end;
 			end
 		end)))
 
-		ConfigMenu.Name = Ninality.RandomString();
-		ConfigMenu.Parent = Ninality.ScreenGui;
+		ConfigMenu.Name = Nigginality.RandomString();
+		ConfigMenu.Parent = Nigginality.ScreenGui;
 		ConfigMenu.AnchorPoint = Vector2.new(0.5, 0)
 		ConfigMenu.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
 		ConfigMenu.BackgroundTransparency = 0.035
@@ -5773,7 +5773,7 @@ function Ninality:CreateWindow(Config)
 		UIStroke.Color = Color3.fromRGB(45, 48, 58)
 		UIStroke.Parent = ConfigMenu
 
-		InputFrame.Name = Ninality.RandomString();
+		InputFrame.Name = Nigginality.RandomString();
 		InputFrame.Parent = ConfigMenu
 		InputFrame.BackgroundColor3 = Color3.fromRGB(25, 27, 33)
 		InputFrame.BackgroundTransparency = 1.000
@@ -5782,7 +5782,7 @@ function Ninality:CreateWindow(Config)
 		InputFrame.Size = UDim2.new(1, 0, 0, 30)
 		InputFrame.ZIndex = 154
 
-		BasedLabel.Name = Ninality.RandomString();
+		BasedLabel.Name = Nigginality.RandomString();
 		BasedLabel.Parent = InputFrame
 		BasedLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		BasedLabel.BackgroundTransparency = 1.000
@@ -5798,7 +5798,7 @@ function Ninality:CreateWindow(Config)
 		BasedLabel.TextTransparency = 0.200
 		BasedLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-		LineFrame.Name = Ninality.RandomString();
+		LineFrame.Name = Nigginality.RandomString();
 		LineFrame.Parent = InputFrame
 		LineFrame.AnchorPoint = Vector2.new(0.5, 1)
 		LineFrame.BackgroundColor3 = Color3.fromRGB(45, 48, 58)
@@ -5809,7 +5809,7 @@ function Ninality:CreateWindow(Config)
 		LineFrame.Size = UDim2.new(1, -20, 0, 1)
 		LineFrame.ZIndex = 154
 
-		BasedHandler.Name = Ninality.RandomString();
+		BasedHandler.Name = Nigginality.RandomString();
 		BasedHandler.Parent = InputFrame
 		BasedHandler.AnchorPoint = Vector2.new(1, 0)
 		BasedHandler.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5827,20 +5827,20 @@ function Ninality:CreateWindow(Config)
 		UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
 		UIListLayout_2.Padding = UDim.new(0, 5)
 
-		Ninality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
+		Nigginality:AddSignal(UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
 			if #ConfigLib.Signals <= 0 then
-				Ninality.PlayAnimate(ConfigMenu , SlowyTween , {
+				Nigginality.PlayAnimate(ConfigMenu , SlowyTween , {
 					Size = UDim2.new(0, 220,0, UIListLayout.AbsoluteContentSize.Y + 0);
 				})
 			else
-				Ninality.PlayAnimate(ConfigMenu , SlowyTween , {
+				Nigginality.PlayAnimate(ConfigMenu , SlowyTween , {
 					Size = UDim2.new(0, 220,0, UIListLayout.AbsoluteContentSize.Y + 5);
 				})
 			end;
 
 		end)));
 
-		TextInput.Name = Ninality.RandomString();
+		TextInput.Name = Nigginality.RandomString();
 		TextInput.Parent = BasedHandler
 		TextInput.BackgroundColor3 = Color3.fromRGB(26, 28, 36)
 		TextInput.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5874,7 +5874,7 @@ function Ninality:CreateWindow(Config)
 		TextBox.TextTransparency = 0.350
 		TextBox.TextXAlignment = Enum.TextXAlignment.Left
 
-		LoadConfig.Name = Ninality.RandomString();
+		LoadConfig.Name = Nigginality.RandomString();
 		LoadConfig.Parent = BasedHandler
 		LoadConfig.BackgroundColor3 = Color3.fromRGB(39, 40, 49)
 		LoadConfig.BackgroundTransparency = 1.000
@@ -5884,7 +5884,7 @@ function Ninality:CreateWindow(Config)
 		LoadConfig.Size = UDim2.new(0, 20, 0, 18)
 		LoadConfig.ZIndex = 153
 
-		Icon.Name = Ninality.RandomString();
+		Icon.Name = Nigginality.RandomString();
 		Icon.Parent = LoadConfig
 		Icon.AnchorPoint = Vector2.new(0.5, 0.5)
 		Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5894,7 +5894,7 @@ function Ninality:CreateWindow(Config)
 		Icon.Position = UDim2.new(0.5, 0, 0.5, 0)
 		Icon.Size = UDim2.new(1, 0, 1, 0)
 		Icon.ZIndex = 153
-		Icon.FontFace = Ninality.BuiltInBold
+		Icon.FontFace = Nigginality.BuiltInBold
 		Icon.Text = "plus-large"
 		Icon.TextColor3 = Color3.fromRGB(223, 223, 223)
 		Icon.TextSize = 16.000
@@ -5910,7 +5910,7 @@ function Ninality:CreateWindow(Config)
 		local OpenButton = Instance.new("TextButton")
 		local UICorner = Instance.new("UICorner")
 
-		OpenButton.Name = Ninality.RandomString();
+		OpenButton.Name = Nigginality.RandomString();
 		OpenButton.Parent = ConfigFrame
 		OpenButton.AnchorPoint = Vector2.new(0, 0.5)
 		OpenButton.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
@@ -5936,7 +5936,7 @@ function Ninality:CreateWindow(Config)
 		local UpdateSize = LPH_NO_VIRTUALIZE(function()
 			local size = TextService:GetTextSize(ConfigName.Text , ConfigName.TextSize,ConfigName.Font,Vector2.new(math.huge,math.huge));
 
-			Ninality.PlayAnimate(ConfigFrame,SlowyTween , {
+			Nigginality.PlayAnimate(ConfigFrame,SlowyTween , {
 				Size = UDim2.fromOffset(size.X + 75, 30)
 			});
 		end);
@@ -5947,7 +5947,7 @@ function Ninality:CreateWindow(Config)
 			local ikc = {};
 			
 			local cd = 0;
-			for Flag,v in next , Ninality.Flags do
+			for Flag,v in next , Nigginality.Flags do
 				if v and v.GetValue then
 					local data = v:GetValue();
 
@@ -5973,17 +5973,17 @@ function Ninality:CreateWindow(Config)
 				cd += 1;
 			end;
 
-			return Ninality.Base64Encode(Encryption.new(HttpService:JSONEncode(ikc)));
+			return Nigginality.Base64Encode(Encryption.new(HttpService:JSONEncode(ikc)));
 		end;
 
 		function ConfigLib:LoadData(data)
-			local coded = HttpService:JSONDecode(Encryption.reverse(Ninality.Base64Decode(data)));
+			local coded = HttpService:JSONDecode(Encryption.reverse(Nigginality.Base64Decode(data)));
 
 			for i,v in next , coded do
 				if v.Idx then
-					if Ninality.Flags[v.Idx] then
+					if Nigginality.Flags[v.Idx] then
 						task.spawn(function()
-							Ninality.Flags[v.Idx]:SetValue(v.Value)
+							Nigginality.Flags[v.Idx]:SetValue(v.Value)
 						end)
 					end;
 				end;
@@ -6033,7 +6033,7 @@ function Ninality:CreateWindow(Config)
 				local BasedLabel = Instance.new("TextLabel")
 				local UIStroke = Instance.new("UIStroke")
 
-				ConfigItemFrame.Name = Ninality.RandomString();
+				ConfigItemFrame.Name = Nigginality.RandomString();
 				ConfigItemFrame.Parent = ConfigMenu
 				ConfigItemFrame.BackgroundColor3 = Color3.fromRGB(21, 20, 27)
 				ConfigItemFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6042,7 +6042,7 @@ function Ninality:CreateWindow(Config)
 				ConfigItemFrame.ZIndex = 153
 				ConfigItemFrame:SetAttribute('ConfigItem',true);
 
-				BasedHandler.Name = Ninality.RandomString();
+				BasedHandler.Name = Nigginality.RandomString();
 				BasedHandler.Parent = ConfigItemFrame
 				BasedHandler.AnchorPoint = Vector2.new(1, 0)
 				BasedHandler.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -6060,7 +6060,7 @@ function Ninality:CreateWindow(Config)
 				UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 				UIListLayout.Padding = UDim.new(0, 5)
 
-				DeleteConfig.Name = Ninality.RandomString();
+				DeleteConfig.Name = Nigginality.RandomString();
 				DeleteConfig.Parent = BasedHandler
 				DeleteConfig.BackgroundColor3 = Color3.fromRGB(39, 40, 49)
 				DeleteConfig.BackgroundTransparency = 1.000
@@ -6070,7 +6070,7 @@ function Ninality:CreateWindow(Config)
 				DeleteConfig.Size = UDim2.new(0, 20, 0, 18)
 				DeleteConfig.ZIndex = 153
 
-				Icon.Name = Ninality.RandomString();
+				Icon.Name = Nigginality.RandomString();
 				Icon.Parent = DeleteConfig
 				Icon.AnchorPoint = Vector2.new(0.5, 0.5)
 				Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -6080,7 +6080,7 @@ function Ninality:CreateWindow(Config)
 				Icon.Position = UDim2.new(0.5, 0, 0.5, 0)
 				Icon.Size = UDim2.new(1, 0, 1, 0)
 				Icon.ZIndex = 153
-				Icon.FontFace = Ninality.BuiltInBold
+				Icon.FontFace = Nigginality.BuiltInBold
 				Icon.Text = "trash-can"
 				Icon.TextColor3 = Color3.fromRGB(223, 223, 223)
 				Icon.TextSize = 16.000
@@ -6090,7 +6090,7 @@ function Ninality:CreateWindow(Config)
 				UICorner.CornerRadius = UDim.new(0, 4)
 				UICorner.Parent = DeleteConfig
 
-				LoadConfig.Name = Ninality.RandomString();
+				LoadConfig.Name = Nigginality.RandomString();
 				LoadConfig.Parent = BasedHandler
 				LoadConfig.BackgroundColor3 = Color3.fromRGB(39, 40, 49)
 				LoadConfig.BackgroundTransparency = 1.000
@@ -6100,7 +6100,7 @@ function Ninality:CreateWindow(Config)
 				LoadConfig.Size = UDim2.new(0, 20, 0, 18)
 				LoadConfig.ZIndex = 153
 
-				Icon_2.Name = Ninality.RandomString();
+				Icon_2.Name = Nigginality.RandomString();
 				Icon_2.Parent = LoadConfig
 				Icon_2.AnchorPoint = Vector2.new(0.5, 0.5)
 				Icon_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -6110,7 +6110,7 @@ function Ninality:CreateWindow(Config)
 				Icon_2.Position = UDim2.new(0.5, 0, 0.5, 0)
 				Icon_2.Size = UDim2.new(1, 0, 1, 0)
 				Icon_2.ZIndex = 153
-				Icon_2.FontFace = Ninality.BuiltInBold
+				Icon_2.FontFace = Nigginality.BuiltInBold
 				Icon_2.Text = "arrow-right-from-portrait-rectangle"
 				Icon_2.TextColor3 = Color3.fromRGB(223, 223, 223)
 				Icon_2.TextSize = 16.000
@@ -6123,7 +6123,7 @@ function Ninality:CreateWindow(Config)
 				UICorner_3.CornerRadius = UDim.new(0, 5)
 				UICorner_3.Parent = ConfigItemFrame
 
-				BasedLabel.Name = Ninality.RandomString();
+				BasedLabel.Name = Nigginality.RandomString();
 				BasedLabel.Parent = ConfigItemFrame
 				BasedLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				BasedLabel.BackgroundTransparency = 1.000
@@ -6145,43 +6145,43 @@ function Ninality:CreateWindow(Config)
 
 				local Render = LPH_NO_VIRTUALIZE(function(rst)
 					if rst then
-						Ninality.PlayAnimate(ConfigItemFrame,SlowyTween,{
+						Nigginality.PlayAnimate(ConfigItemFrame,SlowyTween,{
 							BackgroundTransparency = 0
 						})
 
-						Ninality.PlayAnimate(Icon,SlowyTween,{
+						Nigginality.PlayAnimate(Icon,SlowyTween,{
 							TextTransparency = 0.400
 						})
 
-						Ninality.PlayAnimate(Icon_2,SlowyTween,{
+						Nigginality.PlayAnimate(Icon_2,SlowyTween,{
 							TextTransparency = 0.400
 						})
 
-						Ninality.PlayAnimate(BasedLabel,SlowyTween,{
+						Nigginality.PlayAnimate(BasedLabel,SlowyTween,{
 							TextTransparency = 0.200
 						})
 
-						Ninality.PlayAnimate(UIStroke,SlowyTween,{
+						Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 							Transparency = 0.500
 						})
 					else
-						Ninality.PlayAnimate(ConfigItemFrame,SlowyTween,{
+						Nigginality.PlayAnimate(ConfigItemFrame,SlowyTween,{
 							BackgroundTransparency = 1
 						})
 
-						Ninality.PlayAnimate(Icon,SlowyTween,{
+						Nigginality.PlayAnimate(Icon,SlowyTween,{
 							TextTransparency = 1
 						})
 
-						Ninality.PlayAnimate(Icon_2,SlowyTween,{
+						Nigginality.PlayAnimate(Icon_2,SlowyTween,{
 							TextTransparency = 1
 						})
 
-						Ninality.PlayAnimate(BasedLabel,SlowyTween,{
+						Nigginality.PlayAnimate(BasedLabel,SlowyTween,{
 							TextTransparency = 1
 						})
 
-						Ninality.PlayAnimate(UIStroke,SlowyTween,{
+						Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 							Transparency = 1
 						})
 					end;
@@ -6191,18 +6191,18 @@ function Ninality:CreateWindow(Config)
 				table.insert(ConfigLib.Signals , ConfigSignal:Connect(Render));
 
 				table.insert(ConfigLib.Signals , ConfigItemFrame.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(UIStroke,SlowyTween,{
+					Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 						Transparency = 0.25
 					})
 				end)));
 
 				table.insert(ConfigLib.Signals , ConfigItemFrame.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(UIStroke,SlowyTween,{
+					Nigginality.PlayAnimate(UIStroke,SlowyTween,{
 						Transparency = 0.500
 					})
 				end)));
 
-				local deleter,signal = Ninality:CreateInput(DeleteConfig,function()
+				local deleter,signal = Nigginality:CreateInput(DeleteConfig,function()
 					if ConfigNameStr == "Default" then
 						Logging.new("trash-can","You can't delete default config!",3.5)
 						return;
@@ -6218,7 +6218,7 @@ function Ninality:CreateWindow(Config)
 				end);
 
 
-				local _,load_signal = Ninality:CreateInput(LoadConfig,function()
+				local _,load_signal = Nigginality:CreateInput(LoadConfig,function()
 					local path = Window.ConfigFolder..'/'..ConfigNameStr;
 
 					if isfile(path) then
@@ -6241,28 +6241,28 @@ function Ninality:CreateWindow(Config)
 				table.insert(ConfigLib.Signals , load_signal);
 
 				table.insert(ConfigLib.Signals , deleter.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(Icon,SlowyTween,{
+					Nigginality.PlayAnimate(Icon,SlowyTween,{
 						TextTransparency = 0.2,
 						TextColor3 = Color3.fromRGB(223, 125, 125)
 					})
 				end)))
 
 				table.insert(ConfigLib.Signals , deleter.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(Icon,SlowyTween,{
+					Nigginality.PlayAnimate(Icon,SlowyTween,{
 						TextTransparency = 0.400,
 						TextColor3 = Color3.fromRGB(223, 223, 223)
 					})
 				end)))
 
 				table.insert(ConfigLib.Signals , LoadConfig.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(Icon_2,SlowyTween,{
+					Nigginality.PlayAnimate(Icon_2,SlowyTween,{
 						TextTransparency = 0.2,
-						TextColor3 = Ninality.AccentColor
+						TextColor3 = Nigginality.AccentColor
 					})
 				end)))
 
 				table.insert(ConfigLib.Signals , LoadConfig.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-					Ninality.PlayAnimate(Icon_2,SlowyTween,{
+					Nigginality.PlayAnimate(Icon_2,SlowyTween,{
 						TextTransparency = 0.400,
 						TextColor3 = Color3.fromRGB(223, 223, 223)
 					})
@@ -6302,7 +6302,7 @@ function Ninality:CreateWindow(Config)
 			end;
 		end);
 
-		local hover_write = Ninality:CreateInput(ConfigIcon,function()
+		local hover_write = Nigginality:CreateInput(ConfigIcon,function()
 			local path = Window.ConfigFolder..'/'..(ConfigLib.SelectedConfig or "Default");
 
 			if isfile(path) then
@@ -6312,20 +6312,20 @@ function Ninality:CreateWindow(Config)
 			end;
 		end);
 
-		Ninality:AddSignal(hover_write.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(ConfigIcon,SlowyTween,{
+		Nigginality:AddSignal(hover_write.MouseEnter:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(ConfigIcon,SlowyTween,{
 				TextTransparency = 0.1
 			})
 		end)));
 
-		Ninality:AddSignal(hover_write.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(ConfigIcon,SlowyTween,{
+		Nigginality:AddSignal(hover_write.MouseLeave:Connect(LPH_NO_VIRTUALIZE(function()
+			Nigginality.PlayAnimate(ConfigIcon,SlowyTween,{
 				TextTransparency = 0.25
 			})
 		end)));
 
 
-		local mv = Ninality:CreateInput(LoadConfig , function()
+		local mv = Nigginality:CreateInput(LoadConfig , function()
 			local cfg_name = TextBox.Text;
 
 			if cfg_name and cfg_name:byte() and not cfg_name:find('/',1,true) and not cfg_name:find('\\',1,true) then
@@ -6345,14 +6345,14 @@ function Ninality:CreateWindow(Config)
 			end;
 		end);
 
-		Ninality:AddSignal(mv.MouseEnter:Connect(function()
-			Ninality.PlayAnimate(Icon , SlowyTween , {
+		Nigginality:AddSignal(mv.MouseEnter:Connect(function()
+			Nigginality.PlayAnimate(Icon , SlowyTween , {
 				TextTransparency = 0.1
 			})
 		end))
 
-		Ninality:AddSignal(mv.MouseLeave:Connect(function()
-			Ninality.PlayAnimate(Icon , SlowyTween , {
+		Nigginality:AddSignal(mv.MouseLeave:Connect(function()
+			Nigginality.PlayAnimate(Icon , SlowyTween , {
 				TextTransparency = 0.35
 			})
 		end))
@@ -6369,7 +6369,7 @@ function Ninality:CreateWindow(Config)
 
 			ConfigLib.UnsafeThread = UserInputService.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-					if not Ninality:IsMouseOverFrame(ConfigMenu) then
+					if not Nigginality:IsMouseOverFrame(ConfigMenu) then
 						if ConfigLib.UnsafeThread then
 							ConfigLib.UnsafeThread:Disconnect();
 							ConfigLib.UnsafeThread = nil;
@@ -6386,9 +6386,9 @@ function Ninality:CreateWindow(Config)
 
 	Window:_InitConfig();
 
-	local UserSettings = Ninality:CreateOptionWindow(BottomFrame , BottomFrame.ZIndex + 13);
+	local UserSettings = Nigginality:CreateOptionWindow(BottomFrame , BottomFrame.ZIndex + 13);
 	local reciveSignal;
-	Ninality:CreateInput(BottomFrame , LPH_NO_VIRTUALIZE(function()
+	Nigginality:CreateInput(BottomFrame , LPH_NO_VIRTUALIZE(function()
 		if reciveSignal then
 			reciveSignal:Disconnect();
 			reciveSignal = nil;	
@@ -6398,7 +6398,7 @@ function Ninality:CreateWindow(Config)
 
 		reciveSignal = UserInputService.InputBegan:Connect(function(Input)
 			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-				if not Ninality:IsMouseOverFrame(UserSettings.Root) and not Ninality:IsMouseOverFrame(BottomFrame) and not Ninality.IsMosueOverOtherFrame then
+				if not Nigginality:IsMouseOverFrame(UserSettings.Root) and not Nigginality:IsMouseOverFrame(BottomFrame) and not Nigginality.IsMosueOverOtherFrame then
 					if reciveSignal then
 						reciveSignal:Disconnect();
 						reciveSignal = nil;	
@@ -6411,7 +6411,7 @@ function Ninality:CreateWindow(Config)
 	end))
 
 	-- Close settings when UI is toggled off
-	Ninality.PopupCloseSignal:Connect(function()
+	Nigginality.PopupCloseSignal:Connect(function()
 		if UserSettings.Signal:GetValue() then
 			if reciveSignal then
 				reciveSignal:Disconnect();
@@ -6428,13 +6428,13 @@ function Ninality:CreateWindow(Config)
 		Icon = 'circle-x',
 		Name = 'Unload',
 		Callback = function()
-			Ninality:Unload();
+			Nigginality:Unload();
 		end,
 	});
 
 	function Window:SetAccount(Config)
-		Config = Ninality:ProcessParams(Config , {
-			Profile = Ninality.UserProfile,
+		Config = Nigginality:ProcessParams(Config , {
+			Profile = Nigginality.UserProfile,
 			Username = LocalPlayer.DisplayName,
 			Expires = "Never",
 		});
@@ -6460,7 +6460,7 @@ function Ninality:CreateWindow(Config)
 		Window.Size = newsize;
 
 		if Window.Signal:GetValue() then
-			Ninality.PlayAnimate(WindowFrame , VSlowTween , {
+			Nigginality.PlayAnimate(WindowFrame , VSlowTween , {
 				Size = Window.Size
 			})
 		end
@@ -6468,7 +6468,7 @@ function Ninality:CreateWindow(Config)
 
 	Window:SetAccount();
 
-	Ninality:AddSignal(UserInputService.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(value,ISTYPING)
+	Nigginality:AddSignal(UserInputService.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(value,ISTYPING)
 		if value.KeyCode == Window.Keybind or value.KeyCode.Name == Window.Keybind then
 			if not ISTYPING then
 				Window:ToggleInterface()
@@ -6481,7 +6481,7 @@ function Ninality:CreateWindow(Config)
 
 		-- Close all open dropdowns and settings when UI is hidden
 		if not Window.Signal:GetValue() then
-			Ninality.PopupCloseSignal:Fire();
+			Nigginality.PopupCloseSignal:Fire();
 		end;
 
 		if Window.__3DRender then
@@ -6490,18 +6490,18 @@ function Ninality:CreateWindow(Config)
 	end;
 
 	function Window:Watermark()
-		if Ninality.__WatermarkCache then
-			return Ninality.__WatermarkCache;
+		if Nigginality.__WatermarkCache then
+			return Nigginality.__WatermarkCache;
 		end;
 
 		local Watermark_lb = {};
 		local Watermark = Instance.new("Frame")
 		local UICorner = Instance.new("UICorner")
 		local UIListLayout = Instance.new("UIListLayout")
-		local Shadow = Ninality:CreateShadow(Watermark);
+		local Shadow = Nigginality:CreateShadow(Watermark);
 
-		Watermark.Name = Ninality.RandomString();
-		Watermark.Parent = Ninality.ScreenGui
+		Watermark.Name = Nigginality.RandomString();
+		Watermark.Parent = Nigginality.ScreenGui
 		Watermark.AnchorPoint = Vector2.new(1, 0)
 		Watermark.BackgroundColor3 = Color3.fromRGB(8, 8, 13)
 		Watermark.BackgroundTransparency = 0.200
@@ -6532,18 +6532,18 @@ function Ninality:CreateWindow(Config)
 				Watermark.Visible = false;
 				Watermark.Parent = nil;
 			else
-				Watermark.Parent = Ninality.ScreenGui
+				Watermark.Parent = Nigginality.ScreenGui
 				Watermark.Visible = true;
 			end;
 		end));
 
 		UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(LPH_NO_VIRTUALIZE(function()
-			Ninality.PlayAnimate(Watermark , SlowyTween , {
+			Nigginality.PlayAnimate(Watermark , SlowyTween , {
 				Size = UDim2.new(0, UIListLayout.AbsoluteContentSize.X + 5, 0, 30)
 			})
 		end));
 
-		Ninality.__WatermarkCache = Watermark_lb;
+		Nigginality.__WatermarkCache = Watermark_lb;
 
 		Shadow:Render(true);
 
@@ -6554,7 +6554,7 @@ function Ninality:CreateWindow(Config)
 			Watermark_lb.Status = value;
 
 			if value then
-				Ninality.PlayAnimate(Watermark,SlowyTween , {
+				Nigginality.PlayAnimate(Watermark,SlowyTween , {
 					BackgroundTransparency = 0.200
 				})
 
@@ -6564,7 +6564,7 @@ function Ninality:CreateWindow(Config)
 					pcall(v,true);
 				end;
 			else
-				Ninality.PlayAnimate(Watermark,SlowyTween , {
+				Nigginality.PlayAnimate(Watermark,SlowyTween , {
 					BackgroundTransparency = 1
 				})
 
@@ -6590,7 +6590,7 @@ function Ninality:CreateWindow(Config)
 			Frame.BorderSizePixel = 0
 			Frame.Size = UDim2.new(0, 50, 0, 30)
 
-			Content.Name = Ninality.RandomString();
+			Content.Name = Nigginality.RandomString();
 			Content.Parent = Frame
 			Content.AnchorPoint = Vector2.new(0, 0.5)
 			Content.BackgroundColor3 = Color3.fromRGB(186, 186, 186)
@@ -6607,7 +6607,7 @@ function Ninality:CreateWindow(Config)
 			Content.TextTransparency = 0.200
 			Content.TextXAlignment = Enum.TextXAlignment.Left
 
-			Icon.Name = Ninality.RandomString();
+			Icon.Name = Nigginality.RandomString();
 			Icon.Parent = Frame
 			Icon.AnchorPoint = Vector2.new(0, 0.5)
 			Icon.BackgroundColor3 = Color3.fromRGB(186, 186, 186)
@@ -6617,9 +6617,9 @@ function Ninality:CreateWindow(Config)
 			Icon.Position = UDim2.new(0, 10, 0.5, 0)
 			Icon.Size = UDim2.new(0, 20, 0, 20)
 			Icon.ZIndex = 17
-			Icon.FontFace = Ninality.BuiltInBold;
+			Icon.FontFace = Nigginality.BuiltInBold;
 			Icon.Text = IconStr
-			Icon.TextColor3 = Ninality.AccentColor
+			Icon.TextColor3 = Nigginality.AccentColor
 			Icon.TextSize = 18.000
 			Icon.TextTransparency = 0.250
 			Icon.TextWrapped = true
@@ -6628,11 +6628,11 @@ function Ninality:CreateWindow(Config)
 				local size = TextService:GetTextSize(Content.Text , Content.TextSize,Content.Font,Vector2.new(math.huge,math.huge))
 
 				if InnerBlock.Visible then
-					Ninality.PlayAnimate(Frame,VSlowTween,{
+					Nigginality.PlayAnimate(Frame,VSlowTween,{
 						Size = UDim2.new(0, size.X + 35, 0, 30)
 					})
 				else
-					Ninality.PlayAnimate(Frame,VSlowTween,{
+					Nigginality.PlayAnimate(Frame,VSlowTween,{
 						Size = UDim2.new(0, 0, 0, 30)
 					})
 				end;
@@ -6654,20 +6654,20 @@ function Ninality:CreateWindow(Config)
 
 			InnerBlock.SetRender = LPH_NO_VIRTUALIZE(function(value)
 				if value and InnerBlock.Visible then
-					Ninality.PlayAnimate(Content,SlowyTween , {
+					Nigginality.PlayAnimate(Content,SlowyTween , {
 						TextTransparency = 0.200
 					})
 
-					Ninality.PlayAnimate(Icon,SlowyTween , {
+					Nigginality.PlayAnimate(Icon,SlowyTween , {
 						TextTransparency = 0.250
 					})
 				else
 
-					Ninality.PlayAnimate(Content,SlowyTween , {
+					Nigginality.PlayAnimate(Content,SlowyTween , {
 						TextTransparency = 1
 					})
 
-					Ninality.PlayAnimate(Icon,SlowyTween , {
+					Nigginality.PlayAnimate(Icon,SlowyTween , {
 						TextTransparency = 1
 					})
 				end;
@@ -6682,7 +6682,7 @@ function Ninality:CreateWindow(Config)
 			end;
 
 			function InnerBlock:Input(func)
-				local c,s = Ninality:CreateInput(Frame,func);
+				local c,s = Nigginality:CreateInput(Frame,func);
 
 				return s;
 			end;
@@ -6698,17 +6698,17 @@ function Ninality:CreateWindow(Config)
 	return Window;
 end;
 
-function Ninality:CreateNotification()
-	if Ninality.__Notification_Cache then
-		return Ninality.__Notification_Cache;
+function Nigginality:CreateNotification()
+	if Nigginality.__Notification_Cache then
+		return Nigginality.__Notification_Cache;
 	end;
 
 	local Notifier = {};
 	local Notification = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
 
-	Notification.Name = Ninality.RandomString();
-	Notification.Parent = Ninality.ScreenGui;
+	Notification.Name = Nigginality.RandomString();
+	Notification.Parent = Nigginality.ScreenGui;
 	Notification.AnchorPoint = Vector2.new(1, 0)
 	Notification.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Notification.BackgroundTransparency = 1.000
@@ -6722,18 +6722,18 @@ function Ninality:CreateNotification()
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 0)
 
-	Ninality.__Notification_Cache = Notifier;
+	Nigginality.__Notification_Cache = Notifier;
 
 	function Notifier.new(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Title = "Notification",
 			Content = "Hello World!",
-			Logo = Ninality.GlobalLogo or "rbxasset://textures/ui/VerifiedBadgeNameIcon.png",
+			Logo = Nigginality.GlobalLogo or "rbxasset://textures/ui/VerifiedBadgeNameIcon.png",
 			Duration = 5,
 		});
 
-		if Ninality.__WatermarkCache then
-			Ninality.PlayAnimate(Notification,SlowyTween , {
+		if Nigginality.__WatermarkCache then
+			Nigginality.PlayAnimate(Notification,SlowyTween , {
 				Position = UDim2.new(1, -25, 0, 55)
 			});
 		end;
@@ -6746,9 +6746,9 @@ function Ninality:CreateNotification()
 		local UICorner_2 = Instance.new("UICorner")
 		local NotifyName = Instance.new("TextLabel")
 		local NotifyContent = Instance.new("TextLabel");
-		local shadow = Ninality:CreateShadow(NotifyFrame , true);
+		local shadow = Nigginality:CreateShadow(NotifyFrame , true);
 
-		ContainerFrame.Name = Ninality.RandomString();
+		ContainerFrame.Name = Nigginality.RandomString();
 		ContainerFrame.Parent = Notification
 		ContainerFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		ContainerFrame.BackgroundTransparency = 1.000
@@ -6756,7 +6756,7 @@ function Ninality:CreateNotification()
 		ContainerFrame.BorderSizePixel = 0
 		ContainerFrame.Size = UDim2.new(0, 0, 0, 100)
 
-		NotifyFrame.Name = Ninality.RandomString();
+		NotifyFrame.Name = Nigginality.RandomString();
 		NotifyFrame.Parent = ContainerFrame
 		NotifyFrame.AnchorPoint = Vector2.new(1, 0)
 		NotifyFrame.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
@@ -6775,7 +6775,7 @@ function Ninality:CreateNotification()
 		UIStroke.Color = Color3.fromRGB(45, 48, 58)
 		UIStroke.Parent = NotifyFrame
 
-		LogoImage.Name = Ninality.RandomString();
+		LogoImage.Name = Nigginality.RandomString();
 		LogoImage.Parent = NotifyFrame
 		LogoImage.AnchorPoint = Vector2.new(0, 0.5)
 		LogoImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -6786,12 +6786,12 @@ function Ninality:CreateNotification()
 		LogoImage.Size = UDim2.new(0, 35, 0, 35)
 		LogoImage.ZIndex = 131
 		LogoImage.Image = Config.Logo
-		LogoImage.ImageColor3 = Ninality.IconColor;
+		LogoImage.ImageColor3 = Nigginality.IconColor;
 
 		UICorner_2.CornerRadius = UDim.new(0, 7)
 		UICorner_2.Parent = LogoImage
 
-		NotifyName.Name = Ninality.RandomString();
+		NotifyName.Name = Nigginality.RandomString();
 		NotifyName.Parent = NotifyFrame
 		NotifyName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		NotifyName.BackgroundTransparency = 1.000
@@ -6806,7 +6806,7 @@ function Ninality:CreateNotification()
 		NotifyName.TextSize = 17.000
 		NotifyName.TextXAlignment = Enum.TextXAlignment.Left
 
-		NotifyContent.Name = Ninality.RandomString();
+		NotifyContent.Name = Nigginality.RandomString();
 		NotifyContent.Parent = NotifyFrame
 		NotifyContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		NotifyContent.BackgroundTransparency = 1.000
@@ -6830,7 +6830,7 @@ function Ninality:CreateNotification()
 		NotifyFrame.Size = UDim2.new(0, MainSize + 65, 0, 55);
 
 		shadow:Render(true)
-		Ninality.PlayAnimate(NotifyFrame , VSlowTween , {
+		Nigginality.PlayAnimate(NotifyFrame , VSlowTween , {
 			Position = UDim2.new(1, 0, 0, 0)
 		})
 
@@ -6838,37 +6838,37 @@ function Ninality:CreateNotification()
 
 		task.delay(Config.Duration or 5 , LPH_NO_VIRTUALIZE(function()
 
-			if Ninality.__WatermarkCache then
-				Ninality.PlayAnimate(Notification,SlowyTween , {
+			if Nigginality.__WatermarkCache then
+				Nigginality.PlayAnimate(Notification,SlowyTween , {
 					Position = UDim2.new(1, -25, 0, 55)
 				});
 			end;
 
 			shadow:Render(false)
 
-			Ninality.PlayAnimate(NotifyFrame , SlowyTween , {
+			Nigginality.PlayAnimate(NotifyFrame , SlowyTween , {
 				BackgroundTransparency = 1
 			})
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 1
 			})
 
-			Ninality.PlayAnimate(LogoImage , SlowyTween , {
+			Nigginality.PlayAnimate(LogoImage , SlowyTween , {
 				ImageTransparency = 1
 			})
 
-			Ninality.PlayAnimate(NotifyName , SlowyTween , {
+			Nigginality.PlayAnimate(NotifyName , SlowyTween , {
 				TextTransparency = 1
 			})
 
-			Ninality.PlayAnimate(NotifyContent , SlowyTween , {
+			Nigginality.PlayAnimate(NotifyContent , SlowyTween , {
 				TextTransparency = 1
 			})
 
 			task.wait(0.125);
 
-			Ninality.PlayAnimate(ContainerFrame , SlowyTween , {
+			Nigginality.PlayAnimate(ContainerFrame , SlowyTween , {
 				Size = UDim2.new(0, 0, 0, 0)
 			})
 
@@ -6881,29 +6881,29 @@ function Ninality:CreateNotification()
 	return Notifier;
 end;
 
-function Ninality:CreateLogger()
-	if Ninality.__LogSystem then
-		return 	Ninality.__LogSystem;
+function Nigginality:CreateLogger()
+	if Nigginality.__LogSystem then
+		return 	Nigginality.__LogSystem;
 	end;
 
 	local Logging = {};
 	local Log = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
 
-	Log.Name = Ninality.RandomString();
-	Log.Parent = Ninality.ScreenGui
+	Log.Name = Nigginality.RandomString();
+	Log.Parent = Nigginality.ScreenGui
 	Log.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Log.BackgroundTransparency = 1.000
 	Log.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Log.BorderSizePixel = 0
-	Log.Position = UDim2.new(0, 25, 0, 5 + math.abs(Ninality.ScreenGui.AbsolutePosition.Y))
+	Log.Position = UDim2.new(0, 25, 0, 5 + math.abs(Nigginality.ScreenGui.AbsolutePosition.Y))
 	Log.Size = UDim2.new(0, 25, 0, 25)
 
 	UIListLayout.Parent = Log
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 12)
 
-	Ninality.__LogSystem = Logging;
+	Nigginality.__LogSystem = Logging;
 
 	function Logging.new(IconStr: string , Message: string , Duration: number)
 		Duration = Duration or 3;
@@ -6917,9 +6917,9 @@ function Ninality:CreateLogger()
 		local Line = Instance.new("Frame")
 		local UICorner_2 = Instance.new("UICorner")
 		local Icon = Instance.new("TextLabel")
-		local Shadow = Ninality:CreateShadow(LogFrame , true);
+		local Shadow = Nigginality:CreateShadow(LogFrame , true);
 
-		LogFrame.Name = Ninality.RandomString();
+		LogFrame.Name = Nigginality.RandomString();
 		LogFrame.Parent = Log
 		LogFrame.AnchorPoint = Vector2.new(0.5, 0)
 		LogFrame.BackgroundColor3 = Color3.fromRGB(20, 22, 27)
@@ -6938,7 +6938,7 @@ function Ninality:CreateLogger()
 		UIStroke.Color = Color3.fromRGB(45, 48, 58)
 		UIStroke.Parent = LogFrame
 
-		LogContent.Name = Ninality.RandomString();
+		LogContent.Name = Nigginality.RandomString();
 		LogContent.Parent = LogFrame
 		LogContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		LogContent.BackgroundTransparency = 1.000
@@ -6954,10 +6954,10 @@ function Ninality:CreateLogger()
 		LogContent.TextTransparency = 1--0.250
 		LogContent.TextXAlignment = Enum.TextXAlignment.Left
 
-		Line.Name = Ninality.RandomString();
+		Line.Name = Nigginality.RandomString();
 		Line.Parent = LogFrame
 		Line.AnchorPoint = Vector2.new(0, 0.5)
-		Line.BackgroundColor3 = Ninality.AccentColor
+		Line.BackgroundColor3 = Nigginality.AccentColor
 		Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		Line.BackgroundTransparency = 1 --0
 		Line.BorderSizePixel = 0
@@ -6968,7 +6968,7 @@ function Ninality:CreateLogger()
 		UICorner_2.CornerRadius = UDim.new(0, 4)
 		UICorner_2.Parent = Line
 
-		Icon.Name = Ninality.RandomString();
+		Icon.Name = Nigginality.RandomString();
 		Icon.Parent = LogFrame
 		Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Icon.BackgroundTransparency = 1.000
@@ -6977,7 +6977,7 @@ function Ninality:CreateLogger()
 		Icon.Position = UDim2.new(0, 7, 0, 3)
 		Icon.Size = UDim2.new(0, 15, 0, 15)
 		Icon.ZIndex = 133
-		Icon.FontFace = Ninality.BuiltInBold
+		Icon.FontFace = Nigginality.BuiltInBold
 		Icon.Text = IconStr
 		Icon.TextColor3 = Color3.fromRGB(223, 223, 223)
 		Icon.TextSize = 13.000
@@ -6986,7 +6986,7 @@ function Ninality:CreateLogger()
 
 		local size = TextService:GetTextSize(LogContent.Text,LogContent.TextSize,LogContent.Font,Vector2.new(math.huge,math.huge));
 
-		Ninality.PlayAnimate(LogFrame , SlowyTween , {
+		Nigginality.PlayAnimate(LogFrame , SlowyTween , {
 			Size = UDim2.new(0, size.X + 35, 0, 20),
 			BackgroundTransparency =  0.075
 		});
@@ -6994,19 +6994,19 @@ function Ninality:CreateLogger()
 		task.delay(0.15,LPH_NO_VIRTUALIZE(function()
 			Shadow:Render(true);
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 0.650
 			});
 
-			Ninality.PlayAnimate(LogContent , SlowyTween , {
+			Nigginality.PlayAnimate(LogContent , SlowyTween , {
 				TextTransparency = 0.25
 			});
 
-			Ninality.PlayAnimate(Line , SlowyTween , {
+			Nigginality.PlayAnimate(Line , SlowyTween , {
 				BackgroundTransparency = 0
 			});
 
-			Ninality.PlayAnimate(Icon , SlowyTween , {
+			Nigginality.PlayAnimate(Icon , SlowyTween , {
 				TextTransparency = 0.25
 			});
 
@@ -7014,23 +7014,23 @@ function Ninality:CreateLogger()
 
 			Shadow:Render(false);
 
-			Ninality.PlayAnimate(LogFrame , SlowyTween , {
+			Nigginality.PlayAnimate(LogFrame , SlowyTween , {
 				BackgroundTransparency =  1
 			});
 
-			Ninality.PlayAnimate(UIStroke , SlowyTween , {
+			Nigginality.PlayAnimate(UIStroke , SlowyTween , {
 				Transparency = 1
 			});
 
-			Ninality.PlayAnimate(LogContent , SlowyTween , {
+			Nigginality.PlayAnimate(LogContent , SlowyTween , {
 				TextTransparency = 1
 			});
 
-			Ninality.PlayAnimate(Line , SlowyTween , {
+			Nigginality.PlayAnimate(Line , SlowyTween , {
 				BackgroundTransparency = 1
 			});
 
-			Ninality.PlayAnimate(Icon , SlowyTween , {
+			Nigginality.PlayAnimate(Icon , SlowyTween , {
 				TextTransparency = 1
 			});
 
@@ -7043,12 +7043,12 @@ function Ninality:CreateLogger()
 	return Logging
 end;
 
-function Ninality:CreateIndicator()
+function Nigginality:CreateIndicator()
 	local IndicatorFrame = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
 
-	IndicatorFrame.Name = Ninality.RandomString();
-	IndicatorFrame.Parent = Ninality.ScreenGui;
+	IndicatorFrame.Name = Nigginality.RandomString();
+	IndicatorFrame.Parent = Nigginality.ScreenGui;
 	IndicatorFrame.AnchorPoint = Vector2.new(0, 0.5)
 	IndicatorFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	IndicatorFrame.BackgroundTransparency = 1.000
@@ -7073,7 +7073,7 @@ function Ninality:CreateIndicator()
 	Indicators.Root = IndicatorFrame;
 
 	function Indicators.new(Config)
-		Config = Ninality:ProcessParams(Config , {
+		Config = Nigginality:ProcessParams(Config , {
 			Name = "Indicator",
 			Icon = 'crosshairs',
 			Color = 'Red',
@@ -7091,9 +7091,9 @@ function Ninality:CreateIndicator()
 		local UIGradient = Instance.new("UIGradient")
 		local Icon = Instance.new("TextLabel")
 		local Content = Instance.new("TextLabel")
-		local Shadow = Ninality:CreateShadow(IndicatorItem);
+		local Shadow = Nigginality:CreateShadow(IndicatorItem);
 
-		IndicatorItem.Name = Ninality.RandomString();
+		IndicatorItem.Name = Nigginality.RandomString();
 		IndicatorItem.BackgroundColor3 = Color3.fromRGB(8, 8, 13)
 		IndicatorItem.BackgroundTransparency = 1
 		IndicatorItem.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -7116,7 +7116,7 @@ function Ninality:CreateIndicator()
 		UICorner.CornerRadius = UDim.new(0, 25)
 		UICorner.Parent = IndicatorItem
 
-		Line.Name = Ninality.RandomString();
+		Line.Name = Nigginality.RandomString();
 		Line.Parent = IndicatorItem
 		Line.AnchorPoint = Vector2.new(0, 0.5)
 		Line.BackgroundColor3 = Color3.fromRGB(186, 186, 186)
@@ -7134,7 +7134,7 @@ function Ninality:CreateIndicator()
 		UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(0.50, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
 		UIGradient.Parent = Line
 
-		Icon.Name = Ninality.RandomString();
+		Icon.Name = Nigginality.RandomString();
 		Icon.Parent = IndicatorItem
 		Icon.AnchorPoint = Vector2.new(0, 0.5)
 		Icon.BackgroundColor3 = Color3.fromRGB(186, 186, 186)
@@ -7144,14 +7144,14 @@ function Ninality:CreateIndicator()
 		Icon.Position = UDim2.new(0, 10, 0.5, 0)
 		Icon.Size = UDim2.new(0, 25, 0, 25)
 		Icon.ZIndex = 17
-		Icon.FontFace = Ninality.BuiltInBold;
+		Icon.FontFace = Nigginality.BuiltInBold;
 		Icon.Text = Config.Icon
 		Icon.TextColor3 = Color3.fromRGB(186, 186, 186)
 		Icon.TextSize = 21.000
 		Icon.TextTransparency = 1
 		Icon.TextWrapped = true
 
-		Content.Name = Ninality.RandomString();
+		Content.Name = Nigginality.RandomString();
 		Content.Parent = IndicatorItem
 		Content.AnchorPoint = Vector2.new(0, 0.5)
 		Content.BackgroundColor3 = Color3.fromRGB(186, 186, 186)
@@ -7171,7 +7171,7 @@ function Ninality:CreateIndicator()
 		Indicator.Update = LPH_NO_VIRTUALIZE(function()
 			local text = TextService:GetTextSize(Content.Text,Content.TextSize , Content.Font , Vector2.new(math.huge,math.huge));
 
-			Ninality.PlayAnimate(IndicatorItem , SlowyTween , {
+			Nigginality.PlayAnimate(IndicatorItem , SlowyTween , {
 				Size = UDim2.new(0, text.X + 60, 0, 40);
 			})
 		end);
@@ -7180,42 +7180,42 @@ function Ninality:CreateIndicator()
 			Indicator.Visible = value;
 
 			if value then
-				Ninality.PlayAnimate(IndicatorItem , SlowyTween , {
+				Nigginality.PlayAnimate(IndicatorItem , SlowyTween , {
 					BackgroundTransparency = 0.200
 				});
 
-				Ninality.PlayAnimate(Line , SlowyTween , {
+				Nigginality.PlayAnimate(Line , SlowyTween , {
 					BackgroundTransparency = 0,
 					BackgroundColor3 = Indicators.Color[Indicator.CurrentColor]
 				});
 
-				Ninality.PlayAnimate(Icon , VSlowTween , {
+				Nigginality.PlayAnimate(Icon , VSlowTween , {
 					TextTransparency = 0.250,
 					TextColor3 = Indicators.Color[Indicator.CurrentColor]
 				});
 
-				Ninality.PlayAnimate(Content , VSlowTween , {
+				Nigginality.PlayAnimate(Content , VSlowTween , {
 					TextTransparency = 0.2,
 					TextColor3 = Indicators.Color[Indicator.CurrentColor]
 				});
 
 				Shadow:Render(true);
 			else
-				Ninality.PlayAnimate(IndicatorItem , SlowyTween , {
+				Nigginality.PlayAnimate(IndicatorItem , SlowyTween , {
 					BackgroundTransparency = 1
 				});
 
-				Ninality.PlayAnimate(Line , SlowyTween , {
+				Nigginality.PlayAnimate(Line , SlowyTween , {
 					BackgroundTransparency = 1,
 					BackgroundColor3 = Indicators.Color[Indicator.CurrentColor]
 				});
 
-				Ninality.PlayAnimate(Icon , VSlowTween , {
+				Nigginality.PlayAnimate(Icon , VSlowTween , {
 					TextTransparency = 1,
 					TextColor3 = Indicators.Color[Indicator.CurrentColor]
 				});
 
-				Ninality.PlayAnimate(Content , VSlowTween , {
+				Nigginality.PlayAnimate(Content , VSlowTween , {
 					TextTransparency = 1,
 					TextColor3 = Indicators.Color[Indicator.CurrentColor]
 				});
@@ -7251,30 +7251,30 @@ function Ninality:CreateIndicator()
 	return Indicators;
 end;
 
-Ninality.OnUnload = nil; -- Set this to a function to run cleanup before unloading
+Nigginality.OnUnload = nil; -- Set this to a function to run cleanup before unloading
 
-function Ninality:Unload()
-	if not Ninality.UnloadEnabled then
+function Nigginality:Unload()
+	if not Nigginality.UnloadEnabled then
 		return;
 	end;
 
 	-- Fire the user's cleanup callback first
-	if typeof(Ninality.OnUnload) == "function" then
-		pcall(Ninality.OnUnload);
+	if typeof(Nigginality.OnUnload) == "function" then
+		pcall(Nigginality.OnUnload);
 	end;
 
 	-- Disconnect all registered signals
-	for i,v in next , Ninality.GlobalSignals do
+	for i,v in next , Nigginality.GlobalSignals do
 		pcall(v.Disconnect, v);
 	end;
 
-	table.clear(Ninality.GlobalSignals);
-	table.clear(Ninality.Flags);
+	table.clear(Nigginality.GlobalSignals);
+	table.clear(Nigginality.Flags);
 
 	-- Destroy the UI
-	if Ninality.ScreenGui then
-		Ninality.ScreenGui:Destroy();
+	if Nigginality.ScreenGui then
+		Nigginality.ScreenGui:Destroy();
 	end;
 end;
 
-return Ninality;
+return Nigginality;
