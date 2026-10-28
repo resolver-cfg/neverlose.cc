@@ -3605,6 +3605,21 @@ function Nigginality:RegisiterItem(Frame: Frame , Signel)
 	local idx = {};
 	local LayerIndex = Frame.ZIndex;
 
+	function idx:AddDivider()
+		local Divider = Instance.new("Frame")
+
+		Divider.Name = Nigginality.RandomString();
+		Divider.BackgroundColor3 = Color3.fromRGB(45, 48, 58);
+		Divider.BackgroundTransparency = 0.35;
+		Divider.BorderColor3 = Color3.fromRGB(0, 0, 0);
+		Divider.BorderSizePixel = 0;
+		Divider.Size = UDim2.new(1, -20, 0, 1);
+		Divider.ZIndex = LayerIndex + 11;
+		Divider.Parent = Frame;
+
+		return Divider;
+	end;
+
 	function idx:AddLabel(Name: string,Warp: boolean)
 		local BasedFrame = Instance.new("Frame")
 		local BasedLabel = Instance.new("TextLabel")
