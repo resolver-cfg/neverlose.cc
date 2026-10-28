@@ -26,7 +26,21 @@
     -- All credits to the rightful owner of the UI library, 4lpaca
 ]]
 
-local Nigginality         = loadstring(game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Neverlose..cc"))()
+local librarySource
+
+if readfile then
+    local ok, content = pcall(readfile, [[C:/Users/14ahm/Desktop/Nigginality/Nigginality/Neverlose.cc/Source.lua]])
+
+    if ok then
+        librarySource = content
+    end
+end
+
+if not librarySource then
+    librarySource = game:HttpGet("https://raw.githubusercontent.com/resolver-cfg/neverlose.cc/refs/heads/main/Neverlose..cc")
+end
+
+local Nigginality         = loadstring(librarySource)()
 
 -- ─────────────────────────────────────────────────────────────
 -- Cleanup on unload
@@ -179,6 +193,10 @@ Raging:AddLabel("Field of View"):AddSlider({
     Callback = print,
     Flag     = "fov",
 })
+
+if Raging.AddDivider then
+    Raging:AddDivider()
+end
 
 -- ── SELECTION ─────────────────────────────────────────────────
 
