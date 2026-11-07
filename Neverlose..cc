@@ -1762,7 +1762,7 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 			Default = false,
 			Flag = nil,
 			Callback = EmptyFunction,
-			Keybind = nil, -- Optional: Enum.KeyCode.X or nil
+			InlineKeybind = false,
 		});
 
 		local Toggle = Instance.new("Frame")
@@ -1882,7 +1882,7 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 		-- While a key is bound, pressing that key in-game will fire the toggle.
 		-- Credit for keybind flow inspiration: violin-suzutsuki/LinoriaLib
 		-- ──────────────────────────────────────────────────────────────────────
-		do
+		if Config.InlineKeybind or Config.Keybind then
 			-- Resolve the initial key name string
 			local function ResolveKeyName(k)
 				if k == nil then
@@ -2603,11 +2603,17 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 
 	function handle:AddKeybind(Config)
 		Config = Nigginality:ProcessParams(Config,{
-			Default = nil,
+			Default = "None",
 			Blacklist = {},
 			Callback = EmptyFunction,
-			Flag = nil
+			Flag = nil,
+			Toggle = nil,
+			Mode = "Toggle",
 		});
+
+		if Config.Toggle and (type(Config.Toggle.SetValue) ~= "function" or type(Config.Toggle.GetValue) ~= "function") then
+			Config.Toggle = nil;
+		end;
 
 		local KeybindLib = {};
 
@@ -2695,6 +2701,7 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 		Signal:Connect(KeybindLib.SetRender);
 
 		local IsBinding = false;
+		local IgnoreUntil = 0;
 		Nigginality:CreateInput(Keybind , function()
 			if IsBinding then
 				return;
@@ -2711,7 +2718,9 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 			while not Selected do
 				local Key = UserInputService.InputBegan:Wait();
 
-				if Key.KeyCode ~= Enum.KeyCode.Unknown and not IsBlacklist(Key.KeyCode) and not IsBlacklist(Key.KeyCode.Name) then
+				if Key.KeyCode == Enum.KeyCode.Escape then
+					Selected = "None";
+				elseif Key.KeyCode ~= Enum.KeyCode.Unknown and not IsBlacklist(Key.KeyCode) and not IsBlacklist(Key.KeyCode.Name) then
 					Selected = Key.KeyCode;
 				else
 					if Key.UserInputType == Enum.UserInputType.MouseButton1 and not IsBlacklist(Enum.UserInputType.MouseButton1) and not IsBlacklist("M1B") then
@@ -2728,6 +2737,8 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 
 			Config.Default = KeyName;
 
+			IgnoreUntil = os.clock() + 0.25;
+
 			ValueLabel.Text = Nigginality:KeyCodeToStr(KeyName);
 
 			KeybindLib:Update();
@@ -2735,13 +2746,63 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 			Config.Callback(KeyName)
 		end)
 
+		Nigginality:AddSignal(UserInputService.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input, GameProcessed)
+			if GameProcessed or IsBinding or not Config.Toggle then
+				return;
+			end;
+
+			if os.clock() < IgnoreUntil then
+				return;
+			end;
+
+			local Key = Config.Default;
+
+			if not Key or Key == "None" then
+				return;
+			end;
+
+			local Pressed = (Key == "M1B" and Input.UserInputType == Enum.UserInputType.MouseButton1)
+				or (Key == "M2B" and Input.UserInputType == Enum.UserInputType.MouseButton2)
+				or (Input.UserInputType == Enum.UserInputType.Keyboard and Input.KeyCode.Name == Key);
+
+			if Pressed then
+				-- // Keybind
+				if Config.Mode == "Hold" then
+					Config.Toggle:SetValue(true);
+				else
+					Config.Toggle:SetValue(not Config.Toggle:GetValue());
+				end;
+				-- // Keybind
+			end;
+		end)));
+
+		Nigginality:AddSignal(UserInputService.InputEnded:Connect(LPH_NO_VIRTUALIZE(function(Input, GameProcessed)
+			if GameProcessed or IsBinding or not Config.Toggle or Config.Mode ~= "Hold" then
+				return;
+			end;
+
+			local Key = Config.Default;
+
+			if not Key or Key == "None" then
+				return;
+			end;
+
+			local Released = (Key == "M1B" and Input.UserInputType == Enum.UserInputType.MouseButton1)
+				or (Key == "M2B" and Input.UserInputType == Enum.UserInputType.MouseButton2)
+				or (Input.UserInputType == Enum.UserInputType.Keyboard and Input.KeyCode.Name == Key);
+
+			if Released then
+				Config.Toggle:SetValue(false);
+			end;
+		end)));
+
 		function KeybindLib:GetValue()
 			return Config.Default;
 		end;
 
 		function KeybindLib:SetValue(v)
-			Config.Default = v;
-			ValueLabel.Text = Nigginality:KeyCodeToStr(v);
+			Config.Default = v or "None";
+			ValueLabel.Text = Nigginality:KeyCodeToStr(Config.Default);
 			KeybindLib:Update();
 			Config.Callback(Config.Default);
 		end;
