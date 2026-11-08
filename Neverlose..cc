@@ -1723,11 +1723,14 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 		end;
 
 		local hue = (os.clock() * 0.12) % 1;
-		local color = Color3.fromHSV(hue, ColorPickerLib.S, ColorPickerLib.V);
+		local color = Color3.fromHSV(hue, 1, 1);
 
 		ColorPickerLib.H = hue;
+		ColorPickerLib.S = 1;
+		ColorPickerLib.V = 1;
 		SaViMap.BackgroundColor3 = Color3.fromHSV(hue, 1, 1);
 		ColorMapSelection.Position = UDim2.fromScale(hue, 0.5);
+		ColorZoneSelection.Position = UDim2.fromScale(1, 0);
 		RGBLabel.Text = "#" .. color:ToHex();
 		ColorPickerLib.Callback(color);
 	end));
