@@ -1758,10 +1758,9 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 			while (UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or ColorPickerLib.IsHold) do
 				task.wait();
 
-				local mouse = UserInputService:GetMouseLocation();
 				local ColorY = ColorMap.AbsolutePosition.X;
 				local ColorYM = ColorY + ColorMap.AbsoluteSize.X;
-				local Value = math.clamp(mouse.X, ColorY, ColorYM);
+				local Value = math.clamp(Mouse.X, ColorY, ColorYM);
 				local Code = ((Value - ColorY) / (ColorYM - ColorY));
 
 				ColorPickerLib.H = Code;
@@ -1780,13 +1779,12 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 			while (UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or ColorPickerLib.IsHold) do
 				task.wait();
 
-				local mouse = UserInputService:GetMouseLocation();
 				local PosX = SaViMap.AbsolutePosition.X;
 				local ScaleX = PosX + SaViMap.AbsoluteSize.X;
 				local PosY = SaViMap.AbsolutePosition.Y;
 				local ScaleY = PosY + SaViMap.AbsoluteSize.Y;
-				local Value = math.clamp(mouse.X, PosX, ScaleX);
-				local Vals = math.clamp(mouse.Y, PosY, ScaleY);
+				local Value = math.clamp(Mouse.X, PosX, ScaleX);
+				local Vals = math.clamp(Mouse.Y, PosY, ScaleY);
 
 				ColorPickerLib.S = (Value - PosX) / (ScaleX - PosX);
 				ColorPickerLib.V = 1 - ((Vals - PosY) / (ScaleY - PosY));
