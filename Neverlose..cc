@@ -1677,6 +1677,7 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	ColorPickerLib.V = 1;
 	ColorPickerLib.Callback = EmptyFunction;
 	ColorPickerLib.Rainbow = false;
+	ColorPickerLib.Dragging = false;
 
 	function ColorPickerLib:Update()
 		local RealColor = Color3.fromHSV(ColorPickerLib.H , ColorPickerLib.S , ColorPickerLib.V);
@@ -1711,6 +1712,12 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	Nigginality:AddSignal(RainbowButton.MouseButton1Click:Connect(function()
 		ColorPickerLib.Rainbow = not ColorPickerLib.Rainbow;
 		RainbowButton.Text = ColorPickerLib.Rainbow and "Rainbow On" or "Rainbow";
+
+		if ColorPickerLib.Rainbow then
+			ColorPickerLib.S = 1;
+			ColorPickerLib.V = 1;
+			ColorPickerLib:Update();
+		end;
 	end));
 
 	Nigginality:AddSignal(RunService.RenderStepped:Connect(function()
@@ -1719,14 +1726,11 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 		end;
 
 		local hue = (os.clock() * 0.12) % 1;
-		local color = Color3.fromHSV(hue, 1, 1);
+		local color = Color3.fromHSV(hue, ColorPickerLib.S, ColorPickerLib.V);
 
 		ColorPickerLib.H = hue;
-		ColorPickerLib.S = 1;
-		ColorPickerLib.V = 1;
 		SaViMap.BackgroundColor3 = Color3.fromHSV(hue, 1, 1);
 		ColorMapSelection.Position = UDim2.fromScale(hue, 0.5);
-		ColorZoneSelection.Position = UDim2.fromScale(1, 0);
 		RGBLabel.Text = "#" .. color:ToHex();
 		ColorPickerLib.Callback(color);
 	end));
@@ -1751,46 +1755,95 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 		end;
 	end));
 
+	local function updateColorMap(x)
+		local ColorY = ColorMap.AbsolutePosition.X;
+		local ColorYM = ColorY + ColorMap.AbsoluteSize.X;
+		local Value = math.clamp(x, ColorY, ColorYM);
+
+		ColorPickerLib.H = (Value - ColorY) / (ColorYM - ColorY);
+		ColorPickerLib:Update();
+	end;
+
 	local function beginColorMapDrag(Input)
-		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-			ColorPickerLib.IsHold = true;
-
-			while (UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or ColorPickerLib.IsHold) do
-				task.wait();
-
-				local ColorY = ColorMap.AbsolutePosition.X;
-				local ColorYM = ColorY + ColorMap.AbsoluteSize.X;
-				local Value = math.clamp(Mouse.X, ColorY, ColorYM);
-				local Code = ((Value - ColorY) / (ColorYM - ColorY));
-
-				ColorPickerLib.H = Code;
-				ColorPickerLib:Update();
-			end;
+		if Input.UserInputType ~= Enum.UserInputType.MouseButton1 and Input.UserInputType ~= Enum.UserInputType.Touch then
+			return;
 		end;
+
+		if ColorPickerLib.Dragging then
+			return;
+		end;
+
+		ColorPickerLib.Dragging = true;
+		ColorPickerLib.IsHold = true;
+
+		updateColorMap(Input.Position.X);
+
+		local changedConnection;
+		local endedConnection;
+
+		changedConnection = UserInputService.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				updateColorMap(input.Position.X);
+			end;
+		end);
+
+		endedConnection = UserInputService.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				ColorPickerLib.IsHold = false;
+				ColorPickerLib.Dragging = false;
+				changedConnection:Disconnect();
+				endedConnection:Disconnect();
+			end;
+		end);
 	end;
 
 	Nigginality:AddSignal(ColorMap.InputBegan:Connect(beginColorMapDrag));
 	Nigginality:AddSignal(ColorMapSelection.InputBegan:Connect(beginColorMapDrag));
 
+	local function updateSaVi(x, y)
+		local PosX = SaViMap.AbsolutePosition.X;
+		local ScaleX = PosX + SaViMap.AbsoluteSize.X;
+		local PosY = SaViMap.AbsolutePosition.Y;
+		local ScaleY = PosY + SaViMap.AbsoluteSize.Y;
+		local Value = math.clamp(x, PosX, ScaleX);
+		local Vals = math.clamp(y, PosY, ScaleY);
+
+		ColorPickerLib.S = (Value - PosX) / (ScaleX - PosX);
+		ColorPickerLib.V = 1 - ((Vals - PosY) / (ScaleY - PosY));
+		ColorPickerLib:Update();
+	end;
+
 	local function beginSaViDrag(Input)
-		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-			ColorPickerLib.IsHold = true;
-
-			while (UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or ColorPickerLib.IsHold) do
-				task.wait();
-
-				local PosX = SaViMap.AbsolutePosition.X;
-				local ScaleX = PosX + SaViMap.AbsoluteSize.X;
-				local PosY = SaViMap.AbsolutePosition.Y;
-				local ScaleY = PosY + SaViMap.AbsoluteSize.Y;
-				local Value = math.clamp(Mouse.X, PosX, ScaleX);
-				local Vals = math.clamp(Mouse.Y, PosY, ScaleY);
-
-				ColorPickerLib.S = (Value - PosX) / (ScaleX - PosX);
-				ColorPickerLib.V = 1 - ((Vals - PosY) / (ScaleY - PosY));
-				ColorPickerLib:Update();
-			end;
+		if Input.UserInputType ~= Enum.UserInputType.MouseButton1 and Input.UserInputType ~= Enum.UserInputType.Touch then
+			return;
 		end;
+
+		if ColorPickerLib.Dragging then
+			return;
+		end;
+
+		ColorPickerLib.Dragging = true;
+		ColorPickerLib.IsHold = true;
+
+		updateSaVi(Input.Position.X, Input.Position.Y);
+
+		local changedConnection;
+		local endedConnection;
+
+		changedConnection = UserInputService.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				updateSaVi(input.Position.X, input.Position.Y);
+			end;
+		end);
+
+		endedConnection = UserInputService.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				ColorPickerLib.IsHold = false;
+				ColorPickerLib.Dragging = false;
+				changedConnection:Disconnect();
+				endedConnection:Disconnect();
+			end;
+		end);
 	end;
 
 	Nigginality:AddSignal(SaViMap.InputBegan:Connect(beginSaViDrag));
