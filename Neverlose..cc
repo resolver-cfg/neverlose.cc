@@ -1455,10 +1455,58 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	SaViMap.Position = UDim2.new(0.5, 0, 0, 5)
 	SaViMap.Size = UDim2.new(0, 185, 0, 185)
 	SaViMap.ZIndex = ZIndex + 126
-	SaViMap.Image = Nigginality.ImageColorMapping -- UNSAFE IMAGE
+	SaViMap.Image = "" -- gradient is built from frames below
+	SaViMap.ClipsDescendants = false
 
 	UICorner_2.CornerRadius = UDim.new(0, 5)
 	UICorner_2.Parent = SaViMap
+
+	local SaturationOverlay = Instance.new("Frame")
+	local SaturationGradient = Instance.new("UIGradient")
+	local SaturationCorner = Instance.new("UICorner")
+	local ValueOverlay = Instance.new("Frame")
+	local ValueGradient = Instance.new("UIGradient")
+	local ValueCorner = Instance.new("UICorner")
+
+	SaturationOverlay.Name = Nigginality.RandomString();
+	SaturationOverlay.Parent = SaViMap
+	SaturationOverlay.AnchorPoint = Vector2.new(0, 0)
+	SaturationOverlay.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SaturationOverlay.BackgroundTransparency = 0
+	SaturationOverlay.BorderSizePixel = 0
+	SaturationOverlay.Position = UDim2.new(0, 0, 0, 0)
+	SaturationOverlay.Size = UDim2.new(1, 0, 1, 0)
+	SaturationOverlay.ZIndex = ZIndex + 127
+
+	SaturationGradient.Transparency = NumberSequence.new{
+		NumberSequenceKeypoint.new(0, 0),
+		NumberSequenceKeypoint.new(1, 1)
+	}
+	SaturationGradient.Rotation = 0
+	SaturationGradient.Parent = SaturationOverlay
+
+	SaturationCorner.CornerRadius = UDim.new(0, 5)
+	SaturationCorner.Parent = SaturationOverlay
+
+	ValueOverlay.Name = Nigginality.RandomString();
+	ValueOverlay.Parent = SaViMap
+	ValueOverlay.AnchorPoint = Vector2.new(0, 0)
+	ValueOverlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	ValueOverlay.BackgroundTransparency = 0
+	ValueOverlay.BorderSizePixel = 0
+	ValueOverlay.Position = UDim2.new(0, 0, 0, 0)
+	ValueOverlay.Size = UDim2.new(1, 0, 1, 0)
+	ValueOverlay.ZIndex = ZIndex + 127
+
+	ValueGradient.Transparency = NumberSequence.new{
+		NumberSequenceKeypoint.new(0, 1),
+		NumberSequenceKeypoint.new(1, 0)
+	}
+	ValueGradient.Rotation = 90
+	ValueGradient.Parent = ValueOverlay
+
+	ValueCorner.CornerRadius = UDim.new(0, 5)
+	ValueCorner.Parent = ValueOverlay
 
 	ColorZoneSelection.Name = Nigginality.RandomString();
 	ColorZoneSelection.Parent = SaViMap
@@ -1469,7 +1517,7 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	ColorZoneSelection.BorderSizePixel = 0
 	ColorZoneSelection.Position = UDim2.new(0.5, 0, 0.5, 0)
 	ColorZoneSelection.Size = UDim2.new(0, 10, 0, 10)
-	ColorZoneSelection.ZIndex = ZIndex + 127
+	ColorZoneSelection.ZIndex = ZIndex + 128
 
 	UICorner_3.CornerRadius = UDim.new(1, 0)
 	UICorner_3.Parent = ColorZoneSelection
@@ -1502,7 +1550,7 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	ColorMapSelection.BorderSizePixel = 0
 	ColorMapSelection.Position = UDim2.new(0, 0, 0.5, 0)
 	ColorMapSelection.Size = UDim2.new(0, 5, 1, 0)
-	ColorMapSelection.ZIndex = ZIndex + 126
+	ColorMapSelection.ZIndex = ZIndex + 127
 
 	UIStroke_3.Thickness = 2.000
 	UIStroke_3.Color = Color3.fromRGB(255, 255, 255)
@@ -1518,7 +1566,7 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	RGBLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	RGBLabel.BorderSizePixel = 0
 	RGBLabel.Position = UDim2.new(0, 10, 0, 217)
-	RGBLabel.Size = UDim2.new(1, -20, 0, 15)
+	RGBLabel.Size = UDim2.new(1, -90, 0, 15)
 	RGBLabel.ZIndex = ZIndex + 127
 	RGBLabel.Font = Enum.Font.GothamBold
 	RGBLabel.Text = "#FFFFFF"
@@ -1529,6 +1577,28 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 
 	UICorner_6.CornerRadius = UDim.new(0, 4)
 	UICorner_6.Parent = RGBLabel
+
+	local RainbowButton = Instance.new("TextButton")
+	local RainbowCorner = Instance.new("UICorner")
+
+	RainbowButton.Name = Nigginality.RandomString();
+	RainbowButton.Parent = ColorPickerHandler
+	RainbowButton.BackgroundColor3 = Color3.fromRGB(30, 32, 40)
+	RainbowButton.BackgroundTransparency = 0
+	RainbowButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	RainbowButton.BorderSizePixel = 0
+	RainbowButton.Position = UDim2.new(1, -78, 0, 217)
+	RainbowButton.Size = UDim2.new(0, 68, 0, 15)
+	RainbowButton.ZIndex = ZIndex + 128
+	RainbowButton.AutoButtonColor = false
+	RainbowButton.Font = Enum.Font.GothamBold
+	RainbowButton.Text = "Rainbow"
+	RainbowButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	RainbowButton.TextSize = 11
+	RainbowButton.TextTransparency = 0.350
+
+	RainbowCorner.CornerRadius = UDim.new(0, 4)
+	RainbowCorner.Parent = RainbowButton
 
 	ColorPickerLib.SetRender = LPH_NO_VIRTUALIZE(function(value)
 		if value then
@@ -1606,6 +1676,7 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 	ColorPickerLib.S = 1;
 	ColorPickerLib.V = 1;
 	ColorPickerLib.Callback = EmptyFunction;
+	ColorPickerLib.Rainbow = false;
 
 	function ColorPickerLib:Update()
 		local RealColor = Color3.fromHSV(ColorPickerLib.H , ColorPickerLib.S , ColorPickerLib.V);
@@ -1640,6 +1711,26 @@ function Nigginality:CreateColorPicker(HandleFrame: Frame)
 
 		ColorPickerLib:Update();
 	end;
+
+	Nigginality:AddSignal(RainbowButton.MouseButton1Click:Connect(function()
+		ColorPickerLib.Rainbow = not ColorPickerLib.Rainbow;
+		RainbowButton.Text = ColorPickerLib.Rainbow and "Rainbow On" or "Rainbow";
+	end));
+
+	Nigginality:AddSignal(RunService.RenderStepped:Connect(function()
+		if not ColorPickerLib.Rainbow then
+			return;
+		end;
+
+		local hue = (os.clock() * 0.12) % 1;
+		local color = Color3.fromHSV(hue, ColorPickerLib.S, ColorPickerLib.V);
+
+		ColorPickerLib.H = hue;
+		SaViMap.BackgroundColor3 = Color3.fromHSV(hue, 1, 1);
+		ColorMapSelection.Position = UDim2.fromScale(hue, 0.5);
+		RGBLabel.Text = "#" .. color:ToHex();
+		ColorPickerLib.Callback(color);
+	end));
 
 	ColorPickerLib.IsHold = false;
 
@@ -1763,6 +1854,7 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 			Flag = nil,
 			Callback = EmptyFunction,
 			InlineKeybind = false,
+			KeybindMode = "Toggle",
 		});
 
 		local Toggle = Instance.new("Frame")
@@ -1882,7 +1974,7 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 		-- While a key is bound, pressing that key in-game will fire the toggle.
 		-- Credit for keybind flow inspiration: violin-suzutsuki/LinoriaLib
 		-- ──────────────────────────────────────────────────────────────────────
-		if Config.InlineKeybind or Config.Keybind then
+		do
 			-- Resolve the initial key name string
 			local function ResolveKeyName(k)
 				if k == nil then
@@ -1897,6 +1989,7 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 
 			-- Internal mutable state for the bound key
 			local BoundKeyName = (Config.Keybind ~= nil) and ResolveKeyName(Config.Keybind) or "None";
+			local BoundKeyMode = (Config.KeybindMode == "Hold") and "Hold" or "Toggle";
 
 			-- ── Build the small keybind frame ─────────────────────────────────
 			local KBFrame     = Instance.new("Frame");
@@ -2000,6 +2093,10 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 						-- Escape = clear binding
 						if Input.KeyCode == Enum.KeyCode.Escape then
 							Selected = "None";
+						elseif Input.UserInputType == Enum.UserInputType.MouseButton1 then
+							Selected = "M1B";
+						elseif Input.UserInputType == Enum.UserInputType.MouseButton2 then
+							Selected = "M2B";
 						elseif Input.KeyCode ~= Enum.KeyCode.Unknown and
 							Input.UserInputType == Enum.UserInputType.Keyboard then
 							Selected = Input.KeyCode.Name;
@@ -2017,16 +2114,53 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 				end));
 			end));
 
-			-- ── Global listener: fire the toggle when the bound key is pressed ─
+			-- ── Global listener: fire the toggle while the bound key is active ─
 			Nigginality:AddSignal(UserInputService.InputBegan:Connect(LPH_NO_VIRTUALIZE(function(Input, GameProcessed)
 				if GameProcessed then return end;
 				if IsBinding      then return end;
 				if BoundKeyName == "None" then return end;
 
-				local pressedName = Nigginality:KeyCodeToStr(Input.KeyCode.Name);
+				local Pressed = false;
 
-				if pressedName == BoundKeyName then
-					Config.Default = not Config.Default;
+				if BoundKeyName == "M1B" then
+					Pressed = Input.UserInputType == Enum.UserInputType.MouseButton1;
+				elseif BoundKeyName == "M2B" then
+					Pressed = Input.UserInputType == Enum.UserInputType.MouseButton2;
+				else
+					Pressed = Input.UserInputType == Enum.UserInputType.Keyboard and Nigginality:KeyCodeToStr(Input.KeyCode.Name) == BoundKeyName;
+				end;
+
+				if Pressed then
+					-- // Keybind
+					if BoundKeyMode == "Hold" then
+						Config.Default = true;
+					else
+						Config.Default = not Config.Default;
+					end;
+
+					ToggleLib.SetUI(Config.Default);
+					Config.Callback(Config.Default);
+					-- // Keybind
+				end;
+			end)));
+
+			Nigginality:AddSignal(UserInputService.InputEnded:Connect(LPH_NO_VIRTUALIZE(function(Input)
+				if BoundKeyMode ~= "Hold" then return end;
+				if IsBinding then return end;
+				if BoundKeyName == "None" then return end;
+
+				local Released = false;
+
+				if BoundKeyName == "M1B" then
+					Released = Input.UserInputType == Enum.UserInputType.MouseButton1;
+				elseif BoundKeyName == "M2B" then
+					Released = Input.UserInputType == Enum.UserInputType.MouseButton2;
+				else
+					Released = Input.UserInputType == Enum.UserInputType.Keyboard and Nigginality:KeyCodeToStr(Input.KeyCode.Name) == BoundKeyName;
+				end;
+
+				if Released then
+					Config.Default = false;
 					ToggleLib.SetUI(Config.Default);
 					Config.Callback(Config.Default);
 				end;
@@ -2041,6 +2175,14 @@ function Nigginality:RegisiterHandler(Handler: Frame , Signal)
 				BoundKeyName  = ResolveKeyName(keyNameOrEnum);
 				KBLabel.Text  = BoundKeyName;
 				KBUpdateSize();
+			end;
+
+			function ToggleLib:GetKeybindMode()
+				return BoundKeyMode;
+			end;
+
+			function ToggleLib:SetKeybindMode(mode)
+				BoundKeyMode = (mode == "Hold") and "Hold" or "Toggle";
 			end;
 		end;
 		-- ── End Keybind Widget ────────────────────────────────────────────────
@@ -5722,6 +5864,23 @@ function Nigginality:CreateWindow(Config)
 
 			return Section;
 		end;
+
+		function Tab:SetVisible(value)
+			Tab.Idx.Visible = value;
+			Tab.SetValue(value and Tab.Signal:GetValue() or false);
+
+			if not value and Window.Tabs[Window.CurrentTab] == Tab then
+				for index, otherTab in next, Window.Tabs do
+					if otherTab ~= Tab and otherTab.Idx.Visible then
+						otherTab.SetValue(true);
+						Window.CurrentTab = index;
+						break;
+					end;
+				end;
+			end;
+		end;
+
+		Tab.AddGroupbox = Tab.AddSection;
 
 		return Tab;
 	end;
